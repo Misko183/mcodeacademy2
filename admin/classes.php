@@ -79,34 +79,27 @@ if(!isset($admin_id)){
                             </thead>
                             <tbody>
 
-                                <?php
-					                      $qry = $conn->query("SELECT f.*,u.name from class f left join users u  on f.users_id = u.id order by u.name asc ");
-					                      $i = 1;
-					                      if($qry->num_rows >0){
-					                      	while($row= $qry->fetch_assoc()){
+							<?php
+					        include '../scripts/get_user.php';
 					                      	?>
                                 <tr>
-                                    <td><?php echo $i++ ?></td>
-                                    <td><?php echo $row['name'] ?></td>
-                                    <td><?php echo $row['subject'] ?></td>
+                                    <td><?php echo $class['class_id'] ?></td>
+                                    <td><?php echo $class['name'] ?></td>
+                                    <td><?php echo $class['subject'] ?></td>
                                     <td>
                                         
                                             <button class="btn btn-sm btn-outline-primary edit_class"
-                                                data-id="<?php echo $row['id']?>" type="button"><i
+                                                data-id="<?php echo $class['class_id']?>" type="button"><i
                                                     class="fa fa-edit"></i> Upraviť</button>
                                             <button class="btn btn-sm btn-outline-danger remove_class"
-                                                data-id="<?php echo $row['id']?>" type="button"><i
+                                                data-id="<?php echo $class['class_id']?>" type="button"><i
                                                     class="fa fa-trash"></i> Vymazať</button>
                                        
                                     </td>
                                 </tr>
-                                <?php
-					                        }
-					                        }
-					                        ?>
-
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
@@ -120,82 +113,83 @@ if(!isset($admin_id)){
         <!-- footer -->
 
         <script>
-	$(document).ready(function(){
-		$('#table').DataTable();
-		$('#new_class').click(function(){
-			$('#msg').html('')
-			$('#manage_class .modal-title').html('Pridať novú triedu')
-			$('#manage_class #class-frm').get(0).reset()
-			$('#manage_class').modal('show')
-		})
-		$('.edit_class').click(function(){
-			var id = $(this).attr('data-id')
-			$.ajax({
-				url:'scripts/get_class.php?id='+id,
-				error:err=>console.log(err),
-				success:function(resp){
-					if(typeof resp != undefined){
-						resp = JSON.parse(resp)
-						$('[name="id"]').val(resp.id)
-						$('[name="uid"]').val(resp.uid)
-						$('[name="name"]').val(resp.name)
-						$('[name="subject"]').val(resp.subject)
-						$('[name="username"]').val(resp.username)
-						$('[name="password"]').val(resp.password)
-						$('#manage_class .modal-title').html('Upraviť triedu')
-						$('#manage_class').modal('show')
+        $(document).ready(function() {
+            $('#table').DataTable();
+            $('#new_class').click(function() {
+                $('#msg').html('')
+                $('#manage_class .modal-title').html('Pridať novú triedu')
+                $('#manage_class #class-frm').get(0).reset()
+                $('#manage_class').modal('show')
+            })
+            $('.edit_class').click(function() {
+                var id = $(this).attr('data-id')
+                $.ajax({
+                    url: 'scripts/get_class.php?id=' + id,
+                    error: err => console.log(err),
+                    success: function(resp) {
+                        if (typeof resp != undefined) {
+                            resp = JSON.parse(resp)
+                            $('[name="id"]').val(resp.id)
+                            $('[name="uid"]').val(resp.uid)
+                            $('[name="name"]').val(resp.name)
+                            $('[name="subject"]').val(resp.subject)
+                            $('[name="username"]').val(resp.username)
+                            $('[name="password"]').val(resp.password)
+                            $('#manage_class .modal-title').html('Upraviť triedu')
+                            $('#manage_class').modal('show')
 
-					}
-				}
-			})
+                        }
+                    }
+                })
 
-		})
-		$('.remove_class').click(function(){
-			var id = $(this).attr('data-id')
-			var conf = confirm('Are you sure to delete this data.');
-			if(conf == true){
-				$.ajax({
-				url:'./delete_class.php?id='+id,
-				error:err=>console.log(err),
-				success:function(resp){
-					if(resp == true)
-						location.reload()
-				}
-			})
-			}
-		})
-		$('#class-frm').submit(function(e){
-			e.preventDefault();
-			$('#class-frm [name="submit"]').attr('disabled',true)
-			$('#class-frm [name="submit"]').html('Saving...')
-			$('#msg').html('')
+            })
+            $('.remove_class').click(function() {
+                var id = $(this).attr('data-id')
+                var conf = confirm('Are you sure to delete this data.');
+                if (conf == true) {
+                    $.ajax({
+                        url: './delete_class.php?id=' + id,
+                        error: err => console.log(err),
+                        success: function(resp) {
+                            if (resp == true)
+                                location.reload()
+                        }
+                    })
+                }
+            })
+            $('#class-frm').submit(function(e) {
+                e.preventDefault();
+                $('#class-frm [name="submit"]').attr('disabled', true)
+                $('#class-frm [name="submit"]').html('Saving...')
+                $('#msg').html('')
 
-			$.ajax({
-				url:'./save_class.php',
-				method:'POST',
-				data:$(this).serialize(),
-				error:err=>{
-					console.log(err)
-					alert('An error occured')
-					$('#class-frm [name="submit"]').removeAttr('disabled')
-					$('#class-frm [name="submit"]').html('Save')
-				},
-				success:function(resp){
-					if(typeof resp != undefined){
-						resp = JSON.parse(resp)
-						if(resp.status == 1){
-							alert('Data successfully saved');
-							location.reload()
-						}else{
-						$('#msg').html('<div class="alert alert-danger">'+resp.msg+'</div>')
+                $.ajax({
+                    url: './save_class.php',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    error: err => {
+                        console.log(err)
+                        alert('An error occured')
+                        $('#class-frm [name="submit"]').removeAttr('disabled')
+                        $('#class-frm [name="submit"]').html('Save')
+                    },
+                    success: function(resp) {
+                        if (typeof resp != undefined) {
+                            resp = JSON.parse(resp)
+                            if (resp.status == 1) {
+                                alert('Data successfully saved');
+                                location.reload()
+                            } else {
+                                $('#msg').html('<div class="alert alert-danger">' + resp
+                                    .msg + '</div>')
 
-						}
-					}
-				}
-			})
-		})
-	})
-</script>
+                            }
+                        }
+                    }
+                })
+            })
+        })
+        </script>
 
 
 </body>

@@ -13,14 +13,14 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#" style="font-weight: bold;">Cvičenia</a></li>
                 <?php 
-                if($_SESSION['admin_id']) {
+                if($_SESSION['user_type']  == 'admin') {
                 ?>
                 <li class="nav-item"><a class="nav-link" href="admin/index.php" style="font-weight: bold;">Admin panel</a></li>
                 <?php
                 }
                 ?>
                 <?php 
-                if($_SESSION['user_id']) {
+                if($_SESSION['user_type'] == 'user') {
                 ?>
                 <li class="nav-item"><a class="nav-link" href="profile.php" style="font-weight: bold;">Profil</a></li>
                 <?php
@@ -33,7 +33,7 @@
                 $user = $_SESSION["name"];
                 $user_type = $_SESSION["user_type"];
 
-                if($_SESSION['user_id'] || $_SESSION['admin_id']) { 
+                if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin') { 
                 ?>
                 <span style="color: white; margin-right: 15px;"><?php echo $user;?><?php //echo $user_type;?></span>
             <a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" href="scripts/logout.php"
