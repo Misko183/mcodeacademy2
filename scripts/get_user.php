@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include 'configa.php';
 $sql = "SELECT * from users";
 $result = mysqli_query($conn, $sql);
 $classes = [];

@@ -2,7 +2,10 @@
 
 session_start();
 
-include('../scripts/config.php');
+header("Content-Type: text/html;charset=UTF-8");
+
+include('../scripts/configa.php');
+include('../scripts/del_class.php');
 
 $admin_id = $_SESSION['admin_id'];
 
@@ -15,11 +18,10 @@ if(!isset($admin_id)){
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCodeAcademy • Admin Panel | home</title>
 
@@ -45,6 +47,7 @@ if(!isset($admin_id)){
 
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/Lista-Productos-Canito.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="assets/js/script.js"></script>
@@ -64,6 +67,8 @@ if(!isset($admin_id)){
                 <div class="row">
                     <div class="col-md-4">
                         <h2 style="width: 343px;">List tried</h2>
+                        <button data-toggle="modal" data-target="#modal-1" class="btn btn-primary" type="button"><i
+                                class="fas fa-plus" style="padding-right: 10px;"></i>Pridať novú triedu</button>
                     </div>
                 </div>
                 <div class="row">
@@ -73,30 +78,33 @@ if(!isset($admin_id)){
                                 <tr>
                                     <th>Id</th>
                                     <th>Trieda</th>
-                                    <th>Predmet</th>
                                     <th>Akcia</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-							<?php
-					        include '../scripts/get_user.php';
-					                      	?>
+                                <?php
+					$qry = $conn->query("SELECT * FROM class");
+					if($qry->num_rows > 0){
+						while($row= $qry->fetch_assoc()){
+						?>
                                 <tr>
-                                    <td><?php echo $class['class_id'] ?></td>
-                                    <td><?php echo $class['name'] ?></td>
-                                    <td><?php echo $class['subject'] ?></td>
+                                    <td><?php echo $row['id'] ?></td>
+                                    <td><?php echo $row['class'] ?></td>
                                     <td>
-                                        
-                                            <button class="btn btn-sm btn-outline-primary edit_class"
-                                                data-id="<?php echo $class['class_id']?>" type="button"><i
-                                                    class="fa fa-edit"></i> Upraviť</button>
-                                            <button class="btn btn-sm btn-outline-danger remove_class"
-                                                data-id="<?php echo $class['class_id']?>" type="button"><i
-                                                    class="fa fa-trash"></i> Vymazať</button>
-                                       
+                                        <a href="../scripts/del_class.php?id=<?php echo $row['id']?>" type="button" class="btn btn-danger"
+                                            data-id="<?php echo $row['id']?>"><i
+                                                class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
+                                        <button type="button" class="btn btn-warning"
+                                            data-id="<?php echo $row['id']?>"><i
+                                                class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></button>
                                     </td>
                                 </tr>
+                                <?php
+					}
+					}
+					?>
+
                             </tbody>
                         </table>
 
@@ -105,92 +113,49 @@ if(!isset($admin_id)){
             </div>
         </div>
 
+        <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Pridať novú triedu</h4>
+                    </div>
+                    <form method="post" action="../scripts/save_class.php">
+                        <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
+                            <label class="form-label">Trieda</label>
+                                <input type="text" style="margin-bottom: 10px;" name="class">
+                                <label class="form-label">Predmet</label>
+                                <input type="text" style="margin-bottom: 10px;" name="subject">
+                                <label class="form-label">Učiteľ</label>
+                                <select style="margin-bottom: 10px;" name="id">
+                                    <optgroup label="Zoznam učiteľov">
+                                        <?php 
+                                        $sql = "SELECT * FROM users";
+                                        $res = mysqli_query($conn, $sql);
+
+                                        while($rows = mysqli_fetch_array($res))
+                                        { ?>
+                                        <option value="<?php echo $rows['id'];?>">
+                                            <?php echo $rows['full_name'] ?></option>
+                                        <?php
+                                        }
+                                    ?>
+                                    </optgroup>
+                                </select >
+                                <button class="btn btn-primary" type="submit" name="submit">Save</button>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button class="btn btn-light" type="button" data-bs-dismiss="modal"
+                            data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+<!-- footer -->
 
         <?php include 'template/footer/footer.php' ?>
-
-        <!-- footer -->
-
-        <script>
-        $(document).ready(function() {
-            $('#table').DataTable();
-            $('#new_class').click(function() {
-                $('#msg').html('')
-                $('#manage_class .modal-title').html('Pridať novú triedu')
-                $('#manage_class #class-frm').get(0).reset()
-                $('#manage_class').modal('show')
-            })
-            $('.edit_class').click(function() {
-                var id = $(this).attr('data-id')
-                $.ajax({
-                    url: 'scripts/get_class.php?id=' + id,
-                    error: err => console.log(err),
-                    success: function(resp) {
-                        if (typeof resp != undefined) {
-                            resp = JSON.parse(resp)
-                            $('[name="id"]').val(resp.id)
-                            $('[name="uid"]').val(resp.uid)
-                            $('[name="name"]').val(resp.name)
-                            $('[name="subject"]').val(resp.subject)
-                            $('[name="username"]').val(resp.username)
-                            $('[name="password"]').val(resp.password)
-                            $('#manage_class .modal-title').html('Upraviť triedu')
-                            $('#manage_class').modal('show')
-
-                        }
-                    }
-                })
-
-            })
-            $('.remove_class').click(function() {
-                var id = $(this).attr('data-id')
-                var conf = confirm('Are you sure to delete this data.');
-                if (conf == true) {
-                    $.ajax({
-                        url: './delete_class.php?id=' + id,
-                        error: err => console.log(err),
-                        success: function(resp) {
-                            if (resp == true)
-                                location.reload()
-                        }
-                    })
-                }
-            })
-            $('#class-frm').submit(function(e) {
-                e.preventDefault();
-                $('#class-frm [name="submit"]').attr('disabled', true)
-                $('#class-frm [name="submit"]').html('Saving...')
-                $('#msg').html('')
-
-                $.ajax({
-                    url: './save_class.php',
-                    method: 'POST',
-                    data: $(this).serialize(),
-                    error: err => {
-                        console.log(err)
-                        alert('An error occured')
-                        $('#class-frm [name="submit"]').removeAttr('disabled')
-                        $('#class-frm [name="submit"]').html('Save')
-                    },
-                    success: function(resp) {
-                        if (typeof resp != undefined) {
-                            resp = JSON.parse(resp)
-                            if (resp.status == 1) {
-                                alert('Data successfully saved');
-                                location.reload()
-                            } else {
-                                $('#msg').html('<div class="alert alert-danger">' + resp
-                                    .msg + '</div>')
-
-                            }
-                        }
-                    }
-                })
-            })
-        })
-        </script>
-
 
 </body>
 

@@ -4,11 +4,10 @@ include 'scripts/config.php';
 
 $loggeding = false;
 
-session_set_cookie_params(0);
 session_start();
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: index.php");
+  header('location: index.php');
   exit;
 }
 
@@ -33,7 +32,7 @@ if(isset($_POST['submit'])){
          $_SESSION['email'] = $row['email'];
          $_SESSION['name'] = $row['name'];
          $_SESSION['user_type'] = $row['user_type'];
-         header('location:index.php');
+         header('location:' . $_GET["continue"]);
 
       }elseif($row['user_type'] == 'user'){
 
@@ -42,16 +41,26 @@ if(isset($_POST['submit'])){
          $_SESSION['email'] = $row['email'];
          $_SESSION['name'] = $row['name'];
          $_SESSION['user_type'] = $row['user_type'];
-         header('location:index.php');
+         header('location:' . $_GET["continue"]);
 
-      }elseif($row['user_type'] == 'teacher'){
+      }elseif($row['user_type'] == 'student'){
+
+        $_SESSION["loggedin"] = true;
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['student_id'] = $row['id'];
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['name'] = $row['name'];
+        $_SESSION['user_type'] = $row['user_type'];
+        header('location:' . $_GET["continue"]);
+
+     }elseif($row['user_type'] == 'teacher'){
 
         $_SESSION["loggedin"] = true;
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['name'] = $row['name'];
         $_SESSION['user_type'] = $row['user_type'];
-        header('location:index.php');
+        header('location:' . $_GET["continue"]);
 
      }else{
          $message[] = 'používateľ nebol najdený!';

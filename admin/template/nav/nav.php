@@ -63,7 +63,13 @@
             <a href="classes.php"><i class="fa fa-table fa-fw"></i> Triedy</a>
           </li>
           <li>
-            <a href="students.php"><i class="fa fa-edit fa-fw"></i> Študenti</a>
+            <a href="students.php"><i class="fa fa-users fa-fw"></i> Študenti</a>
+          </li>
+          <li>
+            <a href="teachers.php"><i class="fa fa-graduation-cap fa-fw"></i> Učitelia</a>
+          </li>
+          <li>
+            <a href="subject.php"><i class="fa fa-book fa-fw"></i> Predmety</a>
           </li>
           <li>
             <a href="quiz_list.php"><i class="fa fa-edit fa-fw"></i> List kvízov</a>

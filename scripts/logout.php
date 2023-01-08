@@ -12,6 +12,6 @@ unset($_SESSION["user_type"]);
 session_unset();
 session_destroy();
 
-header('location:../login.php');
+header('location:' . $_GET["continue"]);
 
 ?>

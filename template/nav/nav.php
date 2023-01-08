@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse flex-grow-0 order-md-first" id="navcol-6">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"></li>
-                <li class="nav-item"><a class="nav-link active" href="materials/index.php"
+                <li class="nav-item"><a class="nav-link" href="materials/index.php"
                         style="font-weight: bold;">Materialy</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#" style="font-weight: bold;">Cvičenia</a></li>
@@ -20,7 +20,11 @@
                 }
                 ?>
                 <?php 
-                if($_SESSION['user_type'] == 'user') {
+                if($loggeding = false) { return 0
+                ?>
+                
+                <?php
+                }elseif($_SESSION['user_type'] == 'user') {
                 ?>
                 <li class="nav-item"><a class="nav-link" href="profile.php" style="font-weight: bold;">Profil</a></li>
                 <?php
@@ -33,18 +37,18 @@
                 $user = $_SESSION["name"];
                 $user_type = $_SESSION["user_type"];
 
-                if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin') { 
+                if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin' || $_SESSION['user_type'] == 'teacher' || $_SESSION['user_type'] == 'student') { 
                 ?>
                 <span style="color: white; margin-right: 15px;"><?php echo $user;?><?php //echo $user_type;?></span>
-            <a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" href="scripts/logout.php"
+            <a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" href="scripts/logout.php?continue=<?php echo $link; ?>"
                 style="background: linear-gradient(0deg, #5b77e7 0%, #49b5d2 49%, #26e8a8 99%);color: rgb(254,254,254);font-weight: bold;border-width: 0px;border-radius: 11px;padding-right: 18px;padding-left: 18px;text-align: center;">Odhlásiť
                 sa <i class="fa fa-sign-out" aria-hidden="true"></i></a>
             <?php
-                }else
+                }else { ?>
                     echo '<a class="btn btn-primary" role="button" data-bss-hover-animate="pulse"
-                    href="login.php"
+                    href="login.php?continue=<?php echo $link; ?>"
                     style="background: linear-gradient(0deg, #5b77e7 0%, #49b5d2 49%, #26e8a8 99%);color: rgb(254,254,254);font-weight: bold;border-width: 0px;border-radius: 11px;padding-right: 18px;padding-left: 18px;text-align: center;">Login</a>';
-                ?>
+                <php } ?>
 
         </div>
     </div>
