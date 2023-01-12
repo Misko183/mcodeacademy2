@@ -1,7 +1,7 @@
 <?php
 $servername = 'localhost';
-        $username = 'root';
-        $password = '';
+        $username = 'master';
+        $password = 'password';
         $database = 'mcodeacademy';
         
         $conn = new mysqli($servername, $username, $password, $database);
