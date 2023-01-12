@@ -6,9 +6,7 @@ header("Content-Type: text/html;charset=UTF-8");
 
 include('../scripts/configa.php');
 
-$ids = isset($_GET["id"]) ? $_GET["id"] : "";
-
- $quiz = $conn->query("SELECT * FROM quiz_list where id =".$_GET['id']." order by RAND( )")->fetch_array();
+$quiz = $conn->query("SELECT * FROM quiz_list where id =".$_GET['id']." order by RAND()")->fetch_array();
 
 ?>
 
@@ -16,7 +14,17 @@ $ids = isset($_GET["id"]) ? $_GET["id"] : "";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	</head>
+<meta charset = "utf-8" />
+		<link rel = "stylesheet" type = "text/css" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+ 
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+	<script src = "../assets/js/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script><script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+
 	<title> | Answer Sheet</title>
 </head>
 <body>
@@ -25,9 +33,9 @@ $ids = isset($_GET["id"]) ? $_GET["id"] : "";
 		<br>
 		<div class="card">
 			<div class="card-body">
-				<form action="../scripts/submit_answer.php">
+				<form action="" id="answer-sheet">
 					<input type="hidden" name="user_id" value="<?php echo $_SESSION['student_id'] ?>">
-					<input type="hidden" name="quiz_id" value="<?php echo $ids ?>">
+					<input type="hidden" name="quiz_id" value="<?php echo $quiz['id'] ?>">
 					<input type="hidden" name="qpoints" value="<?php echo $quiz['qpoints'] ?>">
 					<?php
 					$question = $conn->query("SELECT * FROM questions where qid = '".$quiz['id']."' order by order_by asc ");
@@ -60,5 +68,40 @@ $ids = isset($_GET["id"]) ? $_GET["id"] : "";
 			</div>	
 		</div>
 	</div>
+</body>
+<script>
+	$(document).ready(function(){
+		$('.answer').each(function(){
+		$(this).click(function(){
+			$(this).find('input[type="radio"]').prop('checked',true)
+			$(this).css('background','#00c4ff3d')
+			$(this).siblings('li').css('background','white')
+		})
+
+
+		})
+		$('#answer-sheet').submit(function(e){
+			e.preventDefault()
+			$('#answer-sheet [type="submit"]').attr('disabled',true)
+			$('#answer-sheet [type="submit"]').html('Saving...')
+			$.ajax({
+				url:'../scripts/submit_answer.php',
+				method:'POST',
+				data:$(this).serialize(),
+				error:err=>console.log(err),
+				success:function(resp){
+					if(typeof resp != undefined){
+						resp = JSON.parse(resp)
+					if(resp.status == 1){
+						alert('You completed the quiz your score is '+resp.score)
+						location.replace('view_answer.php?id=<?php echo $_GET['id'] ?>')
+					}
+					}
+				}
+			})
+		})
+		
+	})
+</script>
 </body>
 </html>

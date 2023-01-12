@@ -1,16 +1,16 @@
 <?php 
 
-include './configa.php';
+include 'db_connect.php';
 
-$ids = $_REQUEST['quiz_id'];
-$quiz_id = $_REQUEST['quiz_id'];
-$question_id = $_REQUEST['question_id'];
-$user_id = $_REQUEST['user_id'];
-$qpoints = $_REQUEST['qpoints'];
+// $ids = $_REQUEST['quiz_id'];
+// $quiz_id = $_REQUEST['quiz_id'];
+// $question_id = $_REQUEST['question_id'];
+// $user_id = $_REQUEST['user_id'];
+// $qpoints = $_REQUEST['qpoints'];
 
-echo $ids;
-echo $quiz_id;
-echo $user_id;
+// echo $ids;
+// echo $quiz_id;
+// echo $user_id;
 
 extract($_POST);
 $points = 0;
@@ -38,8 +38,5 @@ $total = count($question_id) * $qpoints;
 	$insert2 = $conn->query("INSERT INTO history set ".$data);
 	if($insert2)
 	echo json_encode(array('status'=>1,'score'=>$score.'/'.$total));
-
-
-header ("Location: ../student/view_answer.php?id= $ids");
 
 ?>

@@ -5,9 +5,10 @@ include 'configa.php';
 $student_id = $_REQUEST['student'];
 $id = $_REQUEST['quiz_id'];
 
-echo $id;
+$sql = "INSERT INTO `quiz_student_list`(`quiz_id`, `user_id`) VALUES ('$id', '$student_id')";
 
-$sql = "INSERT INTO `quiz_student_list`(`quiz_id`, `user_id`) VALUES ('$id','$student_id')";
+echo $id;
+echo $student_id;
 
 if(mysqli_query($conn, $sql)){
     echo "<h3>data stored in a database successfully."
@@ -18,8 +19,5 @@ if(mysqli_query($conn, $sql)){
     echo "ERROR: Hush! Sorry $sql. "
         . mysqli_error($conn);
 }
-
-
-
 
 ?>

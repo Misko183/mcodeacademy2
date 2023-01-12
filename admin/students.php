@@ -5,7 +5,7 @@ session_start();
 header("Content-Type: text/html;charset=UTF-8");
 
 include('../scripts/configa.php');
-include('../scripts/del_class.php');
+include('../scripts/del_student.php');
 
 $admin_id = $_SESSION['admin_id'];
 
@@ -14,135 +14,138 @@ if(!isset($admin_id)){
  };
 
 ?>
-
-
-
 <!DOCTYPE html>
-<html lang="sk">
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCodeAcademy • Admin Panel | home</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7/css/sb-admin-2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
-    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/416491/timeline.css">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="template/footer/footer.css">
-
-
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7/js/sb-admin-2.js"></script>
-    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Študenti | MCodeAcademy</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/Lista-Productos-Canito.css">
-    <link rel="stylesheet" href="assets/css/modal.css">
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-
-    <script src="assets/js/script.js"></script>
-
-
 </head>
 
-<body>
-
+<body id="page-top">
     <div id="wrapper">
-
-        <!-- nav -->
-        <?php include 'template/nav/nav.php' ?>
-
-        <div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h2 style="width: 343px;">List študentov</h2>
-                        <button data-toggle="modal" data-target="#modal-1" class="btn btn-primary" type="button"><i
-                                class="fas fa-plus" style="padding-right: 10px;"></i>Pridať nového študenta/tku</button>
+        <?php include 'template/sidebar.php' ?>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <?php include 'template/nav.php' ?>
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Študenti</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Meno</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <?php
-					$qry = $conn->query("SELECT * FROM users where user_type = 'student'");
-					if($qry || $qry ->num_rows > 0){
-						while($row= $qry->fetch_assoc()){
-						?>
-                                <tr>
-                                    <td><?php echo $row['id'] ?></td>
-                                    <td><?php echo $row['full_name'] ?></td>
-                                    <td>
-                                        <a href="../scripts/del_class.php?id=<?php echo $row['id']?>" type="button" class="btn btn-danger"
-                                            data-id="<?php echo $row['id']?>"><i
-                                                class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
-                                        <button type="button" class="btn btn-warning"
-                                            data-id="<?php echo $row['id']?>"><i
-                                                class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></button>
-                                    </td>
-                                </tr>
-                                <?php
-					}
-					}
-					?>
-                            </tbody>
-                        </table>
-
+                    <button 
+                        class="btn btn-primary d-flex mx-auto" 
+                        type="button" 
+                        style="box-shadow: 4px 3px 7px 2px rgb(106,106,106);margin-bottom: 21px;" 
+                        data-bs-target="#add_student" 
+                        data-bs-toggle="modal">
+                        <i class="fas fa-plus-square" style="font-size: 24px;margin-right: 10px;"></i>
+                        Pridať novú/ého študentku/ta
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Meno</th>
+                                            <th>Trieda</th>
+                                            <th>Akcia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+					                        $qry = $conn->query("SELECT students.*,users.full_name,class.class FROM `students` LEFT JOIN `users` ON students.user_id = users.id LEFT JOIN `class` on students.class_id = class.id");
+                                            if($qry || $qry ->num_rows > 0){
+                                            while($row= $qry->fetch_assoc()){
+						                ?>
+                                        <tr>
+                                            <td><?php echo $row['user_id']; ?></td>
+                                            <td><?php echo $row['full_name']; ?></td>
+                                            <td><?php echo $row['class']; ?></td>
+                                            <td>
+                                                <a 
+                                                    data-id="<?php echo $row['id']?>" 
+                                                    href="../scripts/del_student.php?id=<?php echo $row['user_id']?>" 
+                                                    class="btn btn-primary" 
+                                                    type="button" 
+                                                    style="margin-right: 10px;background: var(--bs-danger);">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </a>
+                                                <button 
+                                                    class="btn btn-primary" 
+                                                    type="button"
+                                                    data-id="<?php echo $row['id']?>" 
+                                                    style="background: var(--bs-warning);">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <?php
+					                        }
+					                        }
+					                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Pridať nového študenta/tku</h4>
-                    </div>
-                    <form method="post" action="../scripts/save_student.php">
-                        <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
-                            <label class="form-label">Celé meno</label>
+            <div id="add_student" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Pridať novú/ého študentku/ta</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="post" action="../scripts/save_student.php">
+                            <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
+                                <label class="form-label">Celé meno</label>
                                 <input type="text" style="margin-bottom: 10px;" name="full_name">
                                 <label class="form-label">Email</label>
                                 <input type="text" style="margin-bottom: 10px;" name="email">
-                                <label class="form-label">nickname</label>
-                                <input type="text" style="margin-bottom: 10px;" name="nickname">
-                                <label class="form-label">heslo</label>
-                                <input type="password" style="margin-bottom: 10px;" name="password">
-                                <button class="btn btn-primary" type="submit" name="submit">Save</button>
-                        </div>
-                    </form>
-                    <div class="modal-footer">
-                        <button class="btn btn-light" type="button" data-bs-dismiss="modal"
-                            data-dismiss="modal">Close</button>
+                                <select style="margin-bottom: 10px;" name="class">
+                                    <option value="" selected="" disabled="">Vyberte tu</option>
+                                    <optgroup label="Zoznam tried">
+                                        <?php 
+                                            $sql = "SELECT * FROM class";
+                                            $res = mysqli_query($conn, $sql);
+
+                                            while($rows = mysqli_fetch_array($res))
+                                            { 
+                                        ?>
+                                        <option value="<?php echo $rows['id'];?>">
+                                        <?php 
+                                            echo $rows['class'];
+                                        ?></option>
+                                        <?php
+                                            }
+                                        ?>
+                                    </optgroup>
+                                </select>
+                                    <label class="form-label">nickname</label>
+                                    <input type="text" style="margin-bottom: 10px;" name="nickname">
+                                    <label class="form-label">heslo</label>
+                                    <input type="password" style="margin-bottom: 10px;" name="password">
+                                    <button class="btn btn-primary" type="submit" name="submit">Save</button>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-<!-- footer -->
-
-        <?php include 'template/footer/footer.php' ?>
-
+            <?php include 'template/footer.php'; ?>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>

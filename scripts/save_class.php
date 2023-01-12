@@ -2,10 +2,7 @@
 
 include 'configa.php';
 
-$subject = $_REQUEST['subject'];
 $class = $_REQUEST['class'];
-$teacher = $_REQUEST['id'];
-
 //$sql = "SELECT * FROM users where full_name = '$teacher'";
 //$result = mysqli_query($conn, $sql);
 
@@ -14,7 +11,7 @@ $teacher = $_REQUEST['id'];
 //echo $result;
 //echo $teacher;
 
-$sql = "INSERT INTO `class` (subject, teacher_id, class) VALUES ('$subject', '$teacher', '$class')";
+$sql = "INSERT INTO `class`(`class`) VALUES ('$class')";
 
 if(mysqli_query($conn, $sql)){
     echo "<h3>data stored in a database successfully."

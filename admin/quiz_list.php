@@ -5,7 +5,7 @@ session_start();
 header("Content-Type: text/html;charset=UTF-8");
 
 include('../scripts/configa.php');
-include('../scripts/del_class.php');
+// include('../scripts/del_class.php');
 
 $admin_id = $_SESSION['admin_id'];
 
@@ -15,121 +15,108 @@ if(!isset($admin_id)){
 
 ?>
 
-
-
 <!DOCTYPE html>
-<html lang="sk">
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCodeAcademy • Admin Panel | home</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7/css/sb-admin-2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
-    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/416491/timeline.css">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="template/footer/footer.css">
-
-
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.1/raphael.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7/js/sb-admin-2.js"></script>
-    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Predmety | MCodeAcademy</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/Lista-Productos-Canito.css">
-    <link rel="stylesheet" href="assets/css/modal.css">
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-
-    <script src="assets/js/script.js"></script>
-
-
 </head>
 
-<body>
-
+<body id="page-top">
     <div id="wrapper">
-
-        <!-- nav -->
-        <?php include 'template/nav/nav.php' ?>
-
-        <div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h2 style="width: 343px;">Zoznam kvízov</h2>
-                        <button data-toggle="modal" data-target="#modal-1" class="btn btn-primary" type="button"><i
-                                class="fas fa-plus" style="padding-right: 10px;"></i>Pridať nový kvíz</button>
+        <?php include 'template/sidebar.php' ?>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <?php include 'template/nav.php' ?>
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Zoznam kvízov</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Názov</th>
-                                    <th>Počet otázok</th>
-                                    <th>Body za otázku</th>
-                                    <th>trieda</th>
-                                    <th>Akcia</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <?php
-					$qry = $conn->query("SELECT quiz_list.*,class.subject,class.class FROM `quiz_list` LEFT JOIN `class` ON quiz_list.class_id = class.id"); 
-                    $i = 1;
-					if($qry || $qry ->num_rows > 0){
-						while($row= $qry->fetch_assoc()){
-                            $items = $conn->query("SELECT count(id) as item_count from questions where qid = '".$row['id']."' ")->fetch_array()['item_count'];
-						?>
-                                <tr>
-                                    <td><?php echo $i++ ?></td>
-                                    <td><?php echo $row['quiz_name'] ?></td>
-                                    <td><?php echo $items ?></td>
-                                    <td><?php echo $row['qpoints'] ?></td>
-                                    <td><?php echo $row['class'] ?></td>
-                                    <td>
-                                    <a class="btn btn-sm btn-outline-primary edit_quiz" href="./quiz_view.php?id=<?php echo $row['id'] ?>"><i
-                                                class="fa fa-cog d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
-                                        <a href="../scripts/del_class.php?id=<?php echo $row['id']?>" type="button" class="btn btn-danger"
-                                            data-id="<?php echo $row['id']?>"><i
-                                                class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
-                                        <button type="button" class="btn btn-warning"
-                                            data-id="<?php echo $row['id']?>"><i
-                                                class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></button>
-                                    </td>
-                                </tr>
-                                <?php
-					}
-					}
-					?>
-                            </tbody>
-                        </table>
-
+                    <button 
+                        class="btn btn-primary d-flex mx-auto" 
+                        type="button" 
+                        style="box-shadow: 4px 3px 7px 2px rgb(106,106,106);margin-bottom: 21px;" 
+                        data-bs-target="#add_student" 
+                        data-bs-toggle="modal">
+                        <i class="fas fa-plus-square" style="font-size: 24px;margin-right: 10px;"></i>
+                        Pridať nový kvíz
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Názov</th>
+                                            <th>Počet otázok</th>
+                                            <th>Body za otázku</th>
+                                            <th>trieda</th>
+                                            <th>Akcia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+					                        $qry = $conn->query("SELECT quiz_list.*,subject.subject_name,class.class FROM `quiz_list` LEFT JOIN `class` ON quiz_list.class_id = class.id LEFT JOIn `subject` ON subject_name;"); 
+					                        if($qry || $qry ->num_rows > 0){
+						                    while($row= $qry->fetch_assoc()){
+                                            $items = $conn->query("SELECT count(id) as item_count from questions where qid = '".$row['id']."' ")->fetch_array()['item_count'];
+						                ?>
+                                        <tr>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><?php echo $row['quiz_name'] ?></td>
+                                            <td><?php echo $items ?></td>
+                                            <td><?php echo $row['qpoints'] ?></td>
+                                            <td><?php echo $row['class'] ?></td>
+                                            <td>
+                                                <a 
+                                                    data-id="<?php echo $row['id']?>" 
+                                                    href="./quiz_view.php?id=<?php echo $row['id'] ?>" 
+                                                    class="btn btn-primary" 
+                                                    type="button" 
+                                                    style="margin-right: 10px;background: var(--bs-info);">
+                                                    <i class="fas fa-cog"></i>
+                                                </a>
+                                                <a 
+                                                    data-id="<?php echo $row['id']?>" 
+                                                    href="../scripts/del_quiz.php?id=<?php echo $row['id']?>" 
+                                                    class="btn btn-primary" 
+                                                    type="button" 
+                                                    style="margin-right: 10px;background: var(--bs-danger);">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </a>
+                                                <button 
+                                                    class="btn btn-primary" 
+                                                    type="button"
+                                                    data-id="<?php echo $row['id']?>" 
+                                                    style="background: var(--bs-warning);">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <?php
+					                        }
+					                        }
+					                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Pridať nový kvíz</h4>
-                    </div>
-                    <form method="post" action="../scripts/save_quiz.php">
-                        <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
+            <div id="add_student" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Pridať nový predmet</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="post" action="../scripts/save_quiz.php">
+                            <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
                             <label class="form-label">Názov kvízu</label>
                                 <input type="text" style="margin-bottom: 10px;" name="quiz_name">
                                 <label class="form-label>">Počet bodov za otázku</label>
@@ -151,22 +138,21 @@ if(!isset($admin_id)){
                                     ?>
                                     </optgroup>
                                 </select >
-                                <button class="btn btn-primary" type="submit" name="submit">Save</button>
-                        </div>
-                    </form>
-                    <div class="modal-footer">
-                        <button class="btn btn-light" type="button" data-bs-dismiss="modal"
-                            data-dismiss="modal">Close</button>
+                                    <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit" name="submit">Save</button>
+                                    </div>
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-<!-- footer -->
-
-        <?php //include 'template/footer/footer.php' ?>
-
+            <?php include 'template/footer.php'; ?>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>
