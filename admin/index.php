@@ -43,7 +43,7 @@ if(!isset($admin_id)){
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Počet používateľov</span></div>
                                             <?php 
                                                 include '../scripts/configa.php';
-                                                $sql = "SELECT COUNT('1') FROM users WHERE id = 'teacher'";
+                                                $sql = "SELECT COUNT('1') FROM users WHERE user_type = 'user'";
                                                 $result = mysqli_query($conn, $sql);
                                                 $row = mysqli_fetch_array($result);
                                             ?>
