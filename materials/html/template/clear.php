@@ -132,38 +132,38 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['preview-form-comment'
                     <div class="collapse navbar-collapse " id="navcol-1">
                         <ul class="navbar-nav d-flex flex-column">
                         <li class="nav-item"><h5>HTML základ</h5></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link now" href="#">HTML Domov</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="uvod.php">HTML Úvod</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="program.php">HTML Program</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="zaklad.php">HTML Základ</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="elementy.php">HTML Elementy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="atributy.php">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="nadpisy.php">HTML Nádpisy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="paragrafy.php">HTML Paragrafy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="stylovanie.php">HTML Štýlovanie</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="formatovanie.php">HTML Formatovanie</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="koment.php">HTML Zakomentovávanie</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="css.php">HTML CSS</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="linky.php">HTML Linky</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="obrazky.php">HTML Obrázky</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="videa.php">HTML Videa</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="ikony.php">HTML Ikony</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="tabulky.php">HTML Tabuľky</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="listy.php">HTML Listy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="triedy.php">HTML Triedy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="id.php">HTML Id</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="charset.php">HTML Charset</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="symboly.php">HTML Symboly</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link now" href="#"><span>HTML Domov</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="uvod.php"><span>HTML Úvod</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="program.php"><span>HTML Program</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="zaklad.php"><span>HTML Základ</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="elementy.php"><span>HTML Elementy</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="atributy.php"><span>HTML Atribúty</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="nadpisy.php"><span>HTML Nádpisy</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="paragrafy.php"><span>HTML Paragrafy</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="stylovanie.php"><span>HTML Štýlovanie</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="formatovanie.php"><span>HTML Formatovanie</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="koment.php"><span>HTML Zakomentovávanie</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="css.php"><span>HTML CSS</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="linky.php"><span>HTML Linky</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="obrazky.php"><span>HTML Obrázky</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="videa.php"><span>HTML Videa</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="ikony.php"><span>HTML Ikony</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="tabulky.php"><span>HTML Tabuľky</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="listy.php"><span>HTML Listy</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="triedy.php"><span>HTML Triedy</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="id.php"><span>HTML Id</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="charset.php"><span>HTML Charset</span></a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" class="nav-link" href="symboly.php"><span>HTML Symboly</span></a></li>
                             <li><hr></li>
                             <li><h5>HTML Referencie</h5></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Tag list</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" href="" class="nav-link">HTML Tag list</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" href="" class="nav-link">HTML Atribúty</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" href="" class="nav-link">HTML Atribúty</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" href="" class="nav-link">HTML Atribúty</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" href="" class="nav-link">HTML Atribúty</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" href="" class="nav-link">HTML Atribúty</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" href="" class="nav-link">HTML Atribúty</a></li>
+                            <li class="nav-item"><a style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;" href="" class="nav-link">HTML Atribúty</a></li>
                         </ul>
                     </div>
                 </div>

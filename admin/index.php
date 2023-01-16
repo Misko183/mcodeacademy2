@@ -2,6 +2,8 @@
 
 session_start();
 
+include '../scripts/configa.php';
+
 $admin_id = $_SESSION['admin_id'];
 
 if(!isset($admin_id)){

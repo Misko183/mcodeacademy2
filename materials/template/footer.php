@@ -32,7 +32,7 @@
                     <p>Copyright © 2022 MCodeAcademy<br></p>
                 </div>
                 <div class="col-md-6 text-white">
-                    <p>Web App created by <a class="sladecek" href="https://sladecek.sk" target="_blank">m1kes</a> with ❤<br></p>
+                    <p>Web App created by <a class="sladecek" href="https://sladecek.sk" target="_blank" style="color: white;">m1kes</a> with ❤<br></p>
                 </div>
             </div>
         </div>

@@ -65,7 +65,7 @@ if(!isset($admin_id)){
                         </button>
                     </div>
                     <div class="row">
-    <div class="col-lg-6 mb-4" style="width: 50%;margin-top: auto;margin-right: auto;margin-bottom: auto;margin-left: auto;">
+    <div class="col-lg-6 mb-4" style="width: 50%;margin-top: 0;margin-right: auto;margin-bottom: auto;margin-left: auto;">
         <div class="table-responsive">
         <h5>Otázky</h5>
             <table class="table">
@@ -106,7 +106,7 @@ if(!isset($admin_id)){
             </table>
         </div>
     </div>
-    <div class="col-lg-6 mb-4" style="width: 50%;margin-top: auto;margin-right: auto;margin-bottom: auto;margin-left: auto;">
+    <div class="col-lg-6 mb-4" style="width: 50%;margin-top: 0;margin-right: auto;margin-bottom: auto;margin-left: auto;">
         <div class="table-responsive">
         <h5>Študenti</h5>
             <table class="table">
