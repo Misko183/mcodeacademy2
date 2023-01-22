@@ -136,35 +136,6 @@ session_start();
             </nav>
         </div>
         <div class="col-md-6" style="width: 80%;margin-left: 15%;z-index:0;">
-            <div class="content">
-                <div class="title">
-                    
-                <div class="first">
-                    
-                </div>
-                <div class="second">
-                    
-                </div>
-                <div class="third">
-                    
-                </div>
-                <div class="fourth">
-                    
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</body>
-
-</html>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="col-md-6" style="width: 80%;margin-left: 15%;z-index:0;">
         <div class="content">
                 <div class="title">
                         <h1>HTML tutoriál</h1>

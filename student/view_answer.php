@@ -6,76 +6,168 @@ header("Content-Type: text/html;charset=UTF-8");
 
 include('../scripts/configa.php');
 
+$student_id = $_SESSION['student_id'];
+
 $id = isset($_GET["id"]) ? $_GET["id"] : "";
+
+if(!isset($student_id)){
+    header('location:../login.php');
+ };
+
+$sql = "SELECT * FROM `users` WHERE id = '$student_id'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);   
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
+
 <head>
-	</head>
-	<?php 
-	$quiz = $conn->query("SELECT * FROM quiz_list where id = $id ")->fetch_array();
-	$hist = $conn->query("SELECT * FROM history where quiz_id = $id and user_id = ".$_SESSION['student_id'])->fetch_array();
-	?>
-	<quiz_name><?php echo $quiz['quiz_name'] ?> | Answer Sheet</quiz_name>
-</head>
-<body>
-	<style>
-		/*li.answer{
+    <meta charset="UTF-8">
+    <title><?php echo $quiz['quiz_name'] ?> | Odpoveďový hárok</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="template/nav/nav.css">
+    <link rel="stylesheet" href="template/footer/footer.css">
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Lista-Productos-Canito.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <style>
+    /*li.answer{
 			cursor: pointer;
 		}
 		li.answer:hover{
 			background: #00c4ff3d;
 		}*/
-		li.answer input:checked{
-			background: #00c4ff3d;
-		}
-	</style>
-	
-	<div class="container-fluid admin">
-		<div class="col-md-12 alert alert-primary"><?php echo $quiz['quiz_name'] ?> | <?php echo $quiz['qpoints'] .' Points Each Question' ?></div>
-		<div class="col-md-12 alert alert-success">SCORE : <?php echo $hist['score'] .' / ' .  $hist['total_score'] ?></div>
-		<br>
-		<div class="card">
-			<div class="card-body">
-					<input type="hidden" name="user_id" value="<?php echo $_SESSION['student_id'] ?>">
-					<input type="hidden" name="quiz_id" value="<?php echo $quiz['id'] ?>">
-					<input type="hidden" name="qpoints" value="<?php echo $quiz['qpoints'] ?>">
-					<?php
+    li.answer input:checked {
+        background: #00c4ff3d;
+    }
+    </style>
+
+    <?php 
+	$quiz = $conn->query("SELECT * FROM quiz_list where id = $id ")->fetch_array();
+	$hist = $conn->query("SELECT * FROM history where quiz_id = $id and user_id = ".$_SESSION['student_id'])->fetch_array();
+	?>
+
+</head>
+
+<body>
+
+    <!-- navigation -->
+
+    <?php include 'template/nav/nav.php'; ?>
+
+    <section class="py-5 my-5">
+        <div class="container">
+            <h1 class="mb-5">Účet</h1>
+            <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+                <div class="profile-tab-nav border-right">
+                    <div class="p-4">
+                        <h4 class="text-center"><?php echo $row['full_name']; ?></h4>
+                    </div>
+                    <div class="nav flex-column nav-pills">
+                        <a class="nav-link" href="index.php">
+                            <i class="fa fa-home text-center mr-1"></i>
+                            Účet
+                        </a>
+                        <a class="nav-link" href="change_password.php">
+                            <i class="fa fa-key text-center mr-1"></i>
+                            Zmena hesla
+                        </a>
+                        <a class="nav-link" href="quiz_list.php">
+                            <i class="fa fa-user text-center mr-1"></i>
+                            Kvízy
+                        </a>
+                        <a class="nav-link active">
+                            <i class="fa fa-user text-center mr-1"></i>
+                            Odpoveďový hárok
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 p-md-5" style="width:100%;">
+                    <div class="container-fluid admin">
+                        <div class="col-md-12 alert alert-primary"><?php echo $quiz['quiz_name'] ?> |
+                            <?php echo $quiz['qpoints'] .' Bodov za každú otázku' ?></div>
+                        <div class="col-md-12 alert alert-success">Skóre :
+                            <?php echo $hist['score'] .' / ' .  $hist['total_score'] ?></div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['student_id'] ?>">
+                                <input type="hidden" name="quiz_id" value="<?php echo $quiz['id'] ?>">
+                                <input type="hidden" name="qpoints" value="<?php echo $quiz['qpoints'] ?>">
+                                <?php
 					$question = $conn->query("SELECT * FROM questions where qid = '".$quiz['id']."' order by id desc ");
 					$i = 1 ;
 					while($row =$question->fetch_assoc()){
 						$opt = $conn->query("SELECT * FROM question_opt where question_id = '".$row['id']."' order by RAND() ");
-					$answer = $conn->query("SELECT * FROM answers where quiz_id ='".$quiz['id']."' and user_id= '".$_SESSION['student_id']."' and question_id = '".$row['id']."'  ")->fetch_array();
+					$answer = $conn->query("SELECT * FROM answers where quiz_id ='".$quiz['id']."' and user_id= '".$_SESSION['login_id']."' and question_id = '".$row['id']."'  ")->fetch_array();
 					?>
 
-				<ul class="q-items list-group mt-4 mb-4 ?>">
-					<li class="q-field list-group-item">
-						<strong><?php echo ($i++). '. '; ?> <?php echo $row['question'] ?></strong>
-						<input type="hidden" name="question_id[<?php echo $row['id'] ?>]" value="<?php echo $row['id'] ?>">
-						<br>
-						<ul class='list-group mt-4 mb-4'>
-						<?php while($orow = $opt->fetch_assoc()){ ?>
+                                <ul class="q-items list-group mt-4 mb-4 ?>">
+                                    <li class="q-field list-group-item">
+                                        <strong><?php echo ($i++). '. '; ?> <?php echo $row['question'] ?></strong>
+                                        <input type="hidden" name="question_id[<?php echo $row['id'] ?>]"
+                                            value="<?php echo $row['id'] ?>">
+                                        <br>
+                                        <ul class='list-group mt-4 mb-4'>
+                                            <?php while($orow = $opt->fetch_assoc()){ ?>
 
-							<li class="answer list-group-item <?php echo $answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 ? "bg-success" : "bg-danger" ?>">
-								<label><input type="radio" name="option_id[<?php echo $row['id'] ?>]" value="<?php echo $orow['id'] ?>" <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>> <?php echo $orow['option_txt'] ?></label>
-							</li>
-						<?php } ?>
+                                            <li class="answer list-group-item <?php echo $answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 ? "bg-success" : "bg-danger" ?>">
+                                                <label>
+                                                    <input 
+                                                        type="radio" 
+                                                        name="option_id[<?php echo $row['id']; ?>]"
+                                                        value="<?php echo $orow['id'] ?>" <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>>
+                                                    <xmp style="margin: 0;"><?php echo $orow['option_txt'] ?></xmp>
+                                                </label>
+                                            </li>
+                                            <?php } ?>
 
-						</ul>
+                                        </ul>
 
-					</li>
-				</ul>
+                                    </li>
+                                </ul>
 
-				<?php } ?>
-			</div>	
-		</div>
-	</div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php include 'template/footer/footer.php' ?>
+
+    <script>
+    $(document).ready(function() {
+        $('input').attr('readonly', true)
+
+    })
+    </script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
-<script>
-	$(document).ready(function(){
-		$('input').attr('readonly',true)
-		
-	})
-</script>
+
 </html>

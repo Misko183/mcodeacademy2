@@ -27,6 +27,8 @@
 
     <!-- nav css -->
     <link rel="stylesheet" href="template/nav/nav.css">
+    <!-- footer -->
+    <link rel="stylesheet" href="template/footer/footer.css">
 
     <!-- javascripts  -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
