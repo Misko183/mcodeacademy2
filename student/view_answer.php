@@ -131,12 +131,14 @@ $row = mysqli_fetch_assoc($result);
                                         <ul class='list-group mt-4 mb-4'>
                                             <?php while($orow = $opt->fetch_assoc()){ ?>
 
-                                            <li
-                                                class="answer list-group-item <?php echo $answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 ? "bg-success" : "bg-danger" ?>">
-                                                <label><input type="radio" name="option_id[<?php echo $row['id'] ?>]"
-                                                        value="<?php echo $orow['id'] ?>"
-                                                        <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>>
-                                                    <?php echo $orow['option_txt'] ?></label>
+                                            <li class="answer list-group-item <?php echo $answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 ? "bg-success" : "bg-danger" ?>">
+                                                <label>
+                                                    <input 
+                                                        type="radio" 
+                                                        name="option_id[<?php echo $row['id']; ?>]"
+                                                        value="<?php echo $orow['id'] ?>" <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>>
+                                                    <xmp style="margin: 0;"><?php echo $orow['option_txt'] ?></xmp>
+                                                </label>
                                             </li>
                                             <?php } ?>
 

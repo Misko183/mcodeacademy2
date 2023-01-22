@@ -112,7 +112,7 @@ $quiz = $conn->query("SELECT * FROM quiz_list where id =".$_GET['id']." order by
                                     <li class="answer list-group-item">
                                         <label><input type="radio" name="option_id[<?php echo $row['id'] ?>]"
                                                 value="<?php echo $orow['id'] ?>">
-                                            <?php echo $orow['option_txt'] ?></label>
+                                            <xmp style="margin: 0;"><?php echo $orow['option_txt'] ?></xmp></label>
                                     </li>
                                     <?php } ?>
 
