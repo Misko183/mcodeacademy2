@@ -63,8 +63,8 @@
 
             <div class="action-wrapper">
                 <p>
-                    <a href="website-ul/materials/index.php" class="cd-btn main-action" role="button">Začať sa učiť!</a>
-                    <a href="#" class="cd-btn" id="btn-purchase" target="_blank" role="button">Otestovať sa</a>
+                    <a href="#materials" class="cd-btn main-action" role="button">Začať sa učiť!</a>
+                    <a href="#cvicenia" class="cd-btn" id="btn-purchase" target="_blank" role="button">Otestovať sa</a>
                 </p>
             </div>
         </div>
@@ -72,16 +72,16 @@
 
     <!-- content -->
 
-    <div class="container" style="margin-top: 44px;">
+    <div class="container" style="margin-top: 44px;" id="materials"> 
         <div class="row">
             <div
                 class="col-md-12 d-flex flex-column justify-content-xl-center align-items-xl-center align-items-xxl-center">
                 <h1 style="font-weight: bold;">Nauč sa programovať lepšie</h1>
-                <p style="font-size: 27px; color: #212529">presne podľa plánov školy</p>
+                <p style="font-size: 27px; color: #212529">presne to čo preberáte v škole a veci naviac</p>
             </div>
         </div>
         <div class="row d-flex d-xxl-flex flex-row justify-content-xxl-center align-items-xxl-center">
-            <div
+            <!-- <div
                 class="col-md-12 d-flex d-xxl-flex flex-row justify-content-xl-center align-items-xl-center align-items-xxl-center">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control input-text" placeholder="Hľadať materiál, napr.: HTML"
@@ -90,7 +90,7 @@
                         <button class="btn btn-lg" type="button"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -134,12 +134,15 @@
 
     <!-- parralax -->
 
-    <div class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center align-items-xxl-center"
+    <div id="cvicenia" class="cvicenia d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center align-items-xxl-center"
         data-bss-parallax-bg="true"
-        style="height: 573px;background: url(&quot;assets/img/parralax.png&quot;) center / cover;">
-        <div class="container">
+        style="
+            height: 573px;
+            background: url(&quot;assets/img/parralax.png&quot;) center / cover;
+            margin-bottom: 50px;">
+        <div class="container" style="-webkit-backdrop-filter: blur(3px);backdrop-filter: blur(3px)">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" >
                     <h1 style="font-weight: bold;text-align: center;color: rgb(255,255,255);font-size: 48px;">
                         <strong>Cvičenia a kvízy</strong>
                     </h1>

@@ -24,6 +24,13 @@
                 }
                 ?>
                 <?php 
+                if($_SESSION['user_type']  == 'student') {
+                ?>
+                <li class="nav-item"><a class="nav-link" href="../student/" style="font-weight: bold;">Profil</a></li>
+                <?php
+                }
+                ?>
+                <?php 
                 if($loggeding = false) { return 0
                 ?>
                 

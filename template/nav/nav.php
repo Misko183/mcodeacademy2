@@ -2,7 +2,7 @@
     $link = "http://localhost" . $SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 ?>
 <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3 sticky-top">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="index.php"><span
                 class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"
                 style="background: #ffffff00;"><img src="assets/img/logo.png" width="40" height="40"></span><span
                 style="font-weight: bold;">Mcode Academy</span></a><button data-bs-toggle="collapse"
@@ -11,21 +11,21 @@
         <div class="collapse navbar-collapse flex-grow-0 order-md-first" id="navcol-6">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"></li>
-                <li class="nav-item"><a class="nav-link" href="materials/index.php"
+                <li class="nav-item"><a class="nav-link" href="materials"
                         style="font-weight: bold;">Materialy</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#" style="font-weight: bold;">Cvičenia</a></li>
                 <?php 
                 if($_SESSION['user_type']  == 'admin') {
                 ?>
-                <li class="nav-item"><a class="nav-link" href="admin/index.php" style="font-weight: bold;">Admin panel</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin/" style="font-weight: bold;">Admin panel</a></li>
                 <?php
                 }
                 ?>
                 <?php 
                 if($_SESSION['user_type']  == 'student') {
                 ?>
-                <li class="nav-item"><a class="nav-link" href="student/student.php" style="font-weight: bold;">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="student/" style="font-weight: bold;">Profil</a></li>
                 <?php
                 }
                 ?>
