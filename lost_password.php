@@ -1,77 +1,31 @@
-<?php
+<?php 
 
 include 'scripts/config.php';
 
-$loggeding = false;
-
-session_start();
-
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header('location: index.php');
-  exit;
-}
-
 if(isset($_POST['submit'])){
 
-   $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
-   $pass = md5($_POST['pass']);
-   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+    $email = $_POST['email'];
+    
+         $user_agent = $_SERVER['HTTP_USER_AGENT'];
+         $subject = "Zmena hesla";
+         $contact = 'kontakt@mcodeacademy.sk';
+         $html = file_get_contents('lost_password_html.html'); 
+         $html = str_replace("{{EMAIL}}", $email, $html);
+         $html = str_replace("{{LINK}}", $email, $html);
+         $html = str_replace("{{browser_name}}", $user_agent, $html);
+         $html = str_replace("{{support_url}}", $contact, $html);
+         $from = "no-reply@mcodeacademy.sk";
 
-   $select = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
-   $select->execute([$email, $pass]);
-   $row = $select->fetch(PDO::FETCH_ASSOC);
+         $mailTo =  $email;
+         $headers = "From: ".$from;
+         $headers .= "MIME-Version: 1.0\r\n";
+         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-   if($select->rowCount() > 0){
+         mail($mailTo, $subject, $html, $headers);
 
-      if($row['user_type'] == 'admin' || $qry->num_rows > 0){
+         header('location: login.php?message=success');
 
-         $_SESSION["loggedin"] = true;
-         $_SESSION["loggedin_as_admin"] = true;
-         $_SESSION['admin_id'] = $row['id'];
-         $_SESSION['email'] = $row['email'];
-         $_SESSION['name'] = $row['name'];
-         $_SESSION['user_type'] = $row['user_type'];
-         
-         header('location:' . $_GET["continue"]);
-
-      }elseif($row['user_type'] == 'user'){
-
-         $_SESSION["loggedin"] = true;
-         $_SESSION['user_id'] = $row['id'];
-         $_SESSION['email'] = $row['email'];
-         $_SESSION['name'] = $row['name'];
-         $_SESSION['user_type'] = $row['user_type'];
-         header('location:' . $_GET["continue"]);
-
-      }elseif($row['user_type'] == 'student'){
-
-        $_SESSION["loggedin"] = true;
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['student_id'] = $row['id'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['user_type'] = $row['user_type'];
-        header('location:' . $_GET["continue"]);
-
-     }elseif($row['user_type'] == 'teacher'){
-
-        $_SESSION["loggedin"] = true;
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['user_type'] = $row['user_type'];
-        header('location:' . $_GET["continue"]);
-
-     }else{
-         $message[] = 'používateľ nebol najdený!';
-      }
-      
-   }else{
-      $message[] = 'nesprávný email alebo heslo!';
-   }
-
-}
+ }
 
 ?>
 
@@ -114,7 +68,7 @@ if(isset($_POST['submit'])){
         <div class="d-none d-sm-flex col-sm-6 col-lg-8 align-items-center p-5">
             <div class="align-items-start d-lg-flex flex-column offset-lg-2 text-white">
                 <img src="" class="mb-3">
-                <h1 classname="d-flex">Ahoj 👋 Vitaj späť
+                <h1 classname="d-flex">Zmena hesla
                 </h1>
                 <p>McodeAcademy je pre lepším domov pre programovanie po slovensky</p>
             </div>
@@ -125,7 +79,7 @@ if(isset($_POST['submit'])){
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="d-flex flex-column">
                         <div class="mb-4">
-                            <h3 class="font-medium mb-1">Prihlásenie </h3>
+                            <h3 class="font-medium mb-1">Zmena hesla</h3>
                         </div>
                         <?php
    if(isset($message)){
@@ -146,22 +100,23 @@ if(isset($_POST['submit'])){
                                     required>
                                 </input>
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="">Password</label>
-                                <input name="pass" type="password" placeholder="vlož svoje heslo" class="form-control"
-                                    required>
-                            </div>
-                            <div class="text-right">
-                                <a class="btn btn-link" href="lost_password.php">
-                                    Zabudnuté heslo?
-                                </a></div>
+
                             <button name="submit" type="submit" value="login now"
                                 class="btn btn-primary btn-block mt-3 border-0">
-                                Sign In
+                                Poslať email na zmenu hesla
                             </button>
-                            <div class="text-center"><a class="btn btn-link">
-                                    Ešte nemáš účet? <a href="register.php">Zaregistruj sa</a>
-                                </a></div>
+                            <div class="text-center">
+                                <a class="btn btn-link">
+                                    Ešte nemáš účet?
+                                    <a href="register.php">Zaregistruj sa</a>
+                                </a>
+                            </div>
+                            <div class="text-center">
+                                <a class="btn btn-link">
+                                    Už máš účet?
+                                    <a href="register.php">Prihlás sa</a>
+                                </a>
+                            </div>
                         </div>
                         <div class="p-5 text-center text-xs">
                             <span>
