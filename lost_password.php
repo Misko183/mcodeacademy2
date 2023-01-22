@@ -114,13 +114,13 @@ if(isset($_POST['submit'])){
                             <div class="text-center">
                                 <a class="btn btn-link">
                                     Už máš účet?
-                                    <a href="register.php">Prihlás sa</a>
+                                    <a href="login.php">Prihlás sa</a>
                                 </a>
                             </div>
                         </div>
                         <div class="p-5 text-center text-xs">
                             <span>
-                                Copyright © 2022-2023
+                                Copyright © 2022-2023 | vytvoril
                                 <a href="https://sladecek.sk" rel="" target="_blank" title="aji">sladecek.sk</a></span>
                         </div>
                     </div>

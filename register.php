@@ -120,8 +120,8 @@ if(isset($_POST['submit'])){
                                 <label for="password" class="">Zopakujte heslo</label>
                                 <input name="cpass" type="password" class="form-control">
                             </div>
-                            <div class="text-right"><a class="btn btn-link">
-                                    Forgot Your Password?
+                            <div class="text-right"><a class="btn btn-link" href="lost_password.php">
+                                    Zabudnuté heslo?
                                 </a></div>
                             <button name="submit" type="submit" class="btn btn-primary btn-block mt-3 border-0">
                                 Sign In
@@ -132,7 +132,7 @@ if(isset($_POST['submit'])){
                         </div>
                         <div class="p-5 text-center text-xs">
                             <span>
-                                Copyright © 2022-2023
+                                Copyright © 2022-2023 | vytvoril
                                 <a href="https://sladecek.sk" rel="" target="_blank" title="aji">sladecek.sk</a></span>
                         </div>
                     </div>

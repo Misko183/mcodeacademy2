@@ -33,10 +33,13 @@ if(isset($_POST['submit'])){
 
 
          mail($mailTo, $subject, $html, $headers);
+            header("Location: login.php?password=changed");
         }else {
             echo "Error $sql." . mysqli_error($conn);
         }
 
+    } else if ($pass1 != $pass2) {
+        $message[] = "Heslá sa nezhodujú";
     }
 
 }
@@ -94,7 +97,7 @@ if(isset($_POST['submit'])){
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="d-flex flex-column">
                         <div class="mb-4">
-                            <h3 class="font-medium mb-1">Zmena hesla pre <?php echo $mailTo ?></h3>
+                            <h3 class="font-medium mb-1">Zmena hesla pre <?php echo $email ?></h3>
                         </div>
                         <?php
    if(isset($message)){
@@ -111,20 +114,20 @@ if(isset($_POST['submit'])){
                         <div class="mb-10">
                             <div class="form-group">
                                 <label for="mail" class="">Heslo</label>
-                                <input name="pass1" type="text" class="form-control" placeholder="vlož svoj email"
+                                <input name="pass1" type="password" class="form-control" placeholder="vlož svoj email"
                                     required>
                                 </input>
                             </div>
                             <div class="form-group">
                                 <label for="mail" class="">Opakovať heslo</label>
-                                <input name="pass2" type="text" class="form-control" placeholder="vlož svoj email"
+                                <input name="pass2" type="password" class="form-control" placeholder="vlož svoj email"
                                     required>
                                 </input>
                             </div>
 
                             <button name="submit" type="submit" value="login now"
                                 class="btn btn-primary btn-block mt-3 border-0">
-                                Poslať email na zmenu hesla
+                                Zmeniť heslo
                             </button>
                             <div class="text-center">
                                 <a class="btn btn-link">
@@ -135,13 +138,13 @@ if(isset($_POST['submit'])){
                             <div class="text-center">
                                 <a class="btn btn-link">
                                     Už máš účet?
-                                    <a href="register.php">Prihlás sa</a>
+                                    <a href="login.php">Prihlás sa</a>
                                 </a>
                             </div>
                         </div>
                         <div class="p-5 text-center text-xs">
                             <span>
-                                Copyright © 2022-2023
+                            Copyright © 2022-2023 | vytvoril
                                 <a href="https://sladecek.sk" rel="" target="_blank" title="aji">sladecek.sk</a></span>
                         </div>
                     </div>
