@@ -104,7 +104,7 @@ if(isset($_POST['submit'])){
         ?>
                         <div class="mb-10">
                             <div class="form-group">
-                                <label for="mail" class="">Username</label>
+                                <label for="name" class="">Username</label>
                                 <input name="name" type="text" class="form-control">
                                 </input>
                             </div>
@@ -125,7 +125,7 @@ if(isset($_POST['submit'])){
                                     Zabudnuté heslo?
                                 </a></div>
                             <button name="submit" type="submit" class="btn btn-primary btn-block mt-3 border-0">
-                                Sign In
+                                Registrovať sa
                             </button>
                             <div class="text-center"><a class="btn btn-link">
                                     Už máš účet? <a href="login.php">Prihlásiť sa</a>

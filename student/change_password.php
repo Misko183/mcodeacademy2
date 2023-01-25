@@ -16,6 +16,45 @@ if(!isset($student_id)){
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);   
 
+	if (isset($_POST['submit'])) {
+		// Get the current and new passwords from the form
+		$current_password = md5($_POST['current_password']);
+		$new_password = md5($_POST['new_password']);
+		$confirm_password = md5($_POST['confirm_password']);
+	
+		// Check if the current password is correct
+		$query = "SELECT `password` FROM `users` WHERE id = '$student_id'";
+		$result = mysqli_query($conn, $query);
+		$row = mysqli_fetch_assoc($result);
+
+		if ($current_password == $row['password']) {
+			// Check if the new password matches the confirmation password
+			if ($new_password == $confirm_password) {
+				// Update the password in the database
+				$query = "UPDATE users SET `password` = '$new_password' WHERE id = '$student_id'";
+				$result = mysqli_query($conn, $query);
+				if ($result) {
+					//echo "Password changed successfully!";
+					$done[] = "Heslo bolo úspešne zmenené!";
+				} else {
+					//echo "Failed to change password.";
+					$message[] = "Nepodarilo sa zmeniť heslo.";
+				}
+			} else {
+				//echo "New password and confirmation password do not match.";
+				$message[] = "Nové heslo a potvrdzovacie heslo sa nezhodujú.";
+			}
+		} else {
+			//echo "Current password is incorrect.";
+			$message[] = "Súčasné heslo je nesprávne.";
+		}
+	}
+	
+	$sql = "SELECT * FROM `users` WHERE id = '$student_id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result); 
+	
+	
 ?>
 <!DOCTYPE html>
 <html lang="sk">
@@ -68,12 +107,37 @@ if(!isset($student_id)){
 					</div>
 				</div>
 				<div class="p-4 p-md-5" >
+					<form action="" method="POST">
 						<h3 class="mb-4">Zmena hesla</h3>
+						<?php
+   if(isset($message)){
+      foreach($message as $message){
+         echo '
+         <div class="message">
+            <span style="color: red;">'.$message.'</span>
+            <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+         </div>
+         ';
+      }
+   }
+?>
+<?php
+   if(isset($done)){
+      foreach($done as $done){
+         echo '
+         <div class="message">
+            <span style="color: limegreen;">'.$done.'</span>
+            <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+         </div>
+         ';
+      }
+   }
+?>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Staré heslo</label>
-								  	<input type="password" class="form-control">
+								  	<input type="password" class="form-control" name="current_password">
 								</div>
 							</div>
 						</div>
@@ -81,20 +145,21 @@ if(!isset($student_id)){
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Nové heslo</label>
-								  	<input type="password" class="form-control">
+								  	<input type="password" class="form-control" name="new_password">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Potvrďte nové heslo</label>
-								  	<input type="password" class="form-control">
+								  	<input type="password" class="form-control" name="confirm_password">
 								</div>
 							</div>
 						</div>
 						<div>
-							<button class="btn btn-primary">Aktualizovať</button>
-							<button class="btn btn-light">Zrušiť</button>
+							<!-- <input type="submit" name="submit" class="btn btn-primary" value="Aktualizovať"> -->
+							<button name="submit" class="btn btn-primary">Aktualizovať</button>
 						</div>
+					</form>
                 </div>
 			</div>
 		</div>

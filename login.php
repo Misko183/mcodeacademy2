@@ -159,7 +159,7 @@ if(isset($_POST['submit'])){
                             </div>
                             <button name="submit" type="submit" value="login now"
                                 class="btn btn-primary btn-block mt-3 border-0">
-                                Sign In
+                                Prihlásiť sa
                             </button>
                             <div class="text-center">                  
                                 <a class="btn btn-link">
