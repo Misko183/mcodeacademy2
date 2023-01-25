@@ -15,7 +15,7 @@
                 <li class="nav-item"><a class="nav-link active" href=""
                         style="font-weight: bold;">Materialy</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#" style="font-weight: bold;">Cvičenia</a></li>
+                <li class="nav-item"><a class="nav-link" href="../exercises" style="font-weight: bold;">Cvičenia</a></li>
                 <?php 
                 if($_SESSION['user_type']  == 'admin') {
                 ?>

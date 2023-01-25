@@ -3,7 +3,7 @@
 ?>
 
 <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3 sticky-top">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="../"><span
                 class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"
                 style="background: #ffffff00;"><img src="../assets/img/logo.png" width="40" height="40"></span><span
                 style="font-weight: bold;">Mcode Academy</span></a><button data-bs-toggle="collapse"
@@ -12,10 +12,10 @@
         <div class="collapse navbar-collapse flex-grow-0 order-md-first" id="navcol-6">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"></li>
-                <li class="nav-item"><a class="nav-link active" href=""
+                <li class="nav-item"><a class="nav-link" href="../materials"
                         style="font-weight: bold;">Materialy</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#" style="font-weight: bold;">Cvičenia</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#" style="font-weight: bold;">Cvičenia</a></li>
                 <?php 
                 if($_SESSION['user_type']  == 'admin') {
                 ?>

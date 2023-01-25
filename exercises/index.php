@@ -66,7 +66,7 @@ session_start();
             <div class="content">
                 <h2>Cvičenia</h2>
                 <p>Svoje znalosti môžete otestovať pomocou cvičení MCodeAcademy.</p>
-                <a href="html/index.php">Cvičenia</a>
+                <a href="exercises">Cvičenia</a>
                
             </div>
         </div>
@@ -75,7 +75,7 @@ session_start();
             <div class="content">
                 <h2>Kvízy</h2>
                 <p>Svoje znalosti HTML si môžete otestovať pomocou kvízu MCodeAcademy.</p>
-                <a href="#">Kvízy</a>
+                <a href="quizzes">Kvízy</a>
             </div>
         </div>
     </div>

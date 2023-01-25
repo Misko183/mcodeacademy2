@@ -1,11 +1,22 @@
 <footer class="text-center bg-dark text-white" style="position: absolute; width: 100%; bottom: 0;">
         <div class="container text-muted py-4 py-lg-5">
             <ul class="list-inline">
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Materiály</a></li>
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Cvičenia</a></li>
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Profil</a></li>
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Učiteľ</a></li>
-                <li class="list-inline-item"><a class="link-secondary text-white" href="#">Admin</a></li>
+                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../materials">Materiály</a></li>
+                <li class="list-inline-item me-4"><a class="link-secondary text-white active">Cvičenia</a></li>
+                <li class="list-inline-item me-4"> <?php
+                if ($_SESSION['user_type']  == 'user') {
+                    ?> 
+                    <a class="link-secondary text-white" href="profile.php">Profil</a></li>
+                    <?php 
+                    
+                } elseif($_SESSION['user_type']  == 'student') {
+                 ?>
+                 <a class="link-secondary text-white" href="student/">Profil</a></li>
+                 <?php   
+                }
+                ?>
+                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../teacher">Učiteľ</a></li>
+                <li class="list-inline-item"><a class="link-secondary text-white" href="../admin">Admin</a></li>
             </ul>
             <ul class="list-inline">
                 <li class="list-inline-item me-4 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
