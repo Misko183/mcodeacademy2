@@ -53,14 +53,12 @@ session_start();
         </div>
     </nav>
     <div id="wrapper" style="background: rgb(70, 70, 70);">
-        <nav class="navbar navbar-dark bg-dark align-items-start sidebar sidebar-dark accordionbg-gradient-primary p-0" style="background: rgb(70, 70, 70);">
-            <div id="overflow" class="d-flex flex-column p-0 sidebar_mm ">
+        <nav class="navbar navbar-dark bg-dark align-items-start sidebar sidebar-dark accordionbg-gradient-primary p-0" style="background: rgb(70, 70, 70);margin-right: 40px;">
+            <div id="overflow" class="d-flex flex-column p-0 sidebar_mm">
                 <hr class="sidebar-divider my-0">
-                <ul class="navbar-nav text-light" id="accordionSidebar" style="width: 13rem;">
-                    <li class="nav-item">
-                        <h5 style="padding-left: 10px;margin-top: 5px;">HTML základ</h5>
-                        <hr><a class="nav-link active" href="index.html" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px; font-size: 16px;"><span>HTMl Domov</span></a>
-                    </li>
+                <ul class="navbar-nav text-light widthh" id="accordionSidebar">
+                    <li class="nav-item"><h5 style="padding-left: 10px;margin-top: 5px;font-weight: bold;">HTML základ</h5><hr></li>
+                    <li class="nav-item" style=" background-color: rgb(172, 172, 172);"><a class="nav-link active" href="index.html" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px; font-size: 16px;"><span>HTML Domov</span></a>                    </li>
                     <li class="nav-item"><a class="nav-link" href="#" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML Úvod</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML Program</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML Základ</span></a></li>
@@ -83,10 +81,8 @@ session_start();
                     <li class="nav-item"><a class="nav-link" href="#" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML Charset</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML Symboly</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="#" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML </span></a></li>
-                    <li class="nav-item">
-                        <h5 style="padding-left: 10px;margin-top: 5px;">HTML základ</h5>
-                        <hr><a class="nav-link active" href="index.html" style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px; font-size: 16px;"><span>HTMl Domov</span></a>
-                    </li>
+                    <li class="nav-item"><hr></li>
+                    <li class="nav-item"><h5 style="padding-left: 10px;margin-top: 5px;font-weight: bold;">HTML Referencie</h5><hr></li>
 
                 </ul>
             </div>

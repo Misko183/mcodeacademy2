@@ -1,11 +1,23 @@
 .sidebar_mm {
-    position: fixed;
-    overflow-y: scroll;
-    height: 87.9vh;
-    /* text-align: center; */
-  }
+  position: fixed;
+  overflow-y: scroll;
+  height: 89.5vh;
+  /* text-align: center; */
+  margin-right: 25px;
+}
 
-  .sidebar_mm_height {
-    min-height: 95.5vh;
-    margin-top: -74px;
+.sidebar_mm_height {
+  min-height: 95.7vh;
+  margin-top: -74px;
+}
+
+.widthh {
+  width: 15rem;
+  background: rgb(70, 70, 70);
+}
+
+@media only screen and (max-width: 768px) {
+  .widthh {
+    width: 10.5rem;
   }
+}

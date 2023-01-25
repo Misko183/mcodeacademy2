@@ -10346,6 +10346,12 @@ a:focus{
     width:19.5rem;
     min-height:87.9vh
 }
+@media only screen and (max-width: 768px) { 
+    .sidebar{
+        width: 10.5rem;
+    }
+}
+
 .sidebar .nav-item{
     position:relative
 }
