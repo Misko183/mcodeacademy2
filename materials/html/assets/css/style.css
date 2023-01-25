@@ -1,0 +1,11 @@
+.sidebar_mm {
+    position: fixed;
+    overflow-y: scroll;
+    height: 87.9vh;
+    /* text-align: center; */
+  }
+
+  .sidebar_mm_height {
+    min-height: 95.5vh;
+    margin-top: -74px;
+  }

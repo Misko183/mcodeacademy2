@@ -104,7 +104,7 @@
                 <p>je štandartný
                     značkovací jazyk pre webové stránky. Pomocou HTML si môžete vytvoriť svoj vlastný web.
                     HTML sa dá ľahko naučiť - bude sa vám to pačiť!</p>
-                <a href="website-ul/materials/index.php">Skúsiť HTML</a>
+                <a href="materials/html/index.php">Skúsiť HTML</a>
                 <a href="#">HTML Referencie</a>
             </div>
         </div>

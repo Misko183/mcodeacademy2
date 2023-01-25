@@ -3,7 +3,7 @@
 ?>
 
 <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3 sticky-top">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="../index.php"><span
                 class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"
                 style="background: #ffffff00;"><img src="../assets/img/logo.png" width="40" height="40"></span><span
                 style="font-weight: bold;">Mcode Academy</span></a><button data-bs-toggle="collapse"

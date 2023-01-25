@@ -47,7 +47,7 @@ if(!isset($admin_id)){
                                                 $result = mysqli_query($conn, $sql);
                                                 $row = mysqli_fetch_array($result);
                                             ?>
-                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]; mysqli_close($mysqli);?></span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0];?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-users fa-2x text-gray-300"></i></div>
                                     </div>
@@ -66,7 +66,7 @@ if(!isset($admin_id)){
                                                 $result = mysqli_query($conn, $sql);
                                                 $row = mysqli_fetch_array($result);
                                             ?>
-                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]; mysqli_close($mysqli);?></span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="far fa-file-alt fa-2x text-gray-300"></i></div>
                                     </div>
@@ -85,7 +85,7 @@ if(!isset($admin_id)){
                                                 $result = mysqli_query($conn, $sql);
                                                 $row = mysqli_fetch_array($result);
                                             ?>
-                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]; mysqli_close($mysqli);?></span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-user-graduate fa-2x text-gray-300"></i></div>
                                     </div>
@@ -104,7 +104,7 @@ if(!isset($admin_id)){
                                                 $result = mysqli_query($conn, $sql);
                                                 $row = mysqli_fetch_array($result);
                                             ?>
-                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]; mysqli_close($mysqli);?></span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i></div>
                                     </div>
@@ -123,7 +123,7 @@ if(!isset($admin_id)){
                                                 $result = mysqli_query($conn, $sql);
                                                 $row = mysqli_fetch_array($result);
                                             ?>
-                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]; mysqli_close($mysqli);?></span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $row[0]?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-user-secret fa-2x text-gray-300"></i></div>
                                     </div>
