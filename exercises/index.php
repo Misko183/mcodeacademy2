@@ -60,13 +60,20 @@ session_start();
 <body>
     <?php include 'template/nav.php'; ?>
 
-    <div class="con">
+    <div class="con" style="margin-bottom: 20px;">
         <div class="box">
             <span></span>
             <div class="content">
                 <h2>Cvičenia</h2>
                 <p>Svoje znalosti môžete otestovať pomocou cvičení MCodeAcademy.</p>
-                <a href="exercises">Cvičenia</a>
+                <a href="exercises" class="disabled">Cvičenia</a>
+                <div class="rowws">
+                    <div class="loading-spinner"></div>
+                    <div>
+                        <p>comming soon</p>
+                    </div>
+                </div>
+                
                
             </div>
         </div>
@@ -75,7 +82,13 @@ session_start();
             <div class="content">
                 <h2>Kvízy</h2>
                 <p>Svoje znalosti HTML si môžete otestovať pomocou kvízu MCodeAcademy.</p>
-                <a href="quizzes">Kvízy</a>
+                <a href="quizzes" class="disabled">Kvízy</a>
+                <div class="rowws">
+                    <div class="loading-spinner"></div>
+                    <div>
+                        <p>comming soon</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

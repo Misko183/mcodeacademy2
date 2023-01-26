@@ -3,7 +3,18 @@
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Materiály</a></li>
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Cvičenia</a></li>
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Profil</a></li>
+                <li class="list-inline-item me-4"><?php
+                if ($_SESSION['user_type']  == 'user') {
+                    ?> 
+                    <a class="link-secondary text-white" href="../../../profile.php">Profil</a></li>
+                    <?php 
+                    
+                } elseif($_SESSION['user_type']  == 'student') {
+                 ?>
+                 <a class="link-secondary text-white" href="../../student/">Profil</a></li>
+                 <?php   
+                }
+                ?></li>
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Učiteľ</a></li>
                 <li class="list-inline-item"><a class="link-secondary text-white" href="#">Admin</a></li>
             </ul>
