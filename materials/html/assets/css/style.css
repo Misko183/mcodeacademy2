@@ -21,3 +21,8 @@
     width: 10.5rem;
   }
 }
+.preview  {
+  margin-top: 25px;
+  border: solid 1px black;
+  width: 100%;
+}

@@ -138,8 +138,7 @@
         data-bss-parallax-bg="true"
         style="
             height: 573px;
-            background: url(&quot;assets/img/parralax.png&quot;) center / cover;
-            margin-bottom: 50px;">
+            background: url(&quot;assets/img/parralax.png&quot;) center / cover;">
         <div class="container" style="-webkit-backdrop-filter: blur(3px);backdrop-filter: blur(3px)">
             <div class="row">
                 <div class="col-md-12" >
@@ -152,16 +151,30 @@
             <div class="row">
                 <div
                     class="col-md-6 d-sm-flex d-xxl-flex justify-content-sm-center justify-content-xxl-center align-items-xxl-center">
-                    <a href="">
+                    <!-- <a href="">
                         <button class="btn btn-primary d-sm-flex justify-content-sm-center align-items-sm-center"
                             type="button"
-                            style="height: 180px;width: 320px;background: rgba(25,135,84,0.9);margin: 5px;font-size: 38px;font-weight: bold;color: white;">Cvičenia</button></a>
+                            style="height: 180px;width: 320px;background: rgba(25,135,84,0.9);margin: 5px;font-size: 38px;font-weight: bold;color: white;">Cvičenia
+                        </button>
+                    </a> -->
+                    <button class="btn btn-primary" type="button"
+                            style="height: 180px;width: 320px;background: rgba(25,135,84,0.9);margin: 5px;font-size: 38px;font-weight: bold;color: white;">Cvičenia 
+                            <br> 
+                            <p style="font-size: 16px; color: grey;">comming soon</p>                          
+                        </button>
                 </div>
                 <div
                     class="col-md-6 d-sm-flex d-xxl-flex justify-content-sm-center justify-content-xxl-center align-items-xxl-center">
-                    <a href="">
+                    <!-- <a href="">
                         <button class="btn btn-primary" type="button"
-                            style="height: 180px;width: 320px;background: rgba(13,202,240,0.9);margin: 5px;font-size: 38px;font-weight: bold;color: var(--bs-gray-900);">Kvízy</button></a>
+                            style="height: 180px;width: 320px;background: rgba(13,202,240,0.9);margin: 5px;font-size: 38px;font-weight: bold;color: white;">Kvízy                          
+                        </button>
+                    </a>          -->
+                    <button class="btn btn-primary" type="button"
+                            style="height: 180px;width: 320px;background: rgba(13,202,240,0.9);margin: 5px;font-size: 38px;font-weight: bold;color: white;">Kvízy 
+                            <br> 
+                            <p style="font-size: 16px; color: grey;">comming soon</p>                          
+                        </button>                   
                 </div>
             </div>
         </div>
