@@ -32,7 +32,10 @@ if(!isset($admin_id)){
                 <?php include 'template/nav.php' ?>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Domov</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                        <h3 class="text-dark mb-0">Domov</h3>
+                        <!-- <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">
+                            <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report 
+                        </a> -->
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-xl-3 mb-4">
@@ -131,7 +134,7 @@ if(!isset($admin_id)){
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-lg-7 col-xl-8">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -313,11 +316,11 @@ if(!isset($admin_id)){
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2023</span></div>
+                    <div class="text-center my-auto copyright"><span>Copyright © MCodeAcademy 2023</span><span>Created by <a href="https://sladecek.sk">sladecek</a> with ❤</span></div>
                 </div>
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>

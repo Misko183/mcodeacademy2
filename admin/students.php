@@ -107,6 +107,7 @@ if(!isset($admin_id)){
                                 <input type="text" style="margin-bottom: 10px;" name="full_name">
                                 <label class="form-label">Email</label>
                                 <input type="text" style="margin-bottom: 10px;" name="email">
+                                <label for="class" class="form-label">Trieda</label>
                                 <select style="margin-bottom: 10px;" name="class">
                                     <option value="" selected="" disabled="">Vyberte tu</option>
                                     <optgroup label="Zoznam tried">

@@ -25,6 +25,7 @@ session_start();
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="assets/js/scroll.js"></script>
@@ -71,8 +72,8 @@ session_start();
         </div>
     </nav>
     <div id="wrapper" style="background: rgb(70, 70, 70);">
-        <nav class="navbar navbar-dark bg-dark align-items-start sidebar sidebar-dark accordionbg-gradient-primary p-0"
-            style="background: rgb(70, 70, 70);margin-right: 40px;">
+        <nav class="navbar navbar-dark bg-dark align-items-start sidebar idebar-dark accordionbg-gradient-primary p-0"
+            style="background: rgb(70, 70, 70) !important;margin-right: 40px;">
             <div id="overflow" class="d-flex flex-column p-0 sidebar_mm">
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light widthh" id="accordionSidebar">

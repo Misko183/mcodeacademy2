@@ -32,6 +32,8 @@ if(!isset($student_id)){
     <link rel="stylesheet" href="template/nav/nav.css">
     <link rel="stylesheet" href="template/footer/footer.css">
 
+    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
+
 
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
