@@ -41,7 +41,7 @@ if(!isset($admin_id)){
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
                         <h3 class="text-dark mb-0">Triedy</h3>
                         <a data-bs-target="#add_class" data-bs-toggle="modal" class="btn btn-primary btn-sm d-none d-sm-inline-block"
-                            role="button" href="#"><i class="fas fa-plus-square" style="font-size: 24px;margin-right: 10px;"></i>
+                            role="button" href="#"><i class="fas fa-plus-square" style="font-size: 18px;margin-right: 10px;"></i>
                         &nbsp;Pridať novú triedu
                         </a>
                         <!-- <button class="btn btn-primary d-flex mx-auto" type="button"
@@ -122,7 +122,7 @@ if(!isset($admin_id)){
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Upravte novú triedu</h4><button class="btn-close" type="button"
+                            <h4 class="modal-title">Upravte triedu</h4><button class="btn-close" type="button"
                                 data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

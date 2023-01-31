@@ -3,13 +3,12 @@ include 'configa.php';
 
 $id = isset($_GET["id"]) ? $_GET["id"] : "";
 
-$sql = "DELETE FROM `users` WHERE id = '$id'";
-if(mysqli_query($conn, $sql)){
-}else {header("Location: ../admin/students.php");}
-$sql = "DELETE FROM `students` WHERE user_id = '$id'";
-if(mysqli_query($conn, $sql)){
-}else {header("Location: ../admin/students.php");}
+$sql = "DELETE `users`, `students` FROM `users` INNER JOIN `students` ON users.id = students.user_id where users.id = '$id'";
 
-
+if(mysqli_query($conn, $sql)){
+}else {
+    echo "error";
+    //header("Location: ../admin/students.php");
+}
 
 ?>

@@ -22,6 +22,13 @@ if(!isset($admin_id)){
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+
+    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
 </head>
 
 <body id="page-top">
@@ -32,21 +39,20 @@ if(!isset($admin_id)){
                 <?php include 'template/nav.php' ?>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Učitelia</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                        <h3 class="text-dark mb-0">Učitelia</h3>
+                        <a 
+                            data-bs-target="#add_student" 
+                            data-bs-toggle="modal"
+                             class="btn btn-primary btn-sm d-none d-sm-inline-block" 
+                             role="button" 
+                             href="#">
+                             <i class="fas fa-plus-square" style="font-size: 18px;margin-right: 10px;"></i>
+                             &nbsp;Pridať novú/ého učiteľku/a</a>
                     </div>
-                    <button 
-                        class="btn btn-primary d-flex mx-auto" 
-                        type="button" 
-                        style="box-shadow: 4px 3px 7px 2px rgb(106,106,106);margin-bottom: 21px;" 
-                        data-bs-target="#add_student" 
-                        data-bs-toggle="modal">
-                        <i class="fas fa-plus-square" style="font-size: 24px;margin-right: 10px;"></i>
-                        Pridať novú/ého učiteľku/a
-                    </button>
                     <div class="row">
                         <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" id="table">
                                     <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
                                         <tr>
                                             <th>ID</th>
@@ -64,16 +70,15 @@ if(!isset($admin_id)){
                                             <td><?php echo $row['id'] ?></td>
                                             <td><?php if($row['user_type'] == 'teacher'){echo $row['full_name'];} ?></td>
                                             <td>
-                                                <a 
-                                                    data-id="<?php echo $row['id']?>" 
-                                                    href="../scripts/del_teacher.php?id=<?php echo $row['id']?>" 
-                                                    class="btn btn-primary" 
-                                                    type="button" 
-                                                    style="margin-right: 10px;background: var(--bs-danger);">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </a>
                                                 <button 
-                                                    class="btn btn-primary" 
+                                                    class="btn btn-primary remove_teacher" 
+                                                    type="button"
+                                                    data-id="<?php echo $row['id']?>" 
+                                                    style="background: var(--bs-danger);">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                                <button 
+                                                    class="btn btn-primary edit_teacher" 
                                                     type="button"
                                                     data-id="<?php echo $row['id']?>" 
                                                     style="background: var(--bs-warning);">
@@ -117,9 +122,116 @@ if(!isset($admin_id)){
                     </div>
                 </div>
             </div>
+            <div id="change_teacher" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Upraviť učiteľku/a</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="post" action="../scripts/update_teacher.php" id="class-frm">
+                            <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
+                                <label class="form-label">Celé meno</label>
+                                <input type="text" style="margin-bottom: 10px;" name="full_name">
+                                <label class="form-label">Nickname</label>
+                                <input type="text" style="margin-bottom: 10px;" name="nickname">
+                                <label class="form-label">email</label>
+                                <input type="email" style="margin-bottom: 10px;" name="email">
+                                <label class="form-label">Heslo</label>
+                                <input type="password" style="margin-bottom: 10px;" name="pass">
+                                    <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit" name="submit">Save</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id">
+                            </form>
+                    </div>
+                </div>
+            </div>
             <?php include 'template/footer.php'; ?>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+    <script>
+    $(document).ready(function() {
+        $('#table').DataTable({
+            "language": {
+                "sProcessing": "spracovanie...",
+                "sLengthMenu": "Zobraziť _MENU_ záznamov",
+                "sZeroRecords": "Neboli nájdené žiadne výsledky",
+                "sEmptyTable": "V tejto tabuľke nie sú dostupné žiadne údaje",
+                "sInfo": "Zobrazené záznamy od _START_ do _END_ z celkom _TOTAL_ záznamov",
+                "sInfoEmpty": "Zobrazené záznamy od 0 do 0 z celkom 0 záznamov",
+                "sInfoFiltered": "(Filtrovanie celkom _MAX_ záznamov)",
+                "sInfoPostFix": "",
+                "sSearch": "Vyhľadať:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Načítanie...",
+                "oPaginate": {
+                    "sFirst": "najprv",
+                    "sLast": "Posledný",
+                    "sNext": "Ďalšie",
+                    "sPrevious": "Predchádzajúce"
+                },
+                "oAria": {
+                    "sSortAscending": ": Aktiváciou zoradíte stĺpec vo vzostupnom poradí",
+                    "sSortDescending": ": Aktiváciou zoradíte stĺpec v zostupnom poradí"
+                }
+            }
+        });
+        $('.edit_teacher').click(function() {
+            var id = $(this).attr('data-id')
+            $.ajax({
+            url: '../scripts/get_teacher.php?id='+id,
+            error: err => console.log(err),
+            success: function(resp) {
+                if (typeof resp != undefined) {
+                    resp = JSON.parse(resp)
+                    $('[name="id"]').val(resp.id)
+                    $('[name="full_name"]').val(resp.full_name)
+                    $('[name="email"]').val(resp.email)
+                    $('[name="nickname"]').val(resp.name)
+                    $('[name="password"]').val(resp.password)
+                    $('#change_teacher').modal('show')
+                 }
+                }
+            })
+        })
+        $('#class-frm').submit(function(e){
+			e.preventDefault();
+			$('#class-frm [name="submit"]').attr('disabled',true)
+			$('#class-frm [name="submit"]').html('Saving...')
+			$.ajax({
+				url:'../scripts/update_teacher.php?id=',
+				method:'POST',
+				data:$(this).serialize(),
+				error:err=>{
+					console.log(err)
+					alert('An error occured')
+					$('#class-frm [name="submit"]').removeAttr('disabled')
+					$('#class-frm [name="submit"]').html('Save')
+				},
+				success:function(resp){
+					alert('Údaje boli úspešne uložené');
+					location.reload()					
+				}
+			})
+		})
+        $('.remove_teacher').click(function(){
+			var id = $(this).attr('data-id')
+			var conf = confirm('Ste si istý/á že chcete vymazať tieto údaje?.');
+			if(conf == true){
+				$.ajax({
+				url:'../scripts/del_teacher.php?id='+id,
+				error:err=>console.log(err),
+				success:function(resp){
+				    location.reload()
+                }
+			})
+			}
+		})
+    });
+    </script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
     <script src="assets/js/bs-init.js"></script>

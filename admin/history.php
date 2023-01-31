@@ -72,7 +72,7 @@ if(!isset($admin_id)){
                                     <tbody>
                                         <?php
 					                    $where = '';
-					                    if($_SESSION['login_user_type'] == 'admin'){
+					                    if($_SESSION['admin_id'] == 'admin'){
 					                    	$where = ' where q.user_id = '.$_SESSION['admin_id'].' ';
 					                    }
 					                    if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
