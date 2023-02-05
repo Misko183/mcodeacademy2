@@ -13,6 +13,8 @@
                     <li class="nav-item"><a class="nav-link active" href="subject.php"><i class="fas fa-book fa-2x text-gray-300"></i><span>Premety</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="quiz_list.php"><i class="far fa-edit fa-2x text-gray-300"></i><span>Zoznam kvízov</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="history.php"><i class="far fa-list-alt fa-2x text-gray-300"></i><span>Záznam kvízov</span></a></li>
+                    <li class="nav-item"><hr></li>
+                    <li class="nav-item"><a class="nav-link active" href="users.php"><i class="far fa-list-alt fa-2x text-gray-300"></i><span>Používatelia</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>

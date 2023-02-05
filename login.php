@@ -101,7 +101,7 @@ if(isset($_POST['submit'])){
 		<div class="login-content">
 			<form action="" method="post" enctype="multipart/form-data">
 				<img src="./assets/img/avatar.svg">
-				<h2 class="title">Vitaj</h2>
+				<h2 class="title">Prihlásenie</h2>
 				<?php
                     if(isset($message)){
                     foreach($message as $message){
