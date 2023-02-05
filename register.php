@@ -45,102 +45,84 @@ if(isset($_POST['submit'])){
     <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
     <title>MCodeAcademy • Register</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-
-    <link rel="stylesheet" href="assets/css/register.css">
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/css/login2.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 
 
 </head>
 
 <body>
-
-    <div class="row mx-0 auth-wrapper">
-        <!--remove bg-->
-        <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div class="d-none d-sm-flex col-sm-6 col-lg-8 align-items-center p-5">
-            <div class="align-items-start d-lg-flex flex-column offset-lg-2 text-white">
-                <img src="" class="mb-3">
-                <h1 classname="d-flex">Ahoj 👋 Vitaj späť
-                </h1>
-                <p>McodeAcademy je pre lepším domov pre programovanie po slovensky</p>
-            </div>
-        </div>
-
-        <div class="d-flex justify-content-center col-sm-6 col-lg-4 align-items-center px-5 bg-white mx-auto">
-            <div class="form-wrapper">
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="d-flex flex-column">
-                        <div class="mb-4">
-
-                            <h3 class="font-medium mb-1">Registrácia </h3>
-                            <p class="mb-2">Je to rýchle a jednoduché.</p>
-                        </div>
-                        <?php
-        if(isset($message)){
-            foreach($message as $message){
-                echo '
-                <div class="message">
-                    <span>'.$message.'</span>
-                    <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-                </div>
-                ';
-                }
-            }
-        ?>
-                        <div class="mb-10">
-                            <div class="form-group">
-                                <label for="name" class="">Username</label>
-                                <input name="name" type="text" class="form-control">
-                                </input>
+    <img class="wave" src="./assets/img/wave.png">
+	<div class="container">
+		<div class="img">
+			<img src="./assets/img/bg.svg">
+		</div>
+		<div class="login-content">
+            <form action="" method="post" enctype="multipart/form-data">
+				<img src="./assets/img/avatar.svg">
+				<h2 class="title">Vitaj</h2>
+                <p>Registrácia</p>
+				<?php
+                    if(isset($message)){
+                    foreach($message as $message){
+                        echo '
+                            <div class="message">
+                                <span style="color: red;">'.$message.'</span>
+                                <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
                             </div>
-                            <div class="form-group">
-                                <label for="mail" class="">Email</label>
-                                <input name="email" type="text" class="form-control">
-                                </input>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="">Heslo</label>
-                                <input name="pass" type="password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="">Zopakujte heslo</label>
-                                <input name="cpass" type="password" class="form-control">
-                            </div>
-                            <div class="text-right"><a class="btn btn-link" href="lost_password.php">
-                                    Zabudnuté heslo?
-                                </a></div>
-                            <button name="submit" type="submit" class="btn btn-primary btn-block mt-3 border-0">
+                         ';
+                        }
+                    }
+                ?>
+                <div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Username</h5>
+           		   		<input name="name" type="text" class="input" required></input>
+           		   </div>
+           		</div>
+                   <div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Email</h5>
+           		   		<input name="email" type="text" class="input" required></input>
+           		   </div>
+           		</div>
+                   <div class="input-div one">
+           		   <div class="i">
+                      <i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Heslo</h5>
+           		   		<input name="pass" type="password" class="input" required></input>
+           		   </div>
+           		</div>
+           		<div class="input-div one">
+           		   <div class="i">
+                      <i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Zopakujte heslo</h5>
+           		   		<input name="cpass" type="password" class="input" required></input>
+           		   </div>
+           		</div>
+                <button name="submit" type="submit" class="btn">
                                 Registrovať sa
                             </button>
-                            <div class="text-center"><a class="btn btn-link">
-                                    Už máš účet? <a href="login.php">Prihlásiť sa</a>
-                                </a></div>
-                        </div>
-                        <div class="p-5 text-center text-xs">
-                            <span>
-                                Copyright © 2022-2023 | vytvoril
-                                <a href="https://sladecek.sk" rel="" target="_blank" title="aji">sladecek.sk</a></span>
-                        </div>
-                    </div>
-                </form>
-            </div>
+
+				<span>Už máš účet?<a href="login.php">Prihlás sa</a></span>
+            </form>
         </div>
     </div>
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+
+
+
 
 </body>
 

@@ -11,21 +11,21 @@
         <div class="collapse navbar-collapse flex-grow-0 order-md-first" id="navcol-6">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"></li>
-                <li class="nav-item"><a class="nav-link anim" href="materials"
-                        style="font-weight: bold;color: white">Materialy</a>
+                <li class="nav-item"><a class="nav-link" href="materials"
+                        style="font-weight: bold;">Materialy</a>
                 </li>
-                <li class="nav-item"><a class="nav-link anime" href="exercises" style="font-weight: bold;color: white">Cvičenia</a></li>
+                <li class="nav-item"><a class="nav-link" href="exercises" style="font-weight: bold;">Cvičenia</a></li>
                 <?php 
                 if($_SESSION['user_type']  == 'admin') {
                 ?>
-                <li class="nav-item"><a class="nav-link anim" href="admin/" style="font-weight: bold;color: white">Admin panel</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin/" style="font-weight: bold;">Admin panel</a></li>
                 <?php
                 }
                 ?>
                 <?php 
                 if($_SESSION['user_type']  == 'student') {
                 ?>
-                <li class="nav-item"><a class="nav-link anim" href="student/" style="font-weight: bold;color: white">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="student/" style="font-weight: bold;">Profil</a></li>
                 <?php
                 }
                 ?>
@@ -36,7 +36,7 @@
                 <?php
                 }elseif($_SESSION['user_type'] == 'user') {
                 ?>
-                <li class="nav-item"><a class="nav-link anim" href="profile.php" style="font-weight: bold;color: white">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.php" style="font-weight: bold;">Profil</a></li>
                 <?php
                 }
                 ?>
@@ -54,11 +54,10 @@
                 <span style="color: white; margin-right: 15px;"><?php echo $user;?><?php //echo $user_type;?></span>
             
                 <a 
-                    class="btn btn-primary " 
                     role="button" 
                     data-bss-hover-animate="pulse" 
                     href="scripts/logout.php?continue=<?php echo $link; ?>"
-                    style="">
+                    style="color: white; border: 1px solid white; padding: 5px; border-radius: 8px;">
                     Odhlásiť sa 
                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                 </a>

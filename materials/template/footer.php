@@ -1,8 +1,8 @@
-<footer class="text-center bg-dark text-white">
+<footer class="text-center bg-dark text-white position-absolute">
         <div class="container text-muted py-4 py-lg-5">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Materiály</a></li>
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Cvičenia</a></li>
+                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../exercises">Cvičenia</a></li>
                 <li class="list-inline-item me-4"><?php
                 if ($_SESSION['user_type']  == 'user') {
                     ?> 

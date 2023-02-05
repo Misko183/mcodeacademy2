@@ -1,3 +1,7 @@
+footer {
+    width: 100% !important;
+    bottom: 0 !important;
+}
 
 a.sladecek{
     color: white;

@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
     position: relative;
     /* background-color: #1e1f26; */
     text-align: center;
@@ -18,7 +18,7 @@
     margin: 0;
     padding-bottom: 0.5rem;
     letter-spacing: 0.5rem;
-    color: #03dac6;
+    color: #03FFFF;
     transition: all 0.3s ease;
     z-index: 3;
   }
