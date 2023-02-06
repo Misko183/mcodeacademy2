@@ -12,43 +12,24 @@ if(!isset($user_id)){
     header('location:../login.php');
  };
 
-    $sql = "SELECT * FROM `users` WHERE id = '$user_id'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);   
+$sql = "SELECT * FROM `users` WHERE id = '$user_id'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);   
 
-	if (isset($_POST['submit'])) {
-		// Get the current and new passwords from the form
-		$current_password = md5($_POST['current_password']);
-		$new_password = md5($_POST['new_password']);
-		$confirm_password = md5($_POST['confirm_password']);
-	
-		// Check if the current password is correct
-		$query = "SELECT `password` FROM `users` WHERE id = '$user_id'";
-		$result = mysqli_query($conn, $query);
-		$row = mysqli_fetch_assoc($result);
+if (isset($_POST['submit'])) {
 
-		if ($current_password == $row['password']) {
-			// Check if the new password matches the confirmation password
-			if ($new_password == $confirm_password) {
-				// Update the password in the database
-				$query = "UPDATE users SET `password` = '$new_password' WHERE id = '$user_id'";
-				$result = mysqli_query($conn, $query);
-				if ($result) {
-					//echo "Password changed successfully!";
-					$done[] = "Heslo bolo úspešne zmenené!";
-				} else {
-					//echo "Failed to change password.";
-					$message[] = "Nepodarilo sa zmeniť heslo.";
-				}
-			} else {
-				//echo "New password and confirmation password do not match.";
-				$message[] = "Nové heslo a potvrdzovacie heslo sa nezhodujú.";
-			}
-		} else {
-			//echo "Current password is incorrect.";
-			$message[] = "Súčasné heslo je nesprávne.";
-		}
+	$name = $_POST['name'];
+	$full_name = $_POST['full_name'];
+	$email = $_POST['email'];
+				
+	$query = "UPDATE users SET `name` = '$name', `full_name` = '$full_name', `email` = '$email' WHERE id = '$user_id'";
+	$result = mysqli_query($conn, $query);
+	if ($result) {
+		$done[] = "Údaje boli zmenené";
+	} else {
+		$message[] = "Nepodarilo sa zmeniť údaje.";
 	}
+}
 	
 	$sql = "SELECT * FROM `users` WHERE id = '$user_id'";
     $result = mysqli_query($conn, $sql);
@@ -106,17 +87,13 @@ if(!isset($user_id)){
                                 Profil
                             </a>
                         </li>
-                        <li class="active" style="width: 100%;">
+                        <li style="width: 100%;">
                             <a href="change_password.php">
                                 <i class="fa fa-calendar"></i> Zmena hesla
                             </a>
                         </li>
-                        <li  style="width: 100%;">
-                            <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
-                        </li>
-                        <li style="width: 100%;">
-                            <a href="quiz_list.php"> <i class="fa fa-list" aria-hidden="true"></i>
- List kvízov</a>
+                        <li class="active" style="width: 100%;">
+                            <a href="#"> <i class="fa fa-edit"></i> Upraviť profil</a>
                         </li>
                     </ul>
                 </div>
@@ -125,12 +102,12 @@ if(!isset($user_id)){
 
                 <div class="panel">
                     <div class="bio-graph-heading">
-                        Zmeňte si heslo na také aké potrebujete.
+                        Zmeňte si svoje informácie na také aké potrebujete.
                     </div>
                     <div class="panel-body bio-graph-info">
-                        <h1>Zmena hesla</h1>
-                        <form action="" method="POST">
-						<?php
+                        <h1>Zmena životopisu</h1>
+                        <form action="" method="POST" autocomplete="off">
+                            <?php
    if(isset($message)){
       foreach($message as $message){
          echo '
@@ -142,7 +119,7 @@ if(!isset($user_id)){
       }
    }
 ?>
-        <?php
+                            <?php
    if(isset($done)){
       foreach($done as $done){
          echo '
@@ -155,31 +132,35 @@ if(!isset($user_id)){
    }
 ?>
                             <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Staré heslo</label>
-                    <input type="password" class="form-control" name="current_password">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Nové heslo</label>
-                    <input type="password" class="form-control" name="new_password">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Potvrďte nové heslo</label>
-                    <input type="password" class="form-control" name="confirm_password">
-                </div>
-            </div>
-        </div>
-        <div>
-            <!-- <input type="submit" name="submit" class="btn btn-primary" value="Aktualizovať"> -->
-            <button name="submit" class="btn btn-info pull-right">Aktualizovať</button>
-        </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Nickname</label>
+                                        <input autocomplete="off" type="text" class="form-control" name="name"
+                                            value="<?php echo $row['name'] ?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Meno Priezvisko</label>
+                                        <input autocomplete="off" type="text" class="form-control" name="full_name"
+                                            value="<?php echo $row['full_name'] ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input autocomplete="off" type="email" class="form-control" name="email"
+                                            value="<?php echo $row['email'] ?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <!-- <input type="submit" name="submit" class="btn btn-primary" value="Aktualizovať"> -->
+                                <button name="submit" class="btn btn-info pull-right">Aktualizovať</button>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -6,13 +6,13 @@ header("Content-Type: text/html;charset=UTF-8");
 
 include('../scripts/configa.php');
 
-$student_id = $_SESSION['student_id'];
+$user_id = $_SESSION['user_id'];
 
-if(!isset($student_id)){
+if(!isset($user_id)){
     header('location:../login.php');
  };
 
-    $sql = "SELECT * FROM `users` WHERE id = '$student_id'";
+    $sql = "SELECT * FROM `users` WHERE id = '$user_id'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);   
 
@@ -22,61 +22,71 @@ if(!isset($student_id)){
 
 <head>
     <meta charset="UTF-8">
-    <title>List kvízov | MCodeAcademy</title>
+    <title>Profil | MCodeAcademy</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" type="text/css"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
 
     <link rel="stylesheet" href="template/nav/nav.css">
     <link rel="stylesheet" href="template/footer/footer.css">
-
-    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Lista-Productos-Canito.css">
 
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
 
-    <!-- navigation -->
-
     <?php include 'template/nav/nav.php'; ?>
 
-    <section class="py-5 my-5">
-        <div class="container">
-            <h1 class="mb-5">Účet</h1>
-            <div class="bg-white shadow rounded-lg d-block d-sm-flex">
-                <div class="profile-tab-nav border-right">
-                    <div class="p-4">
-                        <h4 class="text-center"><?php echo $row['full_name']; ?></h4>
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="profile-nav col-md-3">
+                <div class="panel">
+                    <div class="user-heading round">
+                        <a href="#">
+                            <img src="../assets/img/avatar.svg" alt="" />
+                        </a>
+                        <h1><?php echo $row['full_name'] ?></h1>
+                        <p>
+                        <h6>
+                            <?php echo $row['email'] ?></h6>
+                        </p>
                     </div>
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link" href="index.php">
-                            <i class="fa fa-home text-center mr-1"></i>
-                            Účet
-                        </a>
-                        <a class="nav-link" href="change_password.php">
-                            <i class="fa fa-key text-center mr-1"></i>
-                            Zmena hesla
-                        </a>
-                        <a class="nav-link active">
-                            <i class="fa fa-user text-center mr-1"></i>
-                            Kvízy
-                        </a>
-                    </div>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li style="width: 100%;">
+                            <a href="index.php">
+                                <i class="fa fa-user"></i>
+                                Profil
+                            </a>
+                        </li>
+                        <li style="width: 100%;">
+                            <a href="change_password.php">
+                                <i class="fa fa-calendar"></i> Zmena hesla
+                            </a>
+                        </li>
+                        <li style="width: 100%;">
+                            <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
+                        </li>
+                        <li class="active" style="width: 100%;">
+                            <a href=""> <i class="fa fa-list" aria-hidden="true"></i> List kvízov</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
-                    <div class="col-md-12 alert alert-primary"><strong>List kvízov</strong></div>
-                    <br>
-                    <div class="card">
+            </div>
+            <div class="profile-info col-md-9">
+                <div class="panel">
+                    <div class="bio-graph-heading">
+                        Tu si nájdete všetky Kvízy ktoré vám pridelili vaši učitelia.
+                    </div>
+                    <div class="panel-body bio-graph-info">
+                        <h1>Životopis</h1>
+                        <div class="row">
+                        <div class="card">
                         <div class="card-body">
                             <table class="table table-bordered" id='table'>
                                 <colgroup>
@@ -133,16 +143,17 @@ if(!isset($student_id)){
                             </table>
                         </div>
                     </div>
-
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
-    </section>
+    </div>
+    
+
 
     <?php include 'template/footer/footer.php' ?>
-
-
+    <script type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

@@ -24,22 +24,20 @@ $row = mysqli_fetch_assoc($result);
 
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $quiz['quiz_name'] ?> | Odpoveďový hárok</title>
+    <title>Profil | MCodeAcademy</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" type="text/css"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
 
     <link rel="stylesheet" href="template/nav/nav.css">
     <link rel="stylesheet" href="template/footer/footer.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Lista-Productos-Canito.css">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -72,50 +70,67 @@ $row = mysqli_fetch_assoc($result);
 
 <body>
 
-    <!-- navigation -->
-
     <?php include 'template/nav/nav.php'; ?>
 
-    <section class="py-5 my-5">
-        <div class="container">
-            <h1 class="mb-5">Účet</h1>
-            <div class="bg-white shadow rounded-lg d-block d-sm-flex">
-                <div class="profile-tab-nav border-right">
-                    <div class="p-4">
-                        <h4 class="text-center"><?php echo $row['full_name']; ?></h4>
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="profile-nav col-md-3">
+                <div class="panel">
+                    <div class="user-heading round">
+                        <a href="#">
+                            <img src="../assets/img/avatar.svg" alt="" />
+                        </a>
+                        <h1><?php echo $row['full_name'] ?></h1>
+                        <p>
+                        <h6>
+                            <?php echo $row['email'] ?></h6>
+                        </p>
                     </div>
-                    <div class="nav flex-column nav-pills">
-                        <a class="nav-link" href="index.php">
-                            <i class="fa fa-home text-center mr-1"></i>
-                            Účet
-                        </a>
-                        <a class="nav-link" href="change_password.php">
-                            <i class="fa fa-key text-center mr-1"></i>
-                            Zmena hesla
-                        </a>
-                        <a class="nav-link" href="quiz_list.php">
-                            <i class="fa fa-user text-center mr-1"></i>
-                            Kvízy
-                        </a>
-                        <a class="nav-link active">
-                            <i class="fa fa-user text-center mr-1"></i>
-                            Odpoveďový hárok
-                        </a>
-                    </div>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li style="width: 100%;">
+                            <a href="index.php">
+                                <i class="fa fa-user"></i>
+                                Profil
+                            </a>
+                        </li>
+                        <li style="width: 100%;">
+                            <a href="change_password.php">
+                                <i class="fa fa-calendar"></i> Zmena hesla
+                            </a>
+                        </li>
+                        <li style="width: 100%;">
+                            <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
+                        </li>
+                        <li style="width: 100%;">
+                            <a href="quiz_list.php"> <i class="fa fa-list" aria-hidden="true"></i> List kvízov</a>
+                        </li>
+                        <li class="active" style="width: 100%;">
+                            <a href=""> <i class="fa fa-file-text" aria-hidden="true"></i>  Odpoveďový hárok</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="p-4 p-md-5" style="width:100%;">
-                    <div class="container-fluid admin">
-                        <div class="col-md-12 alert alert-primary"><?php echo $quiz['quiz_name'] ?> |
-                            <?php echo $quiz['qpoints'] .' Bodov za každú otázku' ?></div>
-                        <div class="col-md-12 alert alert-success">Skóre :
-                            <?php echo $hist['score'] .' / ' .  $hist['total_score'] ?></div>
-                        <br>
-                        <div class="card">
-                            <div class="card-body">
-                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['student_id'] ?>">
-                                <input type="hidden" name="quiz_id" value="<?php echo $quiz['id'] ?>">
-                                <input type="hidden" name="qpoints" value="<?php echo $quiz['qpoints'] ?>">
-                                <?php
+            </div>
+            <div class="profile-info col-md-9">
+                <div class="panel">
+                    <div class="bio-graph-heading">
+                        Odpovede tvojho kvízu
+                    </div>
+                    <div class="panel-body bio-graph-info">
+                        <h1>Odpoveďový hárok</h1>
+                        <div class="row">
+                            <div class="container-fluid admin">
+                                <div class="col-md-12 alert alert-primary"><?php echo $quiz['quiz_name'] ?> |
+                                    <?php echo $quiz['qpoints'] .' Bodov za každú otázku' ?></div>
+                                <div class="col-md-12 alert alert-success">Skóre :
+                                    <?php echo $hist['score'] .' / ' .  $hist['total_score'] ?></div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <input type="hidden" name="user_id"
+                                            value="<?php echo $_SESSION['student_id'] ?>">
+                                        <input type="hidden" name="quiz_id" value="<?php echo $quiz['id'] ?>">
+                                        <input type="hidden" name="qpoints" value="<?php echo $quiz['qpoints'] ?>">
+                                        <?php
 					$question = $conn->query("SELECT * FROM questions where qid = '".$quiz['id']."' order by id desc ");
 					$i = 1 ;
 					while($row =$question->fetch_assoc()){
@@ -123,39 +138,44 @@ $row = mysqli_fetch_assoc($result);
 					$answer = $conn->query("SELECT * FROM answers where quiz_id ='".$quiz['id']."' and user_id= '".$_SESSION['login_id']."' and question_id = '".$row['id']."'  ")->fetch_array();
 					?>
 
-                                <ul class="q-items list-group mt-4 mb-4 ?>">
-                                    <li class="q-field list-group-item">
-                                        <strong><?php echo ($i++). '. '; ?> <?php echo $row['question'] ?></strong>
-                                        <input type="hidden" name="question_id[<?php echo $row['id'] ?>]"
-                                            value="<?php echo $row['id'] ?>">
-                                        <br>
-                                        <ul class='list-group mt-4 mb-4'>
-                                            <?php while($orow = $opt->fetch_assoc()){ ?>
+                                        <ul class="q-items list-group mt-4 mb-4 ?>">
+                                            <li class="q-field list-group-item">
+                                                <strong><?php echo ($i++). '. '; ?>
+                                                    <?php echo $row['question'] ?></strong>
+                                                <input type="hidden" name="question_id[<?php echo $row['id'] ?>]"
+                                                    value="<?php echo $row['id'] ?>">
+                                                <br>
+                                                <ul class='list-group mt-4 mb-4'>
+                                                    <?php while($orow = $opt->fetch_assoc()){ ?>
 
-                                            <li class="answer list-group-item <?php echo $answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 ? "bg-success" : "bg-danger" ?>">
-                                                <label>
-                                                    <input 
-                                                        type="radio" 
-                                                        name="option_id[<?php echo $row['id']; ?>]"
-                                                        value="<?php echo $orow['id'] ?>" <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>>
-                                                    <xmp style="margin: 0;"><?php echo $orow['option_txt'] ?></xmp>
-                                                </label>
+                                                    <li
+                                                        class="answer list-group-item <?php echo $answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 ? "bg-success" : "bg-danger" ?>">
+                                                        <label>
+                                                            <input type="radio"
+                                                                name="option_id[<?php echo $row['id']; ?>]"
+                                                                value="<?php echo $orow['id'] ?>"
+                                                                <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>>
+                                                            <xmp style="margin: 0;"><?php echo $orow['option_txt'] ?>
+                                                            </xmp>
+                                                        </label>
+                                                    </li>
+                                                    <?php } ?>
+
+                                                </ul>
+
                                             </li>
-                                            <?php } ?>
-
                                         </ul>
 
-                                    </li>
-                                </ul>
-
-                                <?php } ?>
+                                        <?php } ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <?php include 'template/footer/footer.php' ?>
 

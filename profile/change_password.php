@@ -114,10 +114,6 @@ if(!isset($user_id)){
                         <li  style="width: 100%;">
                             <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
                         </li>
-                        <li style="width: 100%;">
-                            <a href="quiz_list.php"> <i class="fa fa-list" aria-hidden="true"></i>
- List kvízov</a>
-                        </li>
                     </ul>
                 </div>
             </div>
