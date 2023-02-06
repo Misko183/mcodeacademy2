@@ -110,9 +110,7 @@ if(isset($_POST['submit'])){
            		   		<input name="cpass" type="password" class="input" required></input>
            		   </div>
            		</div>
-                <button name="submit" type="submit" class="btn">
-                                Registrovať sa
-                            </button>
+                <button name="submit" type="submit" class="btn">Registrovať sa</button>
 
 				<span>Už máš účet?<a href="login.php">Prihlás sa</a></span>
             </form>
