@@ -51,14 +51,31 @@
                 if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin' || $_SESSION['user_type'] == 'teacher' || $_SESSION['user_type'] == 'student') { 
                 ?>
                 <span style="color: white; margin-right: 15px;"><?php echo $user;?><?php //echo $user_type;?></span>
-            <a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" href="../scripts/logout.php?continue=<?php echo $link; ?>"
-                style="background: linear-gradient(0deg, #5b77e7 0%, #49b5d2 49%, #26e8a8 99%);color: rgb(254,254,254);font-weight: bold;border-width: 0px;border-radius: 11px;padding-right: 18px;padding-left: 18px;text-align: center;">Odhlásiť
-                sa <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                <a 
+                    role="button" 
+                    data-bss-hover-animate="pulse" 
+                    href="../scripts/logout.php?continue=<?php echo $link; ?>"
+                    style="color: white; border: 1px solid white; padding: 5px; border-radius: 8px;">
+                    Odhlásiť sa 
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+</a>
             <?php
                 }else { ?>
-                    <a class="btn btn-primary" role="button" data-bss-hover-animate="pulse"
-                    href="../login.php?continue=<?php echo $link; ?>"
-                    style="background: linear-gradient(0deg, #5b77e7 0%, #49b5d2 49%, #26e8a8 99%);color: rgb(254,254,254);font-weight: bold;border-width: 0px;border-radius: 11px;padding-right: 18px;padding-left: 18px;text-align: center;">Login</a>
+                    <a 
+                    style="color: white;"
+                    role="button" 
+                    data-bss-hover-animate="pulse"
+                    href="../login.php?continue=<?php echo $link; ?>">
+                    Prihlásiť sa
+                    </a>
+                    <span  style="color: white;">|</span>
+                    <a  
+                    style="color: white;"
+                    role="button" data-bss-hover-animate="pulse"
+                    href="../register.php?continue=<?php echo $link; ?>">
+                    Registrovať sa
+                    </a>
                 <?php } ?>
 
         </div>

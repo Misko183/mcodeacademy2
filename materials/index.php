@@ -26,7 +26,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"> -->
 
     <!-- css styling  -->
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
@@ -54,6 +54,8 @@ session_start();
     <script type="text/javascript" src="assets/js/default.js"></script>
     <link rel="stylesheet" href="assets/plugins/codemirror/theme/mbo.css">
     <script src="assets/plugins/codemirror/addon/display/"></script>
+
+    <link rel="stylesheet" href="../template/footer/footer.css">
 
 </head>
 

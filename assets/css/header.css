@@ -20,7 +20,7 @@ General Style
   width: 100%;
   /* vertically align its content */
   display: table;
-  background: #2e416a;
+  /* background: #2e416a; */
   overflow: hidden;
 }
 

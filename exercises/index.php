@@ -55,12 +55,14 @@ session_start();
     <link rel="stylesheet" href="assets/plugins/codemirror/theme/mbo.css">
     <script src="assets/plugins/codemirror/addon/display/"></script>
 
+    <link rel="stylesheet" href="../template/footer/footer.css">
+
 </head>
 
 <body>
     <?php include 'template/nav.php'; ?>
 
-    <div class="con" style="margin-bottom: 20px;">
+    <div class="con" style="margin: auto;">
         <div class="box">
             <span></span>
             <div class="content">
