@@ -242,7 +242,7 @@ if(!isset($admin_id)){
         $('#quiz-frm').submit(function(e){
 			e.preventDefault();
 			$('#class-frm [name="submit"]').attr('disabled',true)
-			$('#class-frm [name="submit"]').html('Saving...')
+			$('#class-frm [name="submit"]').html('Ukladá sa...')
 			$.ajax({
 				url:'../scripts/update_quiz.php?id=',
 				method:'POST',

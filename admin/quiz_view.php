@@ -248,7 +248,7 @@ if(!isset($admin_id)){
 		$('#question-frm').submit(function(e){
 			e.preventDefault();
 			$('#question-frm [name="submit"]').attr('disabled',true)
-			$('#question-frm [name="submit"]').html('Saving...')
+			$('#question-frm [name="submit"]').html('Ukladá sa...')
 			$('#msg').html('')
 
 			$.ajax({

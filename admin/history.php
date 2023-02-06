@@ -165,7 +165,7 @@ if(!isset($admin_id)){
         $('#faculty-frm').submit(function(e) {
             e.preventDefault();
             $('#faculty-frm [name="submit"]').attr('disabled', true)
-            $('#faculty-frm [name="submit"]').html('Saving...')
+            $('#faculty-frm [name="submit"]').html('Ukladá sa...')
             $('#msg').html('')
 
             $.ajax({

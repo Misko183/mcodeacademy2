@@ -16,144 +16,174 @@ session_start();
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-With-Button-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
-    <title>Document</title>
 
-    <!-- link css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
-
-    <!-- css styling  -->
-    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../../assets/css/Navbar-Centered-Brand-Dark-icons.css">
-    <link rel="stylesheet" href="../../assets/css/styles.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/sidebars.css">
-    <!-- javascripts  -->
-    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/bs-init.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="../../assets/js/header.js"></script>
-    <script src="../assets/js/sidebars.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="assets/js/scroll.js"></script>
 
     <!-- codemirror -->
     <link rel="stylesheet" type="text/css" href="../assets/plugins/codemirror/lib/codemirror.css">
     <script type="text/javascript" src="../assets/plugins/codemirror/lib/codemirror.js"></script>
     <script type="text/javascript" src="../assets/js/default.js"></script>
     <link rel="stylesheet" href="../assets/plugins/codemirror/theme/mbo.css">
-    <script src="../assets/plugins/codemirror/addon/display/"></script>
+    <script src="../assets/plugins/codemirror/addon/display/panel.js"></script>
+    <link rel="stylesheet" href="../assets/plugins/codemirror/theme/midnight.css">
+    <script src="../assets/plugins/codemirror/addon/selection/active-line.js"></script>
+    <script src="../assets/plugins/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="../assets/plugins/codemirror/addon/selection/selection-pointer.js"></script>
 
 </head>
 
-<body>
-<header>
-    <?php include 'template/nav.php'; ?>
+<body id="page-top">
+
+    <header>
+        <?php include 'template/nav.php'; ?>
     </header>
 
+    <nav class="navbar navbar-light navbar-expand-md sticky-top py-3"
+        style="box-shadow: 2px 6px 11px rgb(67,67,67);background: #003e7e; padding: 0 !important;">
+        <div class=".container">
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#"
+                            style="color: var(--bs-white);font-weight: bold;"><i class="fas fa-home"
+                                style="font-size: 20px;color: var(--bs-white);"></i></a></li>
+                    <li class="nav-item" style="background: #0064cc;"><a class="nav-link active" href="#"
+                            style="color: var(--bs-white);font-weight: bold;">HTML</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="font-weight: bold;color: var(--bs-white);">CSS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="color: var(--bs-white);font-weight: bold;">PHP</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper" style="background: rgb(70, 70, 70);">
+        <nav class="navbar navbar-dark bg-dark align-items-start sidebar idebar-dark accordionbg-gradient-primary p-0"
+            style="background: rgb(70, 70, 70) !important;margin-right: 40px;">
+            <div id="overflow" class="d-flex flex-column p-0 sidebar_mm">
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light widthh" id="accordionSidebar">
+                    <li class="nav-item">
+                        <h5 style="padding-left: 10px;margin-top: 5px;font-weight: bold;">HTML základ</h5>
+                        <hr>
+                    </li>
+                    <li class="nav-item" style=" background-color: rgb(172, 172, 172);"><a class="nav-link active"
+                            href="index.html"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px; font-size: 16px;"><span>HTML
+                                Domov</span></a> </li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Úvod</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Program</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Základ</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Elementy</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Atribúty</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Nádpisy</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Paragrafy</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Štýlovanie</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Formatovanie</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Zakomentovávanie</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                CSS</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Linky</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Obrázky</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Videa</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Ikony</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Tabuľky</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Listy</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Triedy</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Id</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Charset</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                                Symboly</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML
+                            </span></a></li>
+                    <li class="nav-item">
+                        <hr>
+                    </li>
+                    <li class="nav-item">
+                        <h5 style="padding-left: 10px;margin-top: 5px;font-weight: bold;">HTML Referencie</h5>
+                        <hr>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#"
+                            style="padding: 16px;padding-top: 5px;padding-right: 0px;padding-bottom: 5px;padding-left: 10px;font-size: 16px;"><span>HTML Referencie
+                            </span></a></li>
 
-    <div style="margin-bottom: 46px;">
-        <nav class="navbar navbar-light navbar-expand-md position-fixed" style="
-                padding: 0px;
-                width: 100%;
-                background: #003e7e;
-                color: var(--bs-gray-300);
-                box-shadow: 0px 5px 9px 2px var(--bs-gray-900);
-                z-index:10;">
-            <div class="container-fluid">
-                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"
-                    style="border-style: none;"><span class="visually-hidden"
-                        style="border-style: none;color: var(--bs-gray-400);">Toggle navigation</span><span
-                        class="navbar-toggler-icon" style="/*color: var(--bs-gray-400);*/"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1" style="background: #003e7e;">
-                    <ul class="navbar-nav">
-                        <li class="nav-item d-md-flex align-items-md-center"><a class="nav-link active" href="#"><i
-                                    class="fas fa-home" style="color: var(--bs-gray-300);font-size: 20px;"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"
-                                style="color: var(--bs-gray-300);font-size: 20px;"><strong>HTML</strong></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"
-                                style="font-size: 20px;color: var(--bs-gray-300);"><strong>CSS</strong></a></li>
-                    </ul>
-                </div>
+                </ul>
             </div>
         </nav>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6"
-            style="color:white; background-color:rgb(70, 70, 70);width: 20%;max-width:223px;padding-right: 0;padding-left:0;height: 100vh;position: fixed;overflow-y: scroll;">
-            <nav class="navbar navbar-light navbar-expand-md">
-                <div class="container-fluid" style="padding-right: 0;">
-                    <div class="collapse navbar-collapse " id="navcol-1">
-                        <ul class="navbar-nav d-flex flex-column">
-                        <li class="nav-item"><h5>HTML základ</h5></li>
-                            <li class="nav-item" style="background-color:rgb(172, 172, 172);padding-left: 8px; padding-top: 5px;padding-bottom: 5px;">HTML Domov</li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="uvod.php">HTML Úvod</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="program.php">HTML Program</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="zaklad.php">HTML Základ</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="elementy.php">HTML Elementy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="atributy.php">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="nadpisy.php">HTML Nádpisy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="paragrafy.php">HTML Paragrafy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="stylovanie.php">HTML Štýlovanie</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="formatovanie.php">HTML Formatovanie</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="koment.php">HTML Zakomentovávanie</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="css.php">HTML CSS</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="linky.php">HTML Linky</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="obrazky.php">HTML Obrázky</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="videa.php">HTML Videa</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="ikony.php">HTML Ikony</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="tabulky.php">HTML Tabuľky</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="listy.php">HTML Listy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="triedy.php">HTML Triedy</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="id.php">HTML Id</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="charset.php">HTML Charset</a></li>
-                            <li class="nav-item"><a style="color: white;" class="nav-link" href="symboly.php">HTML Symboly</a></li>
-                            <li><hr></li>
-                            <li><h5>HTML Referencie</h5></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Tag list</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                            <li class="nav-item"><a style="color: white;" href="" class="nav-link">HTML Atribúty</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="col-md-6" style="width: 80%;margin-left: 15%;z-index:0;">
-        <div class="content">
-                <div class="title">
-                        <h1>HTML tutoriál</h1>
-                </div>
-
-                <section class="first">
-                    <h5>Čo to je HTML?</h5>
-                    <p>HTML je štandardný značkovací jazyk pre webové stránky</p>
-                    <p>Pomocou HTML si môžeme vytvoriť svoj vlastný web</p>
-                    <p>HTML sa dá veľmi ľahko naučiť</p>
-                    <button>začať <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-                </section>
-
-                <section class="second">
-                    <h5>Živý compilátor kódu</h5>
-                    <p>Pomocou nášho compilátora si môžte kód vyskúšať hneď a ihneď uvidíte vaše výsledky</p>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content" style="margin-right: 50px;margin-left: 15px;">
+                <div class="container-fluid" style="margin-top: 20px;">
+                    <h1 style="color: var(--bs-gray-900);font-weight: bold;">HTML tutoriál</h1>
+                    <h5 style="color: var(--bs-gray-900);font-weight: bold;">Čo to je HTML?</h5>
+                    <p style="margin-bottom: 0;"><span style="color: rgb(77, 77, 77);">HTML je štandardný značkovací
+                            jazyk pre webové stránky.</span><br></p>
+                    <p style="margin-bottom: 0;"><span style="color: rgb(77, 77, 77);">Pomocou HTML si môžeme vytvoriť
+                            svoj vlastný web.</span><br></p>
+                    <p><span style="color: rgb(77, 77, 77);">HTML sa dá veľmi ľahko naučiť</span><br></p><button
+                        class="btn btn-primary" type="button"
+                        style="background: var(--bs-gray-900);">Začať&nbsp;&nbsp;<i
+                            class="fas fa-hand-point-right"></i></button>
+                    <hr>
+                    <h3 style="color: var(--bs-gray-900);font-weight: bold;">Živý kompilátor HTML kódu</h3>
+                    <p><span style="color: rgb(77, 77, 77); background-color: rgb(255, 255, 255);">Pomocou nášho
+                            compilátora si môžte kód vyskúšať hneď a ihneď uvidíte vaše výsledky.</span><br></p>
+                    <h5 style="color: var(--bs-gray-900);font-weight: bold;">Príklad</h5>
                     <div class="compilator">
-                        <h5>Príklad</h5>
                         <textarea id=code name=code>
  <!doctype html>
 <html>
@@ -170,19 +200,24 @@ session_start();
 </body>
 </html>
                                         </textarea>
-                        <iframe id=preview></iframe>
+                        <iframe id=preview class="preview"></iframe>
                         <script>
                         var delay;
+
                         // Initialize CodeMirror editor with a nice html5 canvas demo.
                         var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
                             mode: "htmlmixed",
                             lineNumbers: true,
-                            theme: "mbo",
+                            theme: "midnight",
+                            styleActiveLine: true,
+                            matchBrackets: true,
+                            selectionPointer: true
                         });
                         editor.on("change", function() {
                             clearTimeout(delay);
                             delay = setTimeout(updatePreview, 300);
                         });
+
 
                         function updatePreview() {
                             var previewFrame = document.getElementById('preview');
@@ -194,17 +229,61 @@ session_start();
                         setTimeout(updatePreview, 300);
                         </script>
                     </div>
-                </section>
-                <section class="referencie">
-                    <h5>HTML Referencie</h5>
-                    <p>Na MCodeAcademy nájdete kompletné referencie o HTML prvkoch, atribútoch, udalostiach, názvoch
+                    <h5 style="color: var(--bs-gray-900);font-weight: bold;">HTML Referencie</h5>
+                    <p style="margin-bottom: 25px;"><span style="color: rgb(77, 77, 77);">Na MCodeAcademy nájdete kompletné referencie o HTML prvkoch, atribútoch, udalostiach, názvoch
                         farieb, entitách, znakových sadách, kódovaní URL, jazykových kódoch, HTTP správach, podpore
-                        prehliadačov a ďalších:</p>
-                </section>
-            </div>
-        </div>
-    </div>
+                        prehliadačov a ďalších: 
+                            </span>
+                        <br>
+                    </p>
+                </div>
 
+                <div class="row">
+                    <div class="col-lg-4 col-md-12">
+                        
+                        <a href="" class="btn btn-primary">dasdasda</a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                    <button>ahoj</button>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                    <button>ahoj</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12">
+                    <button>ahoj</button>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                    <button>ahoj</button>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                    <button>ahoj</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12">
+                    <button>ahoj</button>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                    <button>ahoj</button>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                    <button>ahoj</button>
+                    </div>
+                </div>
+            </div>
+            <?php include 'template/footer.php'; ?>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>

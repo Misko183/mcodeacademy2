@@ -2,7 +2,7 @@
         <div class="container text-muted py-4 py-lg-5">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../index.php">Materiály</a></li>
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Cvičenia</a></li>
+                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../../exercises/">Cvičenia</a></li>
                 <li class="list-inline-item me-4"><?php
                 if ($_SESSION['user_type']  == 'user') {
                     ?> 
@@ -15,7 +15,7 @@
                  <?php   
                 }
                 ?></li>
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../../teacher">Učiteľ</a></li>
+                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../../teacher/">Učiteľ</a></li>
                 <li class="list-inline-item"><a class="link-secondary text-white" href="../../admin">Admin</a></li>
             </ul>
             <ul class="list-inline">

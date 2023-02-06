@@ -245,7 +245,7 @@ if(!isset($admin_id)){
         $('#class-frm').submit(function(e){
 			e.preventDefault();
 			$('#class-frm [name="submit"]').attr('disabled',true)
-			$('#class-frm [name="submit"]').html('Saving...')
+			$('#class-frm [name="submit"]').html('Ukladá sa...')
 			$.ajax({
 				url:'../scripts/update_student.php?id=',
 				method:'POST',
