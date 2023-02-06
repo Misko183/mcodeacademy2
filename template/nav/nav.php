@@ -34,7 +34,7 @@
                 ?>
                 
                 <?php
-                }elseif($_SESSION['user_type'] == 'user' or $_SESSION['user_type'] == 'admin' or $_SESSION['user_type'] == 'teacher') {
+                }elseif($_SESSION['user_type'] == 'user') {
                 ?>
                 <li class="nav-item"><a class="nav-link" href="profile/" style="font-weight: bold;">Profil</a></li>
                 <?php

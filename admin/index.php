@@ -134,7 +134,7 @@ if(!isset($admin_id)){
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-lg-7 col-xl-8">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -242,7 +242,7 @@ if(!isset($admin_id)){
                                     <div class="card text-white bg-primary shadow">
                                         <div class="card-body">
                                             <p class="m-0">Primary</p>
-                                            <p class="text-white-50 small m-0">#4e73df</p>
+                                            <p class="text-white-50 small m-0"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -289,34 +289,7 @@ if(!isset($admin_id)){
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-4" style="width: 100%;">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Meno</th>
-                                            <th>Akcia</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Cell 1</td>
-                                            <td>Cell 2</td>
-                                            <td><button class="btn btn-primary" type="button" style="margin-right: 10px;background: var(--bs-danger);"><i class="far fa-trash-alt"></i></button><button class="btn btn-primary" type="button" style="background: var(--bs-warning);"><i class="fas fa-pencil-alt"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cell 3</td>
-                                            <td>Cell 4</td>
-                                            <td>Cell 4</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                </div>
             </div>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">

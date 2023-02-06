@@ -37,7 +37,7 @@
                 <?php
                 }elseif($_SESSION['user_type'] == 'user') {
                 ?>
-                <li class="nav-item"><a class="nav-link" href="../profile.php" style="font-weight: bold;">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="../profile/" style="font-weight: bold;">Profil</a></li>
                 <?php
                 }
                 ?>

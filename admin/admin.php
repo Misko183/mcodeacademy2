@@ -39,15 +39,8 @@ if(!isset($admin_id)){
                 <?php include 'template/nav.php' ?>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Učitelia</h3>
-                        <a 
-                            data-bs-target="#add_student" 
-                            data-bs-toggle="modal"
-                             class="btn btn-primary btn-sm d-none d-sm-inline-block" 
-                             role="button" 
-                             href="#">
-                             <i class="fas fa-plus-square" style="font-size: 18px;margin-right: 10px;"></i>
-                             &nbsp;Pridať novú/ého učiteľku/a</a>
+                        <h3 class="text-dark mb-0">Používatelia</h3>
+                        
                     </div>
                     <div class="row">
                         <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
@@ -56,19 +49,25 @@ if(!isset($admin_id)){
                                     <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
                                         <tr>
                                             <th>ID</th>
+                                            <th>email</th>
                                             <th>Meno</th>
+                                            <th>Nickname</th>
+                                            <th>Heslo</th>
                                             <th>Akcia</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-					                        $qry = $conn->query("SELECT * FROM users where user_type = 'teacher'");
+					                        $qry = $conn->query("SELECT * FROM users where user_type = 'admin'");
                                             if($qry || $qry ->num_rows > 0){
                                             while($row= $qry->fetch_assoc()){
 						                ?>
                                         <tr>
                                             <td><?php echo $row['id'] ?></td>
-                                            <td><?php if($row['user_type'] == 'teacher'){echo $row['full_name'];} ?></td>
+                                            <td><?php echo $row['email'] ?></td>
+                                            <td><?php if(!empty($row['full_name'])){echo $row['full_name'];} else { echo "---";}; ?></td>
+                                            <td><?php echo $row['name']; ?></td>
+                                            <td><?php echo $row['password']; ?></td>
                                             <td>
                                                 <button 
                                                     class="btn btn-primary remove_teacher" 
@@ -97,36 +96,11 @@ if(!isset($admin_id)){
                     </div>
                 </div>
             </div>
-            <div id="add_student" class="modal fade" role="dialog" tabindex="-1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Pridať novú/ého učiteľku/a</h4>
-                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form method="post" action="../scripts/save_teacher.php">
-                            <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
-                                <label class="form-label">Celé meno</label>
-                                <input type="text" style="margin-bottom: 10px;" name="full_name">
-                                <label class="form-label">Nickname</label>
-                                <input type="text" style="margin-bottom: 10px;" name="nickname">
-                                <label class="form-label">email</label>
-                                <input type="email" style="margin-bottom: 10px;" name="email">
-                                <label class="form-label">Heslo</label>
-                                <input type="password" style="margin-bottom: 10px;" name="pass">
-                                    <div class="modal-footer">
-                                    <button class="btn btn-primary" type="submit" name="submit">Save</button>
-                                    </div>
-                                </div>
-                            </form>
-                    </div>
-                </div>
-            </div>
             <div id="change_teacher" class="modal fade" role="dialog" tabindex="-1">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Upraviť učiteľku/a</h4>
+                            <h4 class="modal-title">Upraviť používateľa</h4>
                             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form method="post" action="../scripts/update_teacher.php" id="class-frm">
@@ -135,6 +109,12 @@ if(!isset($admin_id)){
                                 <input type="text" style="margin-bottom: 10px;" name="full_name">
                                 <label class="form-label">Nickname</label>
                                 <input type="text" style="margin-bottom: 10px;" name="nickname">
+                                <label class="form-label">Typ používateľa</label>
+                                <select class="form-select" value="user" name="user_type" style="margin-bottom: 10px;">
+                                    <option value="user">Používateľ</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="teacher">Učiteľ</option>
+                                    <option value="student">Študent</option>
                                 <label class="form-label">email</label>
                                 <input type="email" style="margin-bottom: 10px;" name="email">
                                 <label class="form-label">Heslo</label>
@@ -182,7 +162,7 @@ if(!isset($admin_id)){
         $('.edit_teacher').click(function() {
             var id = $(this).attr('data-id')
             $.ajax({
-            url: '../scripts/get_teacher.php?id='+id,
+            url: '../scripts/get_userr.php?id='+id,
             error: err => console.log(err),
             success: function(resp) {
                 if (typeof resp != undefined) {
@@ -191,6 +171,7 @@ if(!isset($admin_id)){
                     $('[name="full_name"]').val(resp.full_name)
                     $('[name="email"]').val(resp.email)
                     $('[name="nickname"]').val(resp.name)
+                    $('[name="user_type"]').val(resp.user_type)
                     $('[name="password"]').val(resp.password)
                     $('#change_teacher').modal('show')
                  }
@@ -200,9 +181,9 @@ if(!isset($admin_id)){
         $('#class-frm').submit(function(e){
 			e.preventDefault();
 			$('#class-frm [name="submit"]').attr('disabled',true)
-			$('#class-frm [name="submit"]').html('Ukladá sa...')
+			$('#class-frm [name="submit"]').html('Saving...')
 			$.ajax({
-				url:'../scripts/update_teacher.php?id=',
+				url:'../scripts/update_user.php?id=',
 				method:'POST',
 				data:$(this).serialize(),
 				error:err=>{
