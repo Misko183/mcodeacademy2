@@ -6,50 +6,95 @@ header("Content-Type: text/html;charset=UTF-8");
 
 include('../scripts/configa.php');
 
-$admin_id = $_SESSION['admin_id'];
+$teacher_id = $_SESSION['user_id'];
 
-if(!isset($admin_id)){
+if(!isset($teacher_id)){
     header('location:../login.php');
  };
 
+    $sql = "SELECT * FROM `users` WHERE id = '$teacher_id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);   
+
 ?>
 <!DOCTYPE html>
+<html lang="sk">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Predmety | MCodeAcademy</title>
+    <meta charset="UTF-8">
+    <title>Profil | MCodeAcademy</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="template/nav/nav.css">
+    <link rel="stylesheet" href="template/footer/footer.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 
     <script src="../assets/js/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
-        crossorigin="anonymous" />
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
+
 </head>
 
-<body id="page-top">
-    <div id="wrapper">
-        <?php include 'template/sidebar.php' ?>
-        <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
-                <?php include 'template/nav.php' ?>
-                <div class="container-fluid">
-                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Predmety</h3>
-                        <a 
-                            data-bs-target="#add_student" 
-                            data-bs-toggle="modal"
-                            class="btn btn-primary btn-sm d-none d-sm-inline-block"
-                            role="button" href="#">
-                             <i class="fas fa-plus-square" style="font-size: 18px;margin-right: 10px;"></i>
-                            &nbsp;Pridať nový predmet
+<body>
+
+    <?php include 'template/nav/nav.php'; ?>
+
+    
+
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="profile-nav col-md-3">
+                <div class="panel">
+                    <div class="user-heading round">
+                        <a href="#">
+                            <img src="../assets/img/avatar.svg" alt="" />
                         </a>
+                        <h1><?php echo $row['full_name'] ?></h1>
+                        <p>
+                        <h6>
+                            <?php echo $row['email'] ?></h6>
+                        </p>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li style="width: 100%;">
+                            <a href="#">
+                                <i class="fa fa-user"></i>
+                                Profil
+                            </a>
+                        </li>
+                        <li style="width: 100%;">
+                            <a href="change_password.php">
+                                <i class="fa fa-calendar"></i> Zmena hesla
+                            </a>
+                        </li>
+                        <li style="width: 100%;">
+                            <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
+                        </li>
+                        <li class="active" style="width: 100%;">
+                            <a href=""> <i class="fa fa-edit"></i> Triedy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="profile-info col-md-9">
+                <div class="panel">
+                    <div class="bio-graph-heading">
+                        Vitajte vo vašom profile. Tu si môžete poupravovať svoje osobné údaje. (V príprave je celkové
+                        vzdelávanie kde sa vám budu ukladať vaše pokroky.)
+                    </div>
+                    <div class="panel-body bio-graph-info">
+                        <h1>Triedy</h1>
+                        <div class="row">
+                        <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
                             <div class="table-responsive">
                                 <table class="table" id="table">
                                     <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
@@ -63,7 +108,7 @@ if(!isset($admin_id)){
                                     </thead>
                                     <tbody>
                                         <?php
-					                        $qry = $conn->query("SELECT subject.*,class.class,users.full_name FROM subject LEFT JOIN class ON subject.class_id = class.id LEFT JOIN users ON subject.teacher_id = users.id;");
+					                        $qry = $conn->query("SELECT subject.*,class.class,users.full_name FROM subject LEFT JOIN class ON subject.class_id = class.id LEFT JOIN users ON subject.teacher_id = users.id where subject.teacher_id = $teacher_id;");
                                             $i = 1;
 					                        if($qry || $qry ->num_rows > 0){
 						                    while($row = $qry->fetch_assoc()){
@@ -75,19 +120,11 @@ if(!isset($admin_id)){
                                             <td><?php echo $row['full_name']; ?></td>
                                             <td>
                                                 <button 
-                                                    class="btn btn-primary remove_subject" 
-                                                    type="button"
-                                                    data-id="<?php echo $row['id']?>" 
-                                                    style="background: var(--bs-danger);">
-                                                    <i class="far fa-trash-alt"></i>
-                                                </button>
-
-                                                <button 
                                                     class="btn btn-primary edit_subject" 
                                                     type="button"
                                                     data-id="<?php echo $row['id']?>" 
                                                     style="background: var(--bs-warning);">
-                                                    <i class="fas fa-pencil-alt"></i>
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -99,61 +136,14 @@ if(!isset($admin_id)){
                                 </table>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div id="add_student" class="modal fade" role="dialog" tabindex="-1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Pridať nový predmet</h4>
-                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form method="post" action="../scripts/save_subject.php">
-                            <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
-                            <label class="form-label">Názov predmetu</label>
-                                <input type="text" style="margin-bottom: 10px;" name="subject_name">
-                                <label class="form-label">trieda</label>
-                                <select style="margin-bottom: 10px;" name="class">
-                                    <optgroup label="Zoznam tried">
-                                        <?php 
-                                        $sql = "SELECT * FROM class";
-                                        $res = mysqli_query($conn, $sql);
-
-                                        while($rows = mysqli_fetch_array($res))
-                                        { ?>
-                                        <option value="<?php echo $rows['id'];?>">
-                                            <?php echo $rows['class'] ?></option>
-                                        <?php
-                                        }
-                                    ?>
-                                    </optgroup>
-                                </select >
-                                <label class="form-label">Vyučujúci</label>
-                                <select style="margin-bottom: 10px;" name="teacher">
-                                    <optgroup label="Zoznam učiteľov">
-                                        <?php 
-                                        $sql = "SELECT * FROM users WHERE user_type = 'teacher'";
-                                        $res = mysqli_query($conn, $sql);
-
-                                        while($rows = mysqli_fetch_array($res))
-                                        { ?>
-                                        <option value="<?php echo $rows['id'];?>">
-                                            <?php echo $rows['full_name'] ?></option>
-                                        <?php
-                                        }
-                                    ?>
-                                    </optgroup>
-                                </select >
-                                    <div class="modal-footer">
-                                    <button class="btn btn-primary" type="submit" name="submit">Save</button>
-                                    </div>
-                                </div>
-                            </form>
                     </div>
                 </div>
             </div>
-            <div id="change_subject" class="modal fade" role="dialog" tabindex="-1">
+        </div>
+        <!-- Trigger the modal with a button -->
+
+    <div id="change_subject" class="modal fade" role="dialog" tabindex="-1">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -205,9 +195,14 @@ if(!isset($admin_id)){
                     </div>
                 </div>
             </div>
-            <?php include 'template/footer.php'; ?>
-        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+
+    
+    
+
+
+    <?php include 'template/footer/footer.php' ?>
+    
     <script>
     $(document).ready(function() {
         $('#table').DataTable({
@@ -273,25 +268,13 @@ if(!isset($admin_id)){
 				}
 			})
 		})
-        $('.remove_subject').click(function(){
-			var id = $(this).attr('data-id')
-			var conf = confirm('Ste si istý/á že chcete vymazať tieto údaje?.');
-			if(conf == true){
-				$.ajax({
-				url:'../scripts/del_subject.php?id='+id,
-				error:err=>console.log(err),
-				success:function(resp){
-				    location.reload()
-                }
-			})
-			}
-		})
+
     });
     </script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script type="text/javascript"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
