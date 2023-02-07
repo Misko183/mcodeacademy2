@@ -57,7 +57,7 @@
                     href="scripts/logout.php?continue=<?php echo $link; ?>"
                     style="color: white; border: 1px solid white; padding: 5px; border-radius: 8px;">
                     Odhlásiť sa 
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <i class="fas fa-sign-out-alt"></i>
                 </a>
             <?php
                 }else { ?>

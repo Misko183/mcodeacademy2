@@ -14,6 +14,8 @@
 
     <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
     <!-- link css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -47,11 +49,14 @@
     <link rel="stylesheet" href="./assets/css/header2.css">
     <script src="assets/js/header2.js"></script>
     <link rel="stylesheet" href="assets/css/particles.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/cards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
 </head>
 
-<body style="background: #d9eee1;">
+<body>
 
 
     <!-- navigation -->
@@ -104,7 +109,7 @@
                 <span></span>
                 Začať sa učiť!
             </a>
-            <a  href="#cvicenia" id="btn-purchase" role="button" class="animated-button2">
+            <a href="#cvicenia" id="btn-purchase" role="button" class="animated-button2">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -118,7 +123,7 @@
 
     <!-- content -->
 
-    <div class="container" style="margin-top: 100px;" id="materials">
+    <!-- <div class="container" style="margin-top: 100px;" id="materials">
         <div class="row">
             <div
                 class="col-md-12 d-flex flex-column justify-content-xl-center align-items-xl-center align-items-xxl-center">
@@ -127,7 +132,7 @@
             </div>
         </div>
         <div class="row d-flex d-xxl-flex flex-row justify-content-xxl-center align-items-xxl-center">
-            <!-- <div
+             <div
                 class="col-md-12 d-flex d-xxl-flex flex-row justify-content-xl-center align-items-xl-center align-items-xxl-center">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control input-text" placeholder="Hľadať materiál, napr.: HTML"
@@ -136,13 +141,13 @@
                         <button class="btn btn-lg" type="button"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-            </div> -->
+            </div> 
         </div>
-    </div>
+    </div> -->
 
     <!-- cards -->
 
-    <div class="con">
+    <!-- <div class="con">
         <div class="box">
             <span></span>
             <div class="content">
@@ -176,6 +181,68 @@
                 <a href="#">PHP Referencie</a>
             </div>
         </div>
+    </div> -->
+
+
+    <div class="body">
+            <div class="row" style="margin-right:50px;">
+                <div
+                    class="col-md-12 d-flex flex-column justify-content-xl-center align-items-xl-center align-items-xxl-center">
+                    <h1 style="font-weight: bold;">Nauč sa programovať lepšie</h1>
+                    <p style="font-size: 27px; color: #212529">presne to čo preberáte v škole a veci naviac</p>
+                </div>
+            </div>
+            <div class="boxik">
+
+                <div class="crd">
+                    <div class="imgBx">
+                        <i class="fab fa-html5" style="font-size: 50px;"></i>
+                        <h3>HTML5</h3>
+                    </div>
+                    <div class="text">
+                        <p>je štandartný
+                            značkovací jazyk pre webové stránky. Pomocou HTML si môžete vytvoriť svoj vlastný web.
+                            HTML sa dá ľahko naučiť - bude sa vám to pačiť!</p>
+                        <div class="column">
+                            <a href="materials/html/index.php">Skúsiť HTML</a>
+                            <a href="#">HTML Referencie</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="crd">
+                    <div class="imgBx">
+                        <i class="fab fa-css3-alt" style="font-size: 50px;"></i>
+                        <h3>CSS3</h3>
+                    </div>
+                    <div class="text">
+                        <p>CSS je jazyk,
+                            ktorý používaame na úpvau štýlu HTML dokumentu HTML. Tento tutoriál vás naučí CSS
+                            od základných až po pokročilé.</p>
+                        <div class="column">
+                            <a href="#">Skúsiť CSS</a>
+                            <a href="#">CSS Referencie</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crd">
+                    <div class="imgBx">
+                        <i class="fab fa-php" style="font-size: 50px;"></i>
+                        <h3>PHP</h3>
+                    </div>
+                    <div class="text">
+                        <p>PHP je
+                            serverový skriptovací jazyk a výkonný nástroj na vytváranie dynamických a interaktívnych
+                            webových stránok. PHP je široko používaný jazyk.</p>
+                        <div class="column">
+                            <a href="#">Súsiť PHP</a>
+                            <a href="#">PHP Referencie</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
     <!-- parralax -->
@@ -325,7 +392,7 @@
 
     <?php include 'template/footer/footer.php' ?>
 
-    
+
     <script>
     particlesJS("particles-js", {
         particles: {
