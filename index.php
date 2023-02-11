@@ -145,7 +145,7 @@
             background: url(&quot;assets/img/parralax.png&quot;) center / cover;">
     </div>
 
-    <div class="body">
+    <!-- <div class="body">
             <div class="boxik">
 
                 <div class="crd">
@@ -186,7 +186,36 @@
                 </div>
 
             </div>
+    </div> -->
+
+    <div class="con">
+        <div class="box">
+            <span></span>
+            <div class="content">
+                <h2>cvičenia</h2>
+                <p>Môžeš si preskúšať svoj skill ktorý si sa naučil.</p>
+                <a href="#">Cvičiť</a>
+                <p>Comming soon..</p>
+            </div>
+        </div>
+        <div class="box">
+            <span></span>
+            <div class="content">
+                <h2>kvízy</h2>
+                <p>Otestuj svoje znalosti na kvíze ktorý je PRO úrovni</p>
+                <a href="#">Vyskúšaj ma!</a>
+                <p>Comming soon..</p>
+            </div>
+        </div>
+        <div class="row" style="margin-right:50px;">
+            <div
+                class="col-md-12 d-flex flex-column justify-content-xl-center align-items-xl-center align-items-xxl-center">
+                <h1 style="font-weight: bold;">Cvičenia a kvízy</h1>
+                <p style="font-size: 27px; color: #212529">Otestuj svoj skill</p>
+            </div>
+        </div>
     </div>
+
 
     <?php include 'template/footer/footer.php' ?>
 

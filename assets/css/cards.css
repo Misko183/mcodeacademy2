@@ -29,7 +29,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     transition: 0.5s;
-    transform: skewY(-10deg);
+    /* transform: skewY(-10deg); */
 }
 .body .boxik .crd {
     position: relative;

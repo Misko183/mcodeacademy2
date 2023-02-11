@@ -108,6 +108,11 @@ body {
   width: calc(100% - 90px);
 }
 
+.con .box:nth-child(1):before,
+.con .box:nth-child(1):after {
+  background: linear-gradient(315deg, #ff00c3, #c800ff);
+}
+
 .con .box:nth-child(2):before,
 .con .box:nth-child(2):after {
   background: linear-gradient(315deg, #ffbc00, #ff0058);
