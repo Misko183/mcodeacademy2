@@ -26,7 +26,7 @@ session_start();
 <body>
 <?php include 'template/nav.php' ?>
     <div class="row g-0">
-        <div class="col-md-4 col-lg-3 col-xl-2 col-xxl-2" style="background: rgb(33,37,41);color: var(--bs-white);" data-bs-target="#navcol-1">
+        <div class="col-md-4 col-lg-3 col-xl-2 col-xxl-2" style="background: rgb(33,37,41);color: var(--bs-white);width: fit-content;padding-right: 2rem;" data-bs-target="#navcol-1">
             <nav class="navbar navbar-light navbar-expand-md" style="color: var(--bs-gray-400);width: 100%;">
                 <div class="container-fluid"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="color: var(--bs-gray-300);"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1" style="width: 100%;">
@@ -62,7 +62,7 @@ session_start();
                 </div>
             </nav>
         </div>
-        <div class="col-md-8 col-lg-9 col-xl-8 col-xxl-8 text-center" style="margin-left: 0px;padding-right: 15px;padding-left: 15px;">
+        <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-9 text-center" style="margin-left: 0px;padding-right: 15px;padding-left: 15px;">
             <section class="text-center py-4 py-xl-5">
                 <div class="container">
                     <div class="text-white bg-dark border rounded border-0 p-4 p-md-5" style="background: url(&quot;assets/img/parralax.png&quot;) center;height: 143px;"></div>
@@ -133,7 +133,7 @@ session_start();
                 <li>PHP sa ľahko učí a funguje efektívne na strane servera </li>
             </ul>
         </div>
-        <div class="col"></div>
+        <div class="col-md-2 col-lg-3 col-xl-1 col-xxl-1"></div>
     </div>
     <?php include 'template/footer.php' ?>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
