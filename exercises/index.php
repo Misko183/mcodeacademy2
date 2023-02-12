@@ -63,6 +63,10 @@ session_start();
     <?php include 'template/nav.php'; ?>
 
     <div class="con" style="margin: auto;">
+    <div class="ttls"></div>
+        <div class="ttls"></div>
+        <div class="ttls"></div>
+        <div class="ttls"></div>
         <div class="box">
             <span></span>
             <div class="content">
