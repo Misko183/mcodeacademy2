@@ -43,7 +43,7 @@ if(!isset($admin_id)){
                         
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
+                        <div class="col-lg-6 mb-4" style="width: 80%;margin: auto;">
                             <div class="table-responsive">
                                 <table class="table" id="table">
                                     <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">

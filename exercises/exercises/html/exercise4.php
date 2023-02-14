@@ -25,9 +25,8 @@ session_start();
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css" />
     <link rel="stylesheet" href="assets/css/Navbar-Centered-Brand-icons.css" />
 </head>
-
 <body style="border-top-style: none;">
-    <?php include 'template/nav.php'; ?>
+<?php include 'template/nav.php'; ?>
     <div class="row g-0">
         <div class="col-xxl-2 d-xl-flex justify-content-xl-center" style="height: 100vh;">
             <ul class="nav nav-tabs d-flex flex-column align-items-xl-center"
@@ -46,14 +45,9 @@ session_start();
             ">
                     <h4 style="color: rgb(255, 255, 255)">HTML atribúty</h4>
                 </li>
-                <li class="nav-item" style="
-              width: 100%;
-              text-align: center;
-              background: var(--bs-cyan);
-              color: rgb(255, 255, 255);
-            ">
-                    <a class="nav-link" href="#" style="
-                color: rgb(255, 255, 255);
+                <li class="nav-item" style="width: 100%; text-align: center; color: var(--bs-gray-700)">
+                    <a class="nav-link" href="index.php" style="
+                color: var(--bs-gray-700);
                 font-weight: bold;
                 letter-spacing: 2px;
               ">Cvičenie 1</a>
@@ -72,9 +66,15 @@ session_start();
                 letter-spacing: 2px;
               ">Cvičenie 3</a>
                 </li>
-                <li class="nav-item" style="width: 100%; text-align: center; color: var(--bs-gray-700)">
-                    <a class="nav-link" href="exercise4.php" style="
-                color: var(--bs-gray-700);
+                
+                <li class="nav-item" style="
+              width: 100%;
+              text-align: center;
+              background: var(--bs-cyan);
+              color: rgb(255, 255, 255);
+            ">
+                    <a class="nav-link" href="#" style="
+                color: rgb(255, 255, 255);
                 font-weight: bold;
                 letter-spacing: 2px;
               ">Cvičenie 4</a>
@@ -94,11 +94,11 @@ session_start();
           ">
                 <p>
                 <form action="" method="post">
-                    &lt;p <input type="text" name="answer" style="max-width: 40px;">="O McodeAcademy"&gt;McodeAcademy je stránka pre
+                    &lt;p <input type="text" name="answer">="O McodeAcademy"&gt;McodeAcademy je stránka pre
                     vývojárov webu.&lt;/p&gt;
                     </p>
                     <input class="btn btn-info" type="submit" name="submit" style="margin-left: 13px"
-                        value="Odoslať odpoveď">
+                value="Odoslať odpoveď">
                     <button class="btn btn-dark ms-auto" type="button" name="show_answer" onclick="showAnswer()">
                         Ukáž odpoveď
                     </button>

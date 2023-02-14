@@ -25,9 +25,8 @@ session_start();
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css" />
     <link rel="stylesheet" href="assets/css/Navbar-Centered-Brand-icons.css" />
 </head>
-
 <body style="border-top-style: none;">
-    <?php include 'template/nav.php'; ?>
+<?php include 'template/nav.php'; ?>
     <div class="row g-0">
         <div class="col-xxl-2 d-xl-flex justify-content-xl-center" style="height: 100vh;">
             <ul class="nav nav-tabs d-flex flex-column align-items-xl-center"
@@ -46,21 +45,21 @@ session_start();
             ">
                     <h4 style="color: rgb(255, 255, 255)">HTML atribúty</h4>
                 </li>
+                <li class="nav-item" style="width: 100%; text-align: center; color: var(--bs-gray)">
+                    <a class="nav-link" href="index.php" style="
+                color: var(--bs-gray-700);
+                font-weight: bold;
+                letter-spacing: 2px;
+              ">Cvičenie 1</a>
+                </li>
                 <li class="nav-item" style="
               width: 100%;
               text-align: center;
               background: var(--bs-cyan);
               color: rgb(255, 255, 255);
             ">
-                    <a class="nav-link" href="#" style="
-                color: rgb(255, 255, 255);
-                font-weight: bold;
-                letter-spacing: 2px;
-              ">Cvičenie 1</a>
-                </li>
-                <li class="nav-item" style="width: 100%; text-align: center; color: var(--bs-gray)">
                     <a class="nav-link" href="exercise2.php" style="
-                color: var(--bs-gray-700);
+                color: rgb(255, 255, 255);
                 font-weight: bold;
                 letter-spacing: 2px;
               ">Cvičenie 2</a>
@@ -83,7 +82,7 @@ session_start();
         </div>
         <div class="col-xxl-8" style="margin-left:25px;margin-top:50px;">
             <h1>Cvičenie:</h1>
-            <p>Do odseku nižšie pridajte „popis“ s textom „O MCodeAcademy“.</p>
+            <p>Nastavte veľkosť obrázka na šírku 250 pixelov a výšku 400 pixelov.</p>
             <div class="d-flex flex-column" style="
             border-radius: 10px;
             background: rgba(145, 145, 145, 0.27);
@@ -94,21 +93,21 @@ session_start();
           ">
                 <p>
                 <form action="" method="post">
-                    &lt;p <input type="text" name="answer" style="max-width: 40px;">="O McodeAcademy"&gt;McodeAcademy je stránka pre
-                    vývojárov webu.&lt;/p&gt;
+                    &lt;img src="mcodeacademy.png" width="<input type="text" name="answer1" style="max-width: 40px;">" height="<input type="text" name="answer2" style="max-width: 40px;">"&gt;
                     </p>
                     <input class="btn btn-info" type="submit" name="submit" style="margin-left: 13px"
-                        value="Odoslať odpoveď">
+                value="Odoslať odpoveď">
                     <button class="btn btn-dark ms-auto" type="button" name="show_answer" onclick="showAnswer()">
                         Ukáž odpoveď
                     </button>
-                    <p id="correct_answer" style="display: none;">Správna odpoveď je <code>title</code></p>
+                    <p id="correct_answer" style="display: none;">Správna odpoveď je <code>šírka: 250 a výška: 400</code></p>
             </div>
             </form>
             <?php
   if (isset($_POST['submit'])) {
-    $answer = $_POST['answer'];
-    if ($answer == "title") { echo "
+    $answer = $_POST['answer1'];
+    $asnwer2 = $_POST['answer2'];
+    if ($answer == "250" && $asnwer2 == "400") { echo "
 <p style='color:green'>Správne!</p>
 "; } else { echo "<p style='color:red'>Nesprávne!</p>
 "; } } 

@@ -27,8 +27,8 @@ session_start();
 <div class="container" style="margin-top: 15%;margin-bottom:15%;">
         <div class="row">
             <div class="col d-xxl-flex justify-content-xxl-end align-items-xxl-center"><a href="html/" class="btn btn-primary" type="button" style="font-size: 30px;letter-spacing: 8px;background: var(--bs-teal);">HTML</a></div>
-            <div class="col-xxl-2 d-xxl-flex justify-content-xxl-center align-items-xxl-center"><button class="btn btn-primary" type="button" style="font-size: 30px;letter-spacing: 8px;background: var(--bs-teal);">CSS</button></div>
-            <div class="col d-xxl-flex justify-content-xxl-start align-items-xxl-center"><button class="btn btn-primary" type="button" style="font-size: 30px;letter-spacing: 8px;background: var(--bs-teal);">PHP</button></div>
+            <div class="col-xxl-2 d-xxl-flex justify-content-xxl-center align-items-xxl-center"><a href="css/" class="btn btn-primary" type="button" style="font-size: 30px;letter-spacing: 8px;background: var(--bs-teal);">CSS</a></div>
+            <div class="col d-xxl-flex justify-content-xxl-start align-items-xxl-center"><a href="php/" class="btn btn-primary" type="button" style="font-size: 30px;letter-spacing: 8px;background: var(--bs-teal);">PHP</a></div>
         </div>
     </div>
 <?php include 'template/footer.php'; ?>
