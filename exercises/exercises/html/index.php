@@ -29,7 +29,7 @@ session_start();
 <body style="border-top-style: none;">
     <?php include 'template/nav.php'; ?>
     <div class="row g-0">
-        <div class="col-xxl-2 d-xl-flex justify-content-xl-center" style="height: 100vh;">
+        <div class="col-md-3 col-lg-3 col-xl-3 col-xxl-2 d-xl-flex justify-content-xl-center" style="height: 100vh;">
             <ul class="nav nav-tabs d-flex flex-column align-items-xl-center"
                 style="width: 100%; box-shadow: 1px 0px 4px">
                 <li class="nav-item d-flex flex-row">
@@ -81,7 +81,7 @@ session_start();
                 </li>
             </ul>
         </div>
-        <div class="col-xxl-8" style="margin-left:25px;margin-top:50px;">
+        <div class="col-md-8 col-lg-8 col-xl-9 col-xxl-9" style="margin-left:25px;margin-top:50px;">
             <h1>Cvičenie:</h1>
             <p>Do odseku nižšie pridajte „popis“ s textom „O MCodeAcademy“.</p>
             <div class="d-flex flex-column" style="
