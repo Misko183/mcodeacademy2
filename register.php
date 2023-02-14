@@ -104,7 +104,7 @@ if(isset($_POST['submit'])){
                     <span></span>
                     <span></span>
                     <span></span>
-                    Prihlásiť
+                    Registrovať sa
                 </button>
                 <p>Už máš účet?<span><a href="login.php"> Prihlás sa</a></span></p>
 
