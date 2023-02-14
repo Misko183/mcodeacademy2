@@ -73,7 +73,16 @@ if(!isset($teacher_id)){
                             <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
                         </li>
                         <li  style="width: 100%;">
-                            <a href="subject.php"> <i class="fa fa-edit"></i> Triedy</a>
+                            <a href="subject.php"> <i class="fa fa-graduation-cap" aria-hidden="true"></i> Triedy</a>
+                        </li>
+                        <li  style="width: 100%;">
+                            <a href="subject.php"> <i class="fa fa-users" aria-hidden="true"></i> študenti</a>
+                        </li>
+                        <li  style="width: 100%;">
+                            <a href="subject.php"> <i class="fa fa-file-text-o" aria-hidden="true"></i> kvízy</a>
+                        </li>
+                        <li  style="width: 100%;">
+                            <a href="subject.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
                         </li>
                     </ul>
                 </div>

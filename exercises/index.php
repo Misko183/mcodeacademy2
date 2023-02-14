@@ -72,15 +72,7 @@ session_start();
             <div class="content">
                 <h2>Cvičenia</h2>
                 <p>Svoje znalosti môžete otestovať pomocou cvičení MCodeAcademy.</p>
-                <a href="exercises" class="disabled">Cvičenia</a>
-                <div class="rowws">
-                    <div class="loading-spinner"></div>
-                    <div>
-                        <p>comming soon</p>
-                    </div>
-                </div>
-                
-               
+                <a href="exercises/">Cvičenia</a>  
             </div>
         </div>
         <div class="box">
