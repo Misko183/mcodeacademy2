@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    /* background-color: #00ffbb;
+    background-image: linear-gradient(0deg, #fff 0%, #e7a83d 20%, #97d9e1 80%, #fff 100%); */
+    font-family: 'Righteous', cursive;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 460px) {
+    .body {
+        flex-direction: column;
+    }
+}
+.body .boxik {
+    position: relative;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    transition: 0.5s;
+    /* transform: skewY(-10deg); */
+}
+.body .boxik .crd {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    transition: 0.5s;
+}
+.body .boxik .crd:before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: #b5fffc;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.5s;
+}
+.body .boxik .crd:after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 15px;
+    height: 116.4%;
+    background: #b5fffc;
+    transform-origin: left;
+    transform: skewY(45deg);
+    transition: 0.5s;
+    border-bottom: 200px solid #b5fffc;
+}
+.body .boxik .crd:hover {
+    transform: translateY(-40px);
+}
+.body .boxik .crd .imgBx {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-color: #e59a18;
+    background-image: linear-gradient(0deg, #e59a18 0%, #b5fffc 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.body .boxik .crd .imgBx .fab {
+    font-size: 3em;
+}
+.body .boxik .crd .imgBx .fa-html5 {
+    background-color: #fbda61;
+    background-image: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.body .boxik .crd .imgBx .fa-css3-alt {
+    background-color: #409eff;
+    background-image: linear-gradient(45deg, #4f29cd 0%, #409eff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.body .boxik .crd .imgBx .fa-php {
+    background-color: #484C89;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.body .boxik .crd .imgBx h3 {
+    position: relative;
+    margin-top: 10px;
+}
+.body .boxik .crd .text {
+    position: relative;
+    background: #e59a18;
+    width: 100%;
+    height: 250px;
+    padding: 20px;
+    text-align: center;
+}
+.body .boxik .crd .text:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(transparent, transparent, rgba(0, 0, 0, .2));
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.5s;
+    z-index: -1;
+}
+.body .boxik .crd .text p {
+    font-size: 13px;
+}
+.body .boxik .crd:hover .text:before {
+    transform: translateY(40px) skewX(45deg);
+    filter: blur(5px);
+    opacity: 0.5;
+}
+.body .boxik .crd:nth-child(1) {
+    z-index: 3;
+}
+.body .boxik .crd:nth-child(2) {
+    z-index: 2;
+}
+.body .boxik .crd:nth-child(3) {
+    z-index: 1;
+}
+@media (max-width: 400px) {
+    .body {
+        margin-top: 50px;
+        overflow: auto;
+   }
+    .crd {
+        width: 80%;
+        margin-bottom: 100px;
+   }
+    .boxik {
+        padding-top: 50px;
+        position: flex;
+        flex-direction: column;
+        margin: auto;
+        left: 25%;
+        top: 80%;
+        width: 100% !important;
+   }
+    .boxik .crd {
+        padding-bottom: 40px;
+   }
+    .boxik .crd:hover {
+        transform: translateY(-25px);
+   }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column a{
+   border: 1px solid white;
+   margin: 3px;
+   border-radius: 8px;
+   color: #000;
+}

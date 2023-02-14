@@ -134,7 +134,7 @@ if(!isset($admin_id)){
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-lg-7 col-xl-8">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -168,31 +168,27 @@ if(!isset($admin_id)){
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-lg-6 mb-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Projects</h6>
+                                    <h6 class="text-primary fw-bold m-0">Hotová práca</h6>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="small fw-bold">Server migration<span class="float-end">20%</span></h4>
+                                    <h4 class="small fw-bold">Basic kvízy<span class="float-end">0%</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="visually-hidden">20%</span></div>
+                                        <div class="progress-bar bg-danger" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"><span class="visually-hidden">0%</span></div>
                                     </div>
-                                    <h4 class="small fw-bold">Sales tracking<span class="float-end">40%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="visually-hidden">40%</span></div>
-                                    </div>
-                                    <h4 class="small fw-bold">Customer Database<span class="float-end">60%</span></h4>
+                                    <h4 class="small fw-bold">Cvičenia<span class="float-end">60%</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="visually-hidden">60%</span></div>
                                     </div>
-                                    <h4 class="small fw-bold">Payout Details<span class="float-end">80%</span></h4>
+                                    <h4 class="small fw-bold">MCodeAcademy<span class="float-end">80%</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="visually-hidden">80%</span></div>
                                     </div>
-                                    <h4 class="small fw-bold">Account setup<span class="float-end">Complete!</span></h4>
+                                    <h4 class="small fw-bold">PHP materiály<span class="float-end">Complete!</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-success" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"><span class="visually-hidden">100%</span></div>
                                     </div>
@@ -200,13 +196,13 @@ if(!isset($admin_id)){
                             </div>
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="text-primary fw-bold m-0">Todo List</h6>
+                                    <h6 class="text-primary fw-bold m-0">Zoznam úloh</h6>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         <div class="row align-items-center no-gutters">
                                             <div class="col me-2">
-                                                <h6 class="mb-0"><strong>Lunch meeting</strong></h6><span class="text-xs">10:30 AM</span>
+                                                <h6 class="mb-0"><strong>Cvičenia</strong></h6><span class="text-xs">do 21.2.2023</span>
                                             </div>
                                             <div class="col-auto">
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1"></label></div>
@@ -216,7 +212,7 @@ if(!isset($admin_id)){
                                     <li class="list-group-item">
                                         <div class="row align-items-center no-gutters">
                                             <div class="col me-2">
-                                                <h6 class="mb-0"><strong>Lunch meeting</strong></h6><span class="text-xs">11:30 AM</span>
+                                                <h6 class="mb-0"><strong>Basic kvízy</strong></h6><span class="text-xs">do 21.2.2023</span>
                                             </div>
                                             <div class="col-auto">
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2"></label></div>
@@ -226,7 +222,7 @@ if(!isset($admin_id)){
                                     <li class="list-group-item">
                                         <div class="row align-items-center no-gutters">
                                             <div class="col me-2">
-                                                <h6 class="mb-0"><strong>Lunch meeting</strong></h6><span class="text-xs">12:30 AM</span>
+                                                <h6 class="mb-0"><strong>CSS Materialy</strong></h6><span class="text-xs">do 19.2.2023</span>
                                             </div>
                                             <div class="col-auto">
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3"></label></div>
@@ -239,6 +235,9 @@ if(!isset($admin_id)){
                         <div class="col">
                             <div class="row">
                                 <div class="col-lg-6 mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary fw-bold m-0">Farby</h6>
+                                </div>
                                     <div class="card text-white bg-primary shadow">
                                         <div class="card-body">
                                             <p class="m-0">Primary</p>

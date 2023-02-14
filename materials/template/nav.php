@@ -1,7 +1,6 @@
 <?php 
-    $link = "http://localhost" . $SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+    $link = $_SERVER["REQUEST_URI"];
 ?>
-
 <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3 sticky-top">
     <div class="container"><a class="navbar-brand d-flex align-items-center" href="../index.php"><span
                 class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"
@@ -17,14 +16,14 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="../exercises" style="font-weight: bold;">Cvičenia</a></li>
                 <?php 
-                if($_SESSION['user_type']  == 'admin') {
+                if(isset($_SESSION['user_type']) && $_SESSION['user_type']  == 'admin') {
                 ?>
                 <li class="nav-item"><a class="nav-link" href="../admin/index.php" style="font-weight: bold;">Admin panel</a></li>
                 <?php
                 }
                 ?>
                 <?php 
-                if($_SESSION['user_type']  == 'student') {
+                if(isset($_SESSION['user_type']) && $_SESSION['user_type']  == 'student') {
                 ?>
                 <li class="nav-item"><a class="nav-link" href="../student/" style="font-weight: bold;">Profil</a></li>
                 <?php
@@ -35,7 +34,7 @@
                 ?>
                 
                 <?php
-                }elseif($_SESSION['user_type'] == 'user') {
+                }elseif(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'user') {
                 ?>
                 <li class="nav-item"><a class="nav-link" href="../profile/" style="font-weight: bold;">Profil</a></li>
                 <?php
@@ -45,12 +44,12 @@
         </div>
         <div class="d-none d-md-block">
             <?php    
-                $user = $_SESSION["name"];
-                $user_type = $_SESSION["user_type"];
+                $user = isset($_SESSION['user_type']) && $_SESSION["name"];
+                $user_type = isset($_SESSION['user_type']) && $_SESSION["user_type"];
 
-                if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin' || $_SESSION['user_type'] == 'teacher' || $_SESSION['user_type'] == 'student') { 
+                if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'user' || isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'admin' || isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'teacher' || isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'student') { 
                 ?>
-                <span style="color: white; margin-right: 15px;"><?php echo $user;?><?php //echo $user_type;?></span>
+                <span style="color: white; margin-right: 15px;"><?php echo $_SESSION["name"];?><?php //echo $user_type;?></span>
                 <a 
                     role="button" 
                     data-bss-hover-animate="pulse" 

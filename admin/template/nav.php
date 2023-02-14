@@ -1,5 +1,5 @@
 <?php 
-    $link = "http://localhost" . $SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+    $link = $_SERVER["REQUEST_URI"];
 ?>
 
 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">

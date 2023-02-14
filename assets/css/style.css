@@ -59,6 +59,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   padding: 40px 0;
+  margin-top: 50px;
 }
 
 .con .box {
@@ -109,17 +110,32 @@ body {
 
 .con .box:nth-child(1):before,
 .con .box:nth-child(1):after {
-  background: linear-gradient(315deg, #ffbc00, #ff0058);
+  background: linear-gradient(315deg, #ff00c3, #c800ff);
 }
 
 .con .box:nth-child(2):before,
 .con .box:nth-child(2):after {
-  background: linear-gradient(315deg, #03a9f4, #ff0058);
+  background: linear-gradient(315deg, #ff007b, #ff00ee);
 }
 
 .con .box:nth-child(3):before,
 .con .box:nth-child(3):after {
-  background: linear-gradient(315deg, #4dff03, #00d0ff);
+  background: linear-gradient(315deg, #00eaff, #ff0059);
+}
+
+.con .box:nth-child(4):before,
+.con .box:nth-child(4):after {
+  background: linear-gradient(315deg, #ffbc00, #ff0058);
+}
+
+.con .box:nth-child(5):before,
+.con .box:nth-child(5):after {
+  background: linear-gradient(315deg, #b0f403, #00ff11);
+}
+
+.con .box:nth-child(6):before,
+.con .box:nth-child(6):after {
+  background: linear-gradient(315deg, #ff0303, #ff6f00);
 }
 
 .con .box span {
