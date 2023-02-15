@@ -92,7 +92,7 @@ session_start();
                 <p>PHP je
                     serverový skriptovací jazyk a výkonný nástroj na vytváranie dynamických a interaktívnych
                     webových stránok. PHP je široko používaný jazyk.</p>
-                <a href="#">Súsiť PHP</a>
+                <a href="php/">Skúsiť PHP</a>
                 <a href="#">PHP Referencie</a>
             </div>
         </div>

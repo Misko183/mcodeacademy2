@@ -18,10 +18,29 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Uvod do PHP | McodeAcademy</title>
+    <title>Inštálacia PHP | McodeAcademy</title>
     <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+
+
+    <!-- codemirror -->
+
+    <link rel="stylesheet" href="../assets/plugins/codemirror/lib/codemirror.css">
+    <script src="../assets/plugins/codemirror/lib/codemirror.js"></script>
+
+    <script src="../assets/plugins/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="../assets/plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="../assets/plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="../assets/plugins/codemirror/mode/javascript/javascript.js"></script>
+    <script src="../assets/plugins/codemirror/mode/css/css.js"></script>
+    <script src="../assets/plugins/codemirror/mode/clike/clike.js"></script>
+    <script src="../assets/plugins/codemirror/mode/php/php.js"></script>
+    <link rel="stylesheet" href="../assets/plugins/codemirror/theme/midnight.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
 </head>
 
 <body>
@@ -38,19 +57,22 @@ session_start();
                     <div class="collapse navbar-collapse" id="navcol-1" style="width: 100%;">
                         <ul class="navbar-nav flex-column" style="color: var(--bs-white);width: 100%;">
                             <li class="nav-item d-flex flex-column mx-auto justify-content-xxl-center"
-                                style="color: #ffffff;width: 100%;font-size: 16px;"><i class="fab fa-php"
+                                style="color: #ffffff;width: 100%;font-size: 16px;">
+                                <i class="fab fa-php"
                                     style="font-size: 108px;text-align: center;color: rgb(122,121,164);"></i>
                                 <hr
                                     style="border-radius: 56px;box-shadow: 5px 2px 7px rgb(255,255,255);color: rgb(255,255,255);border: 1px solid rgb(255,255,255);margin-top: 0;">
                             </li>
                             <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
-                                    href="index.php" style="color: var(--bs-white);">Domov PHP</a></li>
-                            <li class="nav-item" style="font-weight: bold;"><a class="nav-link active" href="uvod.php"
-                                    style="color: #797ab2;">Úvod do PHP<i class="fas fa-star"
-                                        style="color: var(--bs-yellow);margin-left: 4px;"></i></a></li>
+                                    href="index.php" style="color: var(--bs-white);"><span
+                                        style="color: var(--bs-white);">PHP Domov</span></a></li>
                             <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
-                                    href="install.php" style="color: var(--bs-white);"><span
-                                        style="color: var(--bs-white);">PHP&nbsp;</span>Inštalácia</a></li>
+                                    href="uvod.php" style="color: var(--bs-white);">Úvod do PHP</a></li>
+
+                            <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
+                                    href="install.php" style="color: #797ab2;font-weight: bold;">PHP Inštalácia<i
+                                        class="fas fa-star" style="color: var(--bs-yellow);margin-left: 4px;"></i></a>
+                            </li>
                             <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
                                     href="syntax.php" style="color: var(--bs-white);">PHP Syntax</a></li>
                             <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
@@ -104,16 +126,16 @@ session_start();
                         style="background: url(&quot;assets/img/parralax.png&quot;) center;height: 143px;"></div>
                 </div>
             </section>
-            <h1 class="text-start" style="font-weight: bold;margin-bottom: 36px;">PHP úvod</h1>
+            <h1 class="text-start" style="font-weight: bold;margin-bottom: 36px;">PHP inštalácia</h1>
             <div>
                 <div class="container">
                     <div class="row g-0" style="margin-bottom: 27px;">
-                        <div class="col-sm-7 col-md-8" style="text-align: left;"><a href="index.php"
+                        <div class="col" style="text-align: left;"><a href="uvod.php"
                                 style="letter-spacing: 3px;color: var(--bs-cyan);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;"><i
                                     class="fas fa-angle-left"
                                     style="font-size: 24px;margin-top: 0px;margin-right: 5px;"></i>Predchádzajúce</a>
                         </div>
-                        <div class="col" style="text-align: right;"><a href="install.php"
+                        <div class="col" style="text-align: right;"><a href="./syntax.php"
                                 style="letter-spacing: 3px;color: var(--bs-cyan);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;">Ďalej<i
                                     class="fas fa-angle-right"
                                     style="font-size: 24px;margin-top: 0px;margin-left: 5px;"></i></a></div>
@@ -121,72 +143,93 @@ session_start();
                 </div>
             </div>
             <hr>
-            <p style="text-align: left;">PHP kód sa spúšťa na serveri.</p>
-            <hr>
-            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Čo by ste už mali vedieť</h3>
-            <p style="text-align: left;">Skôr ako budete pokračovať, mali by ste mať základné znalosti o nasledujúcich
-                veciach:</p>
+            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Čo potrebujem?</h3>
+            <p style="text-align: left;">Ak chcete začať používať PHP, môžete:</p>
             <ul>
-                <li style="text-align: left;">HTML</li>
-                <li style="text-align: left;">CSS</li>
-                <li style="text-align: left;">JavaScript</li>
-            </ul>
-            <p style="text-align: left;">Ak chcete najskôr študovať HTML a CSS, návody nájdete na našej domovskej
-                stránke.</p>
-            <hr>
-            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Čo je PHP?</h3>
-            <ul style="text-align: left;">
-                <li>PHP je skratka pre "PHP: Hypertext Preprocessor"</li>
-                <li>PHP je široko používaný skriptovací jazyk s otvoreným zdrojovým kódom</li>
-                <li>PHP skripty sa spúšťajú na serveri</li>
-                <li>PHP je zadarmo na stiahnutie a&nbsp;používanie</li>
-            </ul>
-            <section></section>
-            <hr>
-            <div style="background: rgba(13,202,240,0.48);padding: 27px;border-radius: 19px;">
-                <h5 style="text-align: left;font-weight: bold;margin-bottom: 15px;">PHP je úžasný a popúlarný jazyk!
-                </h5>
-                <p style="text-align: left;margin-bottom: 0;">Je dostatočne výkonný na to, aby bol jadrom najväčšieho
-                    blogovacieho systému na webe (WordPress)!</p>
-                <p style="text-align: left;margin-bottom: 0;">Je dostatočne hlboký na to, aby prevádzkoval veľké
-                    sociálne siete!</p>
-                <p style="text-align: left;margin-bottom: -50px;">Je tiež dosť jednoduché byť prvým jazykom na strane
-                    servera pre začiatočníkov! <br><br><br></p>
-            </div>
-            <hr>
-            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Čo je súbor PHP?</h3>
-            <ul style="text-align: left;">
-                <li>PHP súbory môžu obsahovať text, HTML, CSS, JavaScript a PHP kód</li>
-                <li>PHP kód sa spustí na serveri a výsledok sa vráti prehliadaču ako obyčajný HTML</li>
-                <li>PHP súbory majú príponu ".php"</li>
+                <li style="text-align: left;">Nájdite webového hostiteľa s podporou PHP a MySQL </li>
+                <li style="text-align: left;">Nainštalujte webový server na svoj vlastný počítač a potom nainštalujte
+                    PHP a MySQL </li>
             </ul>
             <hr>
-            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Čo dokáže PHP?</h3>
-            <ul style="text-align: left;">
-                <li>PHP dokáže generovať dynamický obsah stránky </li>
-                <li>PHP dokáže vytvárať, otvárať, čítať, zapisovať, mazať a zatvárať súbory na serveri</li>
-                <li>PHP dokáže zbierať údaje z formulárov </li>
-                <li>PHP môže odosielať a prijímať cookies </li>
-                <li>PHP môže pridávať, mazať, upravovať údaje vo vašej databáze </li>
-                <li>PHP možno použiť na riadenie prístupu používateľov </li>
-                <li>PHP dokáže šifrovať dáta </li>
-            </ul>
-            <p style="text-align: left;">S PHP nie ste obmedzený na výstup HTML. Môžete vydávať obrázky alebo súbory
-                PDF. Môžete tiež vytlačiť ľubovoľný text, napríklad XHTML a XML. </p>
+            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Použite webového hostiteľa s podporou
+                PHP</h3>
+            <p style="text-align: left;">Ak má váš server aktivovanú podporu pre PHP, nemusíte robiť nič.</p>
+            <p style="text-align: left;">Stačí vytvoriť nejaké .php súbory, umiestniť ich do vášho webového adresára a
+                server ich automaticky analyzuje za vás.</p>
+            <p style="text-align: left;">Nemusíte nič kompilovať ani inštalovať žiadne ďalšie nástroje.</p>
+            <p style="text-align: left;">Pretože PHP je zadarmo, väčšina webových hostiteľov ponúka podporu PHP.</p>
             <hr>
-            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Prečo PHP?</h3>
-            <ul style="text-align: left;">
-                <li>PHP beží na rôznych platformách (Windows, Linux, Unix, Mac OS X atď.) </li>
-                <li>PHP je kompatibilné s takmer všetkými dnes používanými servermi (Apache, IIS atď.) </li>
-                <li>PHP podporuje širokú škálu databáz </li>
-                <li>PHP je zadarmo. Stiahnite si ho z oficiálneho zdroja PHP: www.php.net </li>
-                <li>PHP sa ľahko učí a funguje efektívne na strane servera </li>
+            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Nastavte si PHP na svojom PC</h3>
+            <p style="text-align: left;">Ak však váš server nepodporuje PHP, musíte: </p>
+            <ul>
+                <li style="text-align: left;">nainštalovať webový server</li>
+                <li style="text-align: left;">nainštalovať PHP</li>
+                <li style="text-align: left;">nainštalovať databázu, napríklad MySQL</li>
             </ul>
+            <p style="text-align: left;">Oficiálna stránka PHP (PHP.net) obsahuje pokyny na inštaláciu PHP: <a
+                    href="http://php.net/manual/en/install.php">http://php.net/manual/en/install.php</a></p>
+            <hr>
+            <h3 style="text-align: left;font-weight: bold;margin-bottom: 15px;">Online kompilátor / editor PHP</h3>
+            <p style="text-align: left;">Pomocou online kompilátora PHP môžete upravovať kód PHP a výsledok sa zobrazí
+                hneď po zmene</p>
+            <section style="text-align: left;">
+                <div class="compilator">
+                    <div class="container">
+                        <div class="row">
+                            <div class="textarea" style="max-width: 450px;">
+                                <textarea id="code0" style="max-height: 180px">
+
+
+<?php 
+echo "<?php\necho \"Hello, World!\";\n?>"; 
+?>
+
+
+
+	            </textarea>
+                            </div>
+                            <div class="preview" style="max-width: 450px">
+                                <div id="preview0"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <script>
+                    var delay;
+
+                    // Initialize CodeMirror editor with a nice html5 canvas demo.
+                    var editor = CodeMirror.fromTextArea(document.getElementById("code0"), {
+                        mode: "application/x-httpd-php",
+                        lineNumbers: true,
+                        theme: "midnight",
+                        styleActiveLine: true,
+                        matchBrackets: true,
+                        selectionPointer: true,
+                    });
+                    editor.on("change", function() {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "codemirror/run.php", true);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        xhr.onreadystatechange = function() {
+                            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                                document.getElementById("preview0").innerHTML = this.responseText;
+                            }
+                        };
+                        xhr.send("code=" + encodeURIComponent(editor.getValue()));
+                    });
+                    </script>
+                </div>
         </div>
-        <div class="col-md-2 col-lg-3 col-xl-1 col-xxl-1"></div>
+        </section>
+    </div>
+    <div class="col-md-2 col-lg-3 col-xl-1 col-xxl-1"></div>
     </div>
     <?php include 'template/footer.php' ?>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
