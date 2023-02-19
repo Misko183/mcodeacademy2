@@ -79,10 +79,10 @@ if(!isset($teacher_id)){
                         <li style="width: 100%;">
                             <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
                         </li>
-                        <li class="active" style="width: 100%;">
-                            <a href=""> <i class="fa fa-edit"></i> Triedy</a>
+                        <li style="width: 100%;">
+                            <a href="subject.php"> <i class="fa fa-edit"></i> Triedy</a>
                         </li>
-                        <li  style="width: 100%;">
+                        <li class="active" style="width: 100%;">
                             <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> Študenti</a>
                         </li>
                     </ul>
@@ -99,27 +99,25 @@ if(!isset($teacher_id)){
                         <div class="row">
                         <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
                             <div class="table-responsive">
-                                <table class="table" id="table">
-                                    <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                            <table class="table" id="table">
+                                    <thead
+                                        style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
                                         <tr>
                                             <th>ID</th>
-                                            <th>Predmet</th>
+                                            <th>Meno</th>
                                             <th>Trieda</th>
-                                            <th>Vyučujúci</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-					                        $qry = $conn->query("SELECT subject.*,class.class,users.full_name FROM subject LEFT JOIN class ON subject.class_id = class.id LEFT JOIN users ON subject.teacher_id = users.id where subject.teacher_id = $teacher_id;");
-                                            $i = 1;
-					                        if($qry || $qry ->num_rows > 0){
-						                    while($row = $qry->fetch_assoc()){
+					                        $qry = $conn->query("SELECT students.*,users.full_name,class.class FROM `students` LEFT JOIN `users` ON students.user_id = users.id LEFT JOIN `class` on students.class_id = class.id");
+                                            if($qry || $qry ->num_rows > 0){
+                                            while($row= $qry->fetch_assoc()){
 						                ?>
                                         <tr>
-                                            <td><?php echo $row['id'] ?></td>
-                                            <td><?php echo $row['subject_name'] ?></td>
-                                            <td><?php echo $row['class'] ?></td>
+                                            <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['full_name']; ?></td>
+                                            <td><?php echo $row['class']; ?></td>
                                         </tr>
                                         <?php
 					                        }

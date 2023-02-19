@@ -11,7 +11,7 @@ $sql = "DELETE FROM `question_opt` WHERE question_id = '$id'";
 if(mysqli_query($conn, $sql)){
 }else {}
 
-header("location: ../admin/quiz_view.php?id=$ids");
+header("location: ../teacher/quiz_view.php?id=$ids");
 
 // echo $id;
 ?>

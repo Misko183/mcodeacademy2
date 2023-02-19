@@ -97,7 +97,10 @@ if (isset($_POST['submit'])) {
                         </li>
                         <li  style="width: 100%;">
                             <a href="subject.php"> <i class="fa fa-edit"></i> Triedy</a>
-                        </li
+                        </li>
+                        <li  style="width: 100%;">
+                            <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> Študenti</a>
+                        </li>
                     </ul>
                 </div>
             </div>

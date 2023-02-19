@@ -76,10 +76,10 @@ if(!isset($teacher_id)){
                             <a href="subject.php"> <i class="fa fa-graduation-cap" aria-hidden="true"></i> Triedy</a>
                         </li>
                         <li  style="width: 100%;">
-                            <a href="subject.php"> <i class="fa fa-users" aria-hidden="true"></i> študenti</a>
+                            <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> Študenti</a>
                         </li>
                         <li  style="width: 100%;">
-                            <a href="subject.php"> <i class="fa fa-file-text-o" aria-hidden="true"></i> kvízy</a>
+                            <a href="quiz_list.php"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Kvízy</a>
                         </li>
                         <li  style="width: 100%;">
                             <a href="subject.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
