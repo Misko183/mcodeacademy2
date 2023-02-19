@@ -1,4 +1,4 @@
-<footer class="text-center bg-dark text-white" style="background-color: rgb(33, 37, 41) !important;position: absolute; width: 100%; bottom:0;">
+<footer class="text-center bg-dark text-white" style="background-color: rgb(33, 37, 41) !important;">
         <div class="container text-muted py-4 py-lg-5">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../../../index.php">Materiály</a></li>

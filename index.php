@@ -54,6 +54,9 @@
     <link rel="stylesheet" href="./assets/css/cards.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9863063720030996"
+     crossorigin="anonymous"></script>
+
 </head>
 
 <body>

@@ -80,7 +80,7 @@ session_start();
                 </li>
             </ul>
         </div>
-        <div class="col-md-8 col-lg-8 col-xl-9 col-xxl-9" style="margin-left:25px;margin-top:50px;">
+        <div class="col-md-8 col-lg-8 col-xl-8 col-xxl-8" style="margin-left:25px;margin-top:50px;">
             <h1>Cvičenie:</h1>
             <p>Zadajte alternatívny text pre obrázok.</p>
             <p>Alternatívny text je užitočný, keď sa obrázok nedá zobraziť, napríklad keď stránku číta čítačka obrazovky.</p>

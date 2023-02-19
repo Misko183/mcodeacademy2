@@ -1,4 +1,4 @@
-<footer class="text-center bg-dark text-white position-absolute">
+<footer class="text-center bg-dark text-white">
         <div class="container text-muted py-4 py-lg-5">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Materiály</a></li>
@@ -43,7 +43,7 @@
                     <p>Copyright © 2022 MCodeAcademy<br></p>
                 </div>
                 <div class="col-md-6 text-white">
-                    <p>Web App created by <a class="sladecek" href="https://sladecek.sk" target="_blank" style="color: white;">m1kes</a> with ❤<br></p>
+                    <p>Web App created by <a class="sladecek" href="https://sladecek.sk" target="_blank" style="color: white;">sladecek</a> with ❤<br></p>
                 </div>
             </div>
         </div>

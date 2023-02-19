@@ -22,12 +22,13 @@ session_start();
     <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/sidebar-content.css">
 </head>
 
 <body>
     <?php include 'template/nav.php' ?>
     <div class="row g-0">
-        <div class="col-md-4 col-lg-3 col-xl-2 col-xxl-2"
+        <div class="col-md-4 col-lg-3 col-xl-2 col-xxl-2 sidebarr"
             style="background: rgb(33,37,41);color: var(--bs-white);width: fit-content;padding-right: 2rem;"
             data-bs-target="#navcol-1">
             <nav class="navbar navbar-light navbar-expand-md" style="color: var(--bs-gray-400);width: 100%;">
@@ -44,9 +45,9 @@ session_start();
                                     style="border-radius: 56px;box-shadow: 5px 2px 7px rgb(255,255,255);color: rgb(255,255,255);border: 1px solid rgb(255,255,255);margin-top: 0;">
                             </li>
                             <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
-                                    href="index.php" style="color: var(--bs-white);">Domov PHP</a></li>
+                                    href="index.php" style="color: var(--bs-white);">PHP Domov</a></li>
                             <li class="nav-item" style="font-weight: bold;"><a class="nav-link active" href="uvod.php"
-                                    style="color: #797ab2;">Úvod do PHP<i class="fas fa-star"
+                                    style="color: #797ab2;">PHP Úvod<i class="fas fa-star"
                                         style="color: var(--bs-yellow);margin-left: 4px;"></i></a></li>
                             <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
                                     href="install.php" style="color: var(--bs-white);"><span
@@ -96,8 +97,8 @@ session_start();
                 </div>
             </nav>
         </div>
-        <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-9 text-center"
-            style="margin-left: 0px;padding-right: 15px;padding-left: 15px;">
+        <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-9 text-center content"
+            style="padding-right: 15px;padding-left: 15px;">
             <section class="text-center py-4 py-xl-5">
                 <div class="container">
                     <div class="text-white bg-dark border rounded border-0 p-4 p-md-5"

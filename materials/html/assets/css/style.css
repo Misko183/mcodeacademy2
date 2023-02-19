@@ -1,29 +1,21 @@
-.sidebar_mm {
-  position: fixed;
-  overflow-y: scroll;
-  height: 89.5vh;
-  /* text-align: center; */
-  margin-right: 25px;
-  background-color: rgb(70, 70, 70);
+.CodeMirror.cm-s-midnight {
+    height: auto;
+    border: 3px solid var(--bs-cyan);
 }
 
-.sidebar_mm_height {
-  min-height: 95.7vh;
-  margin-top: -74px;
+.preview {
+    border: 3px solid var(--bs-cyan);
+}
+.compilator{
+    margin-bottom: 20px;
 }
 
-.widthh {
-  width: 15rem;
-  background: rgb(70, 70, 70);
+.border {
+    text-align: left;
+    border: 1px solid gray;
+    margin-bottom: 10px;
 }
 
-@media only screen and (max-width: 768px) {
-  .widthh {
-    width: 10.5rem;
-  }
-}
-.preview  {
-  margin-top: 25px;
-  border: solid 1px black;
-  width: 100%;
+.border p{
+    margin: 0;
 }
