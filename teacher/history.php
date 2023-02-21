@@ -87,17 +87,18 @@ if(!isset($teacher_id)){
                         <li style="width: 100%;">
                             <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
                         </li>
-                        <li  style="width: 100%;">
+                        <li style="width: 100%;">
                             <a href="subject.php"> <i class="fa fa-graduation-cap" aria-hidden="true"></i> Triedy</a>
                         </li>
-                        <li  style="width: 100%;">
+                        <li style="width: 100%;">
                             <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> Študenti</a>
                         </li>
-                        <li class="active" style="width: 100%;">
+                        <li style="width: 100%;">
                             <a href="quiz_list.php"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Kvízy</a>
                         </li>
-                        <li  style="width: 100%;">
-                            <a href="history.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
+                        <li class="active" style="width: 100%;">
+                            <a href="history.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História
+                                kvízov</a>
                         </li>
                     </ul>
                 </div>
@@ -111,224 +112,96 @@ if(!isset($teacher_id)){
                     <div class="panel-body bio-graph-info">
                         <div class="row">
                             <div class="col-10">
-                                <h1>Triedy</h1>
+                                <h1>História kvízov</h1>
                             </div>
-                            <div class="col-2">
-                                <a data-bs-target="#add_quiz" data-bs-toggle="modal" data-toggle="modal"
-                                    data-target="#add_quiz" class="btn btn-primary btn-sm d-none d-sm-inline-block"
-                                    role="button" href="#">
-                                    <i class="fa fa-plus" style="font-size: 18px;margin-right: 10px;"></i>
-                                    &nbsp;Pridať nový kvíz
-                                </a>
-                            </div>
-
                         </div>
-
                         <div class="row">
-                        <div class="col-md-12 alert alert-primary">Quiz Records</div>
-                        <br>
-                        <div class="col-md-4 offset-md-4 mb-4">
-                            <select class="form-control select2"
-                                onchange="location.replace('history.php?quiz_id='+this.value)">
-                                <option value="all"
-                                    <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == 'all' ? 'selected' : '' ?>>
-                                    All
-                                </option>
-                                <?php 
+                            <br>
+                            <div class="col-md-12 offset-md-12 mb-4 justify-content-center align-content-center">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h3>Zobrazenie kvízov:</h3>
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-control select2"
+                                            onchange="location.replace('history.php?quiz_id='+this.value)">
+                                            <option value="all"
+                                                <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == 'all' ? 'selected' : '' ?>>
+                                                Všetky</option>
+                                            <?php 
 				$where =''; 
-				if($_SESSION['login_user_type'] == 'teacher'){
-				$where = ' where user_id = '.$_SESSION['teacher_id'].' '; 
-				 }
+				if($_SESSION['user_type'] == "admin"){
+					
+				}
 				$quiz = $conn->query("SELECT * FROM quiz_list order by quiz_name asc");
 				while($row = $quiz->fetch_assoc()){
 				?>
-                                <option value="<?php echo $row['id'] ?>"
-                                    <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == $row['id']  ? 'selected' : '' ?>>
-                                    <?php echo $row['quiz_name'] ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead
-                                        style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Student Name</th>
-                                            <th>Quiz</th>
-                                            <th>Score</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-					                    $where = '';
-					                    if($_SESSION['user_id'] == 'teacher'){
-					                    	$where = ' where q.user_id = '.$_SESSION['teacher_id'].' ';
-					                    }
-					                    if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
-					                    	if(empty($where)){
-					                    	$where = ' where q.id = '.$_GET['quiz_id'].' ';
-                                            
-					                    	}else{
-					                    	$where = ' and q.id = '.$_GET['quiz_id'].' ';
-                                            
-					                    	}
-					                    }
-					                    $qry = $conn->query("SELECT h.*,u.full_name as students,q.quiz_name FROM history h INNER JOIN users u on h.user_id = u.id INNER JOIN quiz_list q on h.quiz_id = q.id order by u.name asc; ");
-					                    $i = 1;
-					                    if($qry->num_rows > 0){
-					                    	while($row= $qry->fetch_assoc()){
+                                            <option value="<?php echo $row['id'] ?>"
+                                                <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == $row['id']  ? 'selected' : '' ?>>
+                                                <?php echo $row['quiz_name'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
+                                <div class="table-responsive">
+                                    <table class="table" id="table">
+                                        <thead
+                                            style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Meno študenta</th>
+                                                <th>Trieda</th>
+                                                <th>Kvíz</th>
+                                                <th>Skóre</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+					$where = '';
+					if($_SESSION['user_type'] == "admin"){
+						
+					}
+					if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
+						if(empty($where)){
+						$where = ' where q.id = '.$_GET['quiz_id'].' ';
+
+						}else{
+						$where = ' and q.id = '.$_GET['quiz_id'].' ';
+
+						}
+					}
+					$qry = $conn->query("SELECT h.*,class,u.full_name as student,q.quiz_name from history h inner join class on class.class inner join students on class_id inner join users u on h.user_id = u.id inner join quiz_list q on h.quiz_id = q.id ".$where." order by u.name asc;
+                    ");
+					$i = 1;
+					if($qry->num_rows > 0){
+						while($row= $qry->fetch_assoc()){
 							
-						            ?>
-                                        <tr>
-                                            <td><?php echo $i++ ?></td>
-                                            <td><?php echo ucwords($row['students']) ?></td>
-                                            <td><?php echo $row['quiz_name'] ?></td>
-                                            <td class="text-center"><?php echo $row['score'].'/'.$row['total_score']  ?>
-                                            </td>
-                                        </tr>
-                                        <?php
+						?>
+                                            <tr>
+                                                <td><?php echo $i++ ?></td>
+                                                <td><?php echo ucwords($row['student']) ?></td>
+                                                <td><?php echo ucwords($row['class']) ?></td>
+                                                <td><?php echo $row['quiz_name'] ?></td>
+                                                <td class="text-center">
+                                                    <?php echo $row['score'].'/'.$row['total_score']  ?>
+                                                </td>
+                                            </tr>
+                                            <?php
 					                    }
 					                    }
 					                ?>
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Trigger the modal with a button -->
 
-        <div id="change_subject" class="modal fade" role="dialog" tabindex="-1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Upraviť predmet</h4>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="post" action="../scripts/save_subject.php" id="class-frm">
-                        <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
-                            <label class="form-label">Názov predmetu</label>
-                            <input type="text" style="margin-bottom: 10px;" name="subject_name">
-                            <label class="form-label">trieda</label>
-                            <select style="margin-bottom: 10px;" name="class">
-                                <optgroup label="Zoznam tried">
-                                    <?php 
-                                        $sql = "SELECT * FROM class";
-                                        $res = mysqli_query($conn, $sql);
-
-                                        while($rows = mysqli_fetch_array($res))
-                                        { ?>
-                                    <option value="<?php echo $rows['id'];?>">
-                                        <?php echo $rows['class'] ?></option>
-                                    <?php
-                                        }
-                                    ?>
-                                </optgroup>
-                            </select>
-                            <label class="form-label">Vyučujúci</label>
-                            <select style="margin-bottom: 10px;" name="teacher">
-                                <optgroup label="Zoznam učiteľov">
-                                    <?php 
-                                        $sql = "SELECT * FROM users WHERE user_type = 'teacher'";
-                                        $res = mysqli_query($conn, $sql);
-
-                                        while($rows = mysqli_fetch_array($res))
-                                        { ?>
-                                    <option value="<?php echo $rows['id'];?>">
-                                        <?php echo $rows['full_name'] ?></option>
-                                    <?php
-                                        }
-                                    ?>
-                                </optgroup>
-                            </select>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit" name="submit">Save</button>
-                            </div>
-                        </div>
-                        <input type="hidden" name="id">
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div id="add_quiz" class="modal fade" role="dialog" tabindex="-1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Pridať nový kvíz</h4>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form method="post" action="../scripts/teacher_save_quiz.php">
-                        <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
-                            <label class="form-label">Názov kvízu</label>
-                            <input type="text" style="margin-bottom: 10px;" name="quiz_name">
-                            <label class="form-label>">Počet bodov za otázku</label>
-                            <input type="number" style="margin-bottom: 10px;" name="qpoints">
-                            <label class="form-label">Trieda</label>
-                            <select style="margin-bottom: 10px;" name="class">
-                                <option value="" selected="" disabled="">Vyberte tu</option>
-                                <optgroup label="Zoznam tried">
-                                    <?php 
-                                        $sql = "SELECT * FROM class";
-                                        $res = mysqli_query($conn, $sql);
-
-                                        while($rows = mysqli_fetch_array($res))
-                                        { ?>
-                                    <option value="<?php echo $rows['id'];?>">
-                                        <?php echo $rows['class'] ?></option>
-                                    <?php
-                                        }
-                                    ?>
-                                </optgroup>
-                            </select>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit" name="submit">Save</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div id="change_quiz" class="modal fade" role="dialog" tabindex="-1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Upraviť kvíz</h4>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form method="post" action="../scripts/update_quiz.php" id="quiz-frm">
-                        <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
-                            <label class="form-label">Názov kvízu</label>
-                            <input type="text" style="margin-bottom: 10px;" name="quiz_name">
-                            <label class="form-label>">Počet bodov za otázku</label>
-                            <input type="number" style="margin-bottom: 10px;" name="qpoints">
-                            <label class="form-label">Trieda</label>
-                            <select style="margin-bottom: 10px;" name="class">
-                                <option value="" selected="" disabled="">Vyberte tu</option>
-                                <optgroup label="Zoznam tried">
-                                    <?php 
-                                        $sql = "SELECT * FROM class";
-                                        $res = mysqli_query($conn, $sql);
-
-                                        while($rows = mysqli_fetch_array($res))
-                                        { ?>
-                                    <option value="<?php echo $rows['id'];?>">
-                                        <?php echo $rows['class'] ?></option>
-                                    <?php
-                                        }
-                                    ?>
-                                </optgroup>
-                            </select>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit" name="submit">Aktualizovať</button>
-                            </div>
-                        </div>
-                        <input type="hidden" name="id">
-                    </form>
                 </div>
             </div>
         </div>
@@ -368,56 +241,6 @@ if(!isset($teacher_id)){
                 }
             }
         });
-        $('.edit_quiz').click(function() {
-            var id = $(this).attr('data-id')
-            $.ajax({
-                url: '../scripts/get_quiz.php?id=' + id,
-                error: err => console.log(err),
-                success: function(resp) {
-                    if (typeof resp != undefined) {
-                        resp = JSON.parse(resp)
-                        $('[name="id"]').val(resp.id)
-                        $('[name="quiz_name]').val(resp.quiz_name)
-                        $('[name="qpoints]').val(resp.qpoints)
-                        $('[name="class]').val(resp.class_id)
-                        $('#change_quiz').modal('show')
-                    }
-                }
-            })
-        })
-        $('#quiz-frm').submit(function(e) {
-            e.preventDefault();
-            $('#class-frm [name="submit"]').attr('disabled', true)
-            $('#class-frm [name="submit"]').html('Ukladá sa...')
-            $.ajax({
-                url: '../scripts/update_quiz.php?id=',
-                method: 'POST',
-                data: $(this).serialize(),
-                error: err => {
-                    console.log(err)
-                    alert('An error occured')
-                    $('#class-frm [name="submit"]').removeAttr('disabled')
-                    $('#class-frm [name="submit"]').html('Save')
-                },
-                success: function(resp) {
-                    alert('Údaje boli úspešne uložené');
-                    location.reload()
-                }
-            })
-        })
-        $('.remove_quiz').click(function() {
-            var id = $(this).attr('data-id')
-            var conf = confirm('Ste si istý/á že chcete vymazať tieto údaje?.');
-            if (conf == true) {
-                $.ajax({
-                    url: '../scripts/del_quiz.php?id=' + id,
-                    error: err => console.log(err),
-                    success: function(resp) {
-                        location.reload()
-                    }
-                })
-            }
-        })
     });
     </script>
     <script type="text/javascript"></script>

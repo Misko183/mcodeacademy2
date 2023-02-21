@@ -34,20 +34,19 @@ if(!isset($admin_id)){
                 <?php include 'template/nav.php' ?>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12 alert alert-primary">Quiz Records</div>
+                        <div class="col-md-12 alert alert-primary">História kvízov</div>
                         <br>
                         <div class="col-md-4 offset-md-4 mb-4">
                             <select class="form-control select2"
                                 onchange="location.replace('history.php?quiz_id='+this.value)">
                                 <option value="all"
                                     <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == 'all' ? 'selected' : '' ?>>
-                                    All
-                                </option>
+                                    All</option>
                                 <?php 
 				$where =''; 
-				if($_SESSION['login_user_type'] == 'admin'){
-				$where = ' where user_id = '.$_SESSION['admin_id'].' '; 
-				 }
+				if($_SESSION['user_type'] == "admin"){
+					
+				}
 				$quiz = $conn->query("SELECT * FROM quiz_list order by quiz_name asc");
 				while($row = $quiz->fetch_assoc()){
 				?>
@@ -59,40 +58,40 @@ if(!isset($admin_id)){
                         </div>
                         <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" id="table">
                                     <thead
                                         style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
                                         <tr>
                                             <th>#</th>
-                                            <th>Student Name</th>
-                                            <th>Quiz</th>
-                                            <th>Score</th>
+                                            <th>Meno študenta</th>
+                                            <th>Kvíz</th>
+                                            <th>Skóre</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-					                    $where = '';
-					                    if($_SESSION['admin_id'] == 'admin'){
-					                    	$where = ' where q.user_id = '.$_SESSION['admin_id'].' ';
-					                    }
-					                    if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
-					                    	if(empty($where)){
-					                    	$where = ' where q.id = '.$_GET['quiz_id'].' ';
-                                            
-					                    	}else{
-					                    	$where = ' and q.id = '.$_GET['quiz_id'].' ';
-                                            
-					                    	}
-					                    }
-					                    $qry = $conn->query("SELECT h.*,u.full_name as students,q.quiz_name FROM history h INNER JOIN users u on h.user_id = u.id INNER JOIN quiz_list q on h.quiz_id = q.id order by u.name asc; ");
-					                    $i = 1;
-					                    if($qry->num_rows > 0){
-					                    	while($row= $qry->fetch_assoc()){
+					$where = '';
+					if($_SESSION['user_type'] == "admin"){
+						
+					}
+					if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
+						if(empty($where)){
+						$where = ' where q.id = '.$_GET['quiz_id'].' ';
+
+						}else{
+						$where = ' and q.id = '.$_GET['quiz_id'].' ';
+
+						}
+					}
+					$qry = $conn->query("SELECT h.*,u.full_name as student,q.quiz_name from history h inner join users u on h.user_id = u.id inner join quiz_list q on h.quiz_id = q.id ".$where." order by u.name asc ");
+					$i = 1;
+					if($qry->num_rows > 0){
+						while($row= $qry->fetch_assoc()){
 							
-						            ?>
+						?>
                                         <tr>
                                             <td><?php echo $i++ ?></td>
-                                            <td><?php echo ucwords($row['students']) ?></td>
+                                            <td><?php echo ucwords($row['student']) ?></td>
                                             <td><?php echo $row['quiz_name'] ?></td>
                                             <td class="text-center"><?php echo $row['score'].'/'.$row['total_score']  ?>
                                             </td>
