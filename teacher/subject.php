@@ -48,7 +48,7 @@ if(!isset($teacher_id)){
 
     <?php include 'template/nav/nav.php'; ?>
 
-
+    
 
     <div class="container bootstrap snippets bootdey">
         <div class="row">
@@ -97,22 +97,6 @@ if(!isset($teacher_id)){
                     <div class="panel-body bio-graph-info">
                         <h1>Triedy</h1>
                         <div class="row">
-<<<<<<< HEAD
-                            <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
-                                <div class="table-responsive">
-                                    <table class="table" id="table">
-                                        <thead
-                                            style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Predmet</th>
-                                                <th>Trieda</th>
-                                                <th>Vyučujúci</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-=======
                         <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
                             <div class="table-responsive">
                                 <table class="table" id="table">
@@ -126,21 +110,11 @@ if(!isset($teacher_id)){
                                     </thead>
                                     <tbody>
                                         <?php
->>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
 					                        $qry = $conn->query("SELECT subject.*,class.class,users.full_name FROM subject LEFT JOIN class ON subject.class_id = class.id LEFT JOIN users ON subject.teacher_id = users.id where subject.teacher_id = $teacher_id;");
                                             $i = 1;
 					                        if($qry || $qry ->num_rows > 0){
 						                    while($row = $qry->fetch_assoc()){
 						                ?>
-<<<<<<< HEAD
-                                            <tr>
-                                                <td><?php echo $row['id'] ?></td>
-                                                <td><?php echo $row['subject_name'] ?></td>
-                                                <td><?php echo $row['class'] ?></td>
-                                                <td><?php echo $row['full_name']; ?></td>
-                                            </tr>
-                                            <?php
-=======
                                         <tr>
                                             <td><?php echo $row['id'] ?></td>
                                             <td><?php echo $row['subject_name'] ?></td>
@@ -148,14 +122,13 @@ if(!isset($teacher_id)){
                                             <td><?php echo $row['full_name']; ?></td>
                                         </tr>
                                         <?php
->>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
 					                        }
 					                        }
 					                    ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -163,43 +136,138 @@ if(!isset($teacher_id)){
         </div>
         <!-- Trigger the modal with a button -->
 
-        <?php include 'template/footer/footer.php' ?>
+    <div id="change_subject" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Upraviť predmet</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="post" action="../scripts/save_subject.php" id="class-frm">
+                            <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
+                            <label class="form-label">Názov predmetu</label>
+                                <input type="text" style="margin-bottom: 10px;" name="subject_name">
+                                <label class="form-label">trieda</label>
+                                <select style="margin-bottom: 10px;" name="class">
+                                    <optgroup label="Zoznam tried">
+                                        <?php 
+                                        $sql = "SELECT * FROM class";
+                                        $res = mysqli_query($conn, $sql);
 
-        <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                "language": {
-                    "sProcessing": "spracovanie...",
-                    "sLengthMenu": "Zobraziť _MENU_ záznamov",
-                    "sZeroRecords": "Neboli nájdené žiadne výsledky",
-                    "sEmptyTable": "V tejto tabuľke nie sú dostupné žiadne údaje",
-                    "sInfo": "Zobrazené záznamy od _START_ do _END_ z celkom _TOTAL_ záznamov",
-                    "sInfoEmpty": "Zobrazené záznamy od 0 do 0 z celkom 0 záznamov",
-                    "sInfoFiltered": "(Filtrovanie celkom _MAX_ záznamov)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Vyhľadať:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Načítanie...",
-                    "oPaginate": {
-                        "sFirst": "najprv",
-                        "sLast": "Posledný",
-                        "sNext": "Ďalšie",
-                        "sPrevious": "Predchádzajúce"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Aktiváciou zoradíte stĺpec vo vzostupnom poradí",
-                        "sSortDescending": ": Aktiváciou zoradíte stĺpec v zostupnom poradí"
-                    }
+                                        while($rows = mysqli_fetch_array($res))
+                                        { ?>
+                                        <option value="<?php echo $rows['id'];?>">
+                                            <?php echo $rows['class'] ?></option>
+                                        <?php
+                                        }
+                                    ?>
+                                    </optgroup>
+                                </select >
+                                <label class="form-label">Vyučujúci</label>
+                                <select style="margin-bottom: 10px;" name="teacher">
+                                    <optgroup label="Zoznam učiteľov">
+                                        <?php 
+                                        $sql = "SELECT * FROM users WHERE user_type = 'teacher'";
+                                        $res = mysqli_query($conn, $sql);
+
+                                        while($rows = mysqli_fetch_array($res))
+                                        { ?>
+                                        <option value="<?php echo $rows['id'];?>">
+                                            <?php echo $rows['full_name'] ?></option>
+                                        <?php
+                                        }
+                                    ?>
+                                    </optgroup>
+                                </select >
+                                    <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit" name="submit">Save</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id">
+                            </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    
+    
+
+
+    <?php include 'template/footer/footer.php' ?>
+    
+    <script>
+    $(document).ready(function() {
+        $('#table').DataTable({
+            "language": {
+                "sProcessing": "spracovanie...",
+                "sLengthMenu": "Zobraziť _MENU_ záznamov",
+                "sZeroRecords": "Neboli nájdené žiadne výsledky",
+                "sEmptyTable": "V tejto tabuľke nie sú dostupné žiadne údaje",
+                "sInfo": "Zobrazené záznamy od _START_ do _END_ z celkom _TOTAL_ záznamov",
+                "sInfoEmpty": "Zobrazené záznamy od 0 do 0 z celkom 0 záznamov",
+                "sInfoFiltered": "(Filtrovanie celkom _MAX_ záznamov)",
+                "sInfoPostFix": "",
+                "sSearch": "Vyhľadať:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Načítanie...",
+                "oPaginate": {
+                    "sFirst": "najprv",
+                    "sLast": "Posledný",
+                    "sNext": "Ďalšie",
+                    "sPrevious": "Predchádzajúce"
+                },
+                "oAria": {
+                    "sSortAscending": ": Aktiváciou zoradíte stĺpec vo vzostupnom poradí",
+                    "sSortDescending": ": Aktiváciou zoradíte stĺpec v zostupnom poradí"
                 }
-            });
-
+            }
         });
-        </script>
-        <script type="text/javascript"></script>
-        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        $('.edit_subject').click(function() {
+            var id = $(this).attr('data-id')
+            $.ajax({
+            url: '../scripts/get_subject.php?id='+id,
+            error: err => console.log(err),
+            success: function(resp) {
+                if (typeof resp != undefined) {
+                    resp = JSON.parse(resp)
+                    $('[name="id"]').val(resp.id)
+                    $('[name="subject_name"]').val(resp.subject_name)
+                    $('[name="class"]').val(resp.class_id)
+                    $('[name="teacher"]').val(resp.teacher_id)
+                    $('#change_subject').modal('show')
+                 }
+                }
+            })
+        })
+        $('#class-frm').submit(function(e){
+			e.preventDefault();
+			$('#class-frm [name="submit"]').attr('disabled',true)
+			$('#class-frm [name="submit"]').html('Ukladá sa...')
+			$.ajax({
+				url:'../scripts/update_subject.php?id=',
+				method:'POST',
+				data:$(this).serialize(),
+				error:err=>{
+					console.log(err)
+					alert('An error occured')
+					$('#class-frm [name="submit"]').removeAttr('disabled')
+					$('#class-frm [name="submit"]').html('Save')
+				},
+				success:function(resp){
+					alert('Údaje boli úspešne uložené');
+					location.reload()					
+				}
+			})
+		})
+
+    });
+    </script>
+    <script type="text/javascript"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

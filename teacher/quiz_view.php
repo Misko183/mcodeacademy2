@@ -154,7 +154,7 @@ if(!isset($teacher_id)){
                                                         style="margin-right: 10px;background: var(--bs-info);">
                                                         <i class="fa fa-cog"></i>
                                                     </button> -->
-                                                    <a href="../scripts/del_question.php?id=<?php echo $row['id']?>&quiz_id=<?php echo $_GET['id'] ?>"
+                                                    <a href="../scripts/teacher_del_question.php?id=<?php echo $row['id']?>&quiz_id=<?php echo $_GET['id'] ?>"
                                                         class="btn btn-primary" type="button"
                                                         style="background: var(--bs-danger);">
                                                         <i class="fa fa-trash"></i>
