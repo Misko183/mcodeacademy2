@@ -91,7 +91,7 @@ session_start();
                     <p>CSS je jazyk,
                         ktorý používaame na úpvau štýlu HTML dokumentu HTML. Tento tutoriál vás naučí CSS
                         od základných až po pokročilé.</p>
-                    <a href="#">Skúsiť CSS</a>
+                    <a href="css/">Skúsiť CSS</a>
                     <a href="#">CSS Referencie</a>
                 </div>
             </div>

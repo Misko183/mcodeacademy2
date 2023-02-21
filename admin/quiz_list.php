@@ -81,7 +81,7 @@ if(!isset($admin_id)){
                                             <td>
                                                 <a 
                                                     data-id="<?php echo $row['id']?>" 
-                                                    href="./quiz_view.php?id=<?php echo $row['id'] ?>" 
+                                                    href="quiz_view.php?id=<?php echo $row['id']?>" 
                                                     class="btn btn-primary" 
                                                     type="button" 
                                                     style="margin-right: 10px;background: var(--bs-info);">

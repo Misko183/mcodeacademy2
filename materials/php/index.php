@@ -128,11 +128,11 @@ session_start();
                 <div class="container">
                     <div class="row g-0" style="margin-bottom: 27px;">
                         <div class="col" style="text-align: left;"><a href="../"
-                                style="letter-spacing: 3px;color: var(--bs-cyan);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;"><i
+                                style="text-decoration: none;letter-spacing: 3px;color:rgb(122,121,164);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;"><i
                                     class="fas fa-angle-left"
                                     style="font-size: 24px;margin-top: 0px;margin-right: 5px;"></i>Domov</a></div>
                         <div class="col" style="text-align: right;"><a href="./uvod.php"
-                                style="letter-spacing: 3px;color: var(--bs-cyan);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;">Ďalej<i
+                                style="text-decoration: none;letter-spacing: 3px;color:rgb(122,121,164);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;">Ďalej<i
                                     class="fas fa-angle-right"
                                     style="font-size: 24px;margin-top: 0px;margin-left: 5px;"></i></a></div>
                     </div>

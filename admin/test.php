@@ -93,7 +93,7 @@ if(!isset($admin_id)){
                                 <i class="fas fa-cog"></i>
                             </button>
                             <a 
-                                href="../scripts/del_question.php?id=<?php echo $row['id'];?>&quiz_id=<?php echo $_GET['id']?>"
+                                href="../scripts/del_question.php?id=<?php echo $row['id']?>" 
                                 class="btn btn-primary" 
                                 type="button" 
                                 style="background: var(--bs-danger);">
@@ -126,7 +126,7 @@ if(!isset($admin_id)){
                         <td><?php echo $row['full_name'] ?></td>
                         <td>
                             <a
-                                href="../scripts/del_question_student.php?id=<?php echo $row['id'];?>&quiz_id=<?php echo $_GET['id']?>"
+                                href="../scripts/del_question_student.php?id=<?php echo $row['id']?>"
                                 data-id="<?php echo $row['id']?>" 
                                 class="btn btn-primary" 
                                 type="button" 
