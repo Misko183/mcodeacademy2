@@ -22,7 +22,7 @@ if(!isset($teacher_id)){
 
 <head>
     <meta charset="UTF-8">
-    <title>Profil | MCodeAcademy</title>
+    <title>Študenti | MCodeAcademy</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
 
@@ -48,7 +48,7 @@ if(!isset($teacher_id)){
 
     <?php include 'template/nav/nav.php'; ?>
 
-
+    
 
     <div class="container bootstrap snippets bootdey">
         <div class="row">
@@ -79,8 +79,17 @@ if(!isset($teacher_id)){
                         <li style="width: 100%;">
                             <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
                         </li>
-                        <li class="active" style="width: 100%;">
-                            <a href=""> <i class="fa fa-edit"></i> Triedy</a>
+                        <li style="width: 100%;">
+                            <a href="subject.php"> <i class="fa fa-edit"></i> Triedy</a>
+                        </li>
+                        <li class="active"  style="width: 100%;">
+                            <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> študenti</a>
+                        </li>
+                        <li  style="width: 100%;">
+                            <a href="subject.php"> <i class="fa fa-file-text-o" aria-hidden="true"></i> kvízy</a>
+                        </li>
+                        <li  style="width: 100%;">
+                            <a href="subject.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
                         </li>
                     </ul>
                 </div>
@@ -94,39 +103,39 @@ if(!isset($teacher_id)){
                     <div class="panel-body bio-graph-info">
                         <h1>Triedy</h1>
                         <div class="row">
-                            <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
-                                <div class="table-responsive">
-                                    <table class="table" id="table">
-                                        <thead
-                                            style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Predmet</th>
-                                                <th>Trieda</th>
-                                                <th>Vyučujúci</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-					                        $qry = $conn->query("SELECT subject.*,class.class,users.full_name FROM subject LEFT JOIN class ON subject.class_id = class.id LEFT JOIN users ON subject.teacher_id = users.id where subject.teacher_id = $teacher_id;");
+                        <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
+                            <div class="table-responsive">
+                                <table class="table" id="table">
+                                    <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Predmet</th>
+                                            <th>Trieda</th>
+                                            <th>Vyučujúci</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $qry2 = $conn->query("SELECT id FROM class");
+					                        $qry = $conn->query("SELECT * FROM students where class_id = '$id'");
                                             $i = 1;
 					                        if($qry || $qry ->num_rows > 0){
 						                    while($row = $qry->fetch_assoc()){
 						                ?>
-                                            <tr>
-                                                <td><?php echo $row['id'] ?></td>
-                                                <td><?php echo $row['subject_name'] ?></td>
-                                                <td><?php echo $row['class'] ?></td>
-                                                <td><?php echo $row['full_name']; ?></td>
-                                            </tr>
-                                            <?php
+                                        <tr>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><?php echo $row['subject_name'] ?></td>
+                                            <td><?php echo $row['class'] ?></td>
+                                            <td><?php echo $row['full_name']; ?></td>
+                                        </tr>
+                                        <?php
 					                        }
 					                        }
 					                    ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -134,43 +143,43 @@ if(!isset($teacher_id)){
         </div>
         <!-- Trigger the modal with a button -->
 
-        <?php include 'template/footer/footer.php' ?>
-
-        <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                "language": {
-                    "sProcessing": "spracovanie...",
-                    "sLengthMenu": "Zobraziť _MENU_ záznamov",
-                    "sZeroRecords": "Neboli nájdené žiadne výsledky",
-                    "sEmptyTable": "V tejto tabuľke nie sú dostupné žiadne údaje",
-                    "sInfo": "Zobrazené záznamy od _START_ do _END_ z celkom _TOTAL_ záznamov",
-                    "sInfoEmpty": "Zobrazené záznamy od 0 do 0 z celkom 0 záznamov",
-                    "sInfoFiltered": "(Filtrovanie celkom _MAX_ záznamov)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Vyhľadať:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Načítanie...",
-                    "oPaginate": {
-                        "sFirst": "najprv",
-                        "sLast": "Posledný",
-                        "sNext": "Ďalšie",
-                        "sPrevious": "Predchádzajúce"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Aktiváciou zoradíte stĺpec vo vzostupnom poradí",
-                        "sSortDescending": ": Aktiváciou zoradíte stĺpec v zostupnom poradí"
-                    }
+    <?php include 'template/footer/footer.php' ?>
+    
+    <script>
+    $(document).ready(function() {
+        $('#table').DataTable({
+            "language": {
+                "sProcessing": "spracovanie...",
+                "sLengthMenu": "Zobraziť _MENU_ záznamov",
+                "sZeroRecords": "Neboli nájdené žiadne výsledky",
+                "sEmptyTable": "V tejto tabuľke nie sú dostupné žiadne údaje",
+                "sInfo": "Zobrazené záznamy od _START_ do _END_ z celkom _TOTAL_ záznamov",
+                "sInfoEmpty": "Zobrazené záznamy od 0 do 0 z celkom 0 záznamov",
+                "sInfoFiltered": "(Filtrovanie celkom _MAX_ záznamov)",
+                "sInfoPostFix": "",
+                "sSearch": "Vyhľadať:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Načítanie...",
+                "oPaginate": {
+                    "sFirst": "najprv",
+                    "sLast": "Posledný",
+                    "sNext": "Ďalšie",
+                    "sPrevious": "Predchádzajúce"
+                },
+                "oAria": {
+                    "sSortAscending": ": Aktiváciou zoradíte stĺpec vo vzostupnom poradí",
+                    "sSortDescending": ": Aktiváciou zoradíte stĺpec v zostupnom poradí"
                 }
-            });
-
+            }
         });
-        </script>
-        <script type="text/javascript"></script>
-        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+    });
+    </script>
+    <script type="text/javascript"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

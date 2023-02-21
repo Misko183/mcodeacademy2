@@ -74,6 +74,14 @@ if(!isset($admin_id)){
                                             <td><?php echo $row['class'] ?></td>
                                             <td><?php echo $row['full_name']; ?></td>
                                             <td>
+                                                <!-- <button 
+                                                    href="./add_students_for_subject.php?id=<?php //echo $row['id'] ?>"
+                                                    class="btn btn-primary add_students" 
+                                                    type="button"
+                                                    data-id="<?php //echo $row['id']?>" 
+                                                    style="background: var(--bs-info);">
+                                                    <i class="fas fa-cog"></i>
+                                                </button> -->
                                                 <button 
                                                     class="btn btn-primary remove_subject" 
                                                     type="button"
