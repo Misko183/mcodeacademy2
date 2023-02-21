@@ -1,4 +1,4 @@
-<footer class="text-center bg-dark text-white position-absolute" style="width: 100%; bottom: 0;">
+<footer class="text-center bg-dark text-white">
         <div class="container text-muted py-4 py-lg-5">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="../materials">Materiály</a></li>

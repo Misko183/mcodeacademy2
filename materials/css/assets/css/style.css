@@ -1,0 +1,21 @@
+.CodeMirror.cm-s-midnight {
+    height: auto;
+    border: 3px solid #264de4;;
+}
+
+.preview {
+    border: 3px solid #264de4;;
+}
+.compilator{
+    margin-bottom: 20px;
+}
+
+.border {
+    text-align: left;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+}
+
+.border p{
+    margin: 0;
+}

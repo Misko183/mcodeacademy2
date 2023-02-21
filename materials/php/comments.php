@@ -39,6 +39,7 @@ session_start();
     <link rel="stylesheet" href="../assets/plugins/codemirror/theme/midnight.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sidebar-content.css">
 
 
 </head>
@@ -46,7 +47,7 @@ session_start();
 <body>
     <?php include 'template/nav.php' ?>
     <div class="row g-0">
-        <div class="col-md-4 col-lg-3 col-xl-2 col-xxl-2"
+        <div class="col-md-4 col-lg-3 col-xl-2 col-xxl-2 sidebarr"
             style="background: rgb(33,37,41);color: var(--bs-white);width: fit-content;padding-right: 2rem;"
             data-bs-target="#navcol-1">
             <nav class="navbar navbar-light navbar-expand-md" style="color: var(--bs-gray-400);width: 100%;">
@@ -67,7 +68,7 @@ session_start();
                                     href="index.php" style="color: var(--bs-white);"><span
                                         style="color: var(--bs-white);">PHP Domov</span></a></li>
                             <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
-                                    href="uvod.php" style="color: var(--bs-white);">Úvod do PHP</a></li>
+                                    href="uvod.php" style="color: var(--bs-white);">PHP Úvod</a></li>
 
 
                             <li class="nav-item" style="color: var(--bs-gray-400);"><a class="nav-link active"
@@ -119,8 +120,8 @@ session_start();
                 </div>
             </nav>
         </div>
-        <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-9 text-center"
-            style="margin-left: 0px;padding-right: 15px;padding-left: 15px;">
+        <div class="col-md-8 col-lg-9 col-xl-9 col-xxl-9 text-center content"
+            style="padding-right: 15px;padding-left: 15px;">
             <section class="text-center py-4 py-xl-5">
                 <div class="container">
                     <div class="text-white bg-dark border rounded border-0 p-4 p-md-5"
@@ -132,12 +133,12 @@ session_start();
                 <div class="container">
                     <div class="row g-0" style="margin-bottom: 27px;">
                         <div class="col" style="text-align: left;"><a href="syntax.php"
-                                style="letter-spacing: 3px;color: var(--bs-cyan);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;"><i
+                                style="text-decoration: none;letter-spacing: 3px;color: rgb(122,121,164);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;"><i
                                     class="fas fa-angle-left"
                                     style="font-size: 24px;margin-top: 0px;margin-right: 5px;"></i>Predchádzajúce</a>
                         </div>
                         <div class="col" style="text-align: right;"><a href="variables.php"
-                                style="letter-spacing: 3px;color: var(--bs-cyan);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;">Ďalej<i
+                                style="text-decoration: none;letter-spacing: 3px;color: rgb(122,121,164);background: #212529;padding: 15px;border-radius: 15px;font-size: 24px;">Ďalej<i
                                     class="fas fa-angle-right"
                                     style="font-size: 24px;margin-top: 0px;margin-left: 5px;"></i></a></div>
                     </div>

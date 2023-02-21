@@ -66,7 +66,7 @@ if(!isset($teacher_id)){
                     </div>
                     <ul class="nav nav-pills nav-stacked">
                         <li style="width: 100%;">
-                            <a href="#">
+                            <a href="index.php">
                                 <i class="fa fa-user"></i>
                                 Profil
                             </a>
@@ -82,6 +82,9 @@ if(!isset($teacher_id)){
                         <li class="active" style="width: 100%;">
                             <a href=""> <i class="fa fa-edit"></i> Triedy</a>
                         </li>
+                        <li  style="width: 100%;">
+                            <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> Študenti</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -94,6 +97,7 @@ if(!isset($teacher_id)){
                     <div class="panel-body bio-graph-info">
                         <h1>Triedy</h1>
                         <div class="row">
+<<<<<<< HEAD
                             <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
                                 <div class="table-responsive">
                                     <table class="table" id="table">
@@ -108,11 +112,27 @@ if(!isset($teacher_id)){
                                         </thead>
                                         <tbody>
                                             <?php
+=======
+                        <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
+                            <div class="table-responsive">
+                                <table class="table" id="table">
+                                    <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Predmet</th>
+                                            <th>Trieda</th>
+                                            <th>Vyučujúci</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
 					                        $qry = $conn->query("SELECT subject.*,class.class,users.full_name FROM subject LEFT JOIN class ON subject.class_id = class.id LEFT JOIN users ON subject.teacher_id = users.id where subject.teacher_id = $teacher_id;");
                                             $i = 1;
 					                        if($qry || $qry ->num_rows > 0){
 						                    while($row = $qry->fetch_assoc()){
 						                ?>
+<<<<<<< HEAD
                                             <tr>
                                                 <td><?php echo $row['id'] ?></td>
                                                 <td><?php echo $row['subject_name'] ?></td>
@@ -120,6 +140,15 @@ if(!isset($teacher_id)){
                                                 <td><?php echo $row['full_name']; ?></td>
                                             </tr>
                                             <?php
+=======
+                                        <tr>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><?php echo $row['subject_name'] ?></td>
+                                            <td><?php echo $row['class'] ?></td>
+                                            <td><?php echo $row['full_name']; ?></td>
+                                        </tr>
+                                        <?php
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
 					                        }
 					                        }
 					                    ?>

@@ -20,7 +20,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
-    <title>Document</title>
+    <title>Cvičenia | McodeAcademy</title>
 
     <!-- link css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -62,7 +62,17 @@ session_start();
 <body>
     <?php include 'template/nav.php'; ?>
 
-    <div class="con" style="margin: auto;">
+<div class="container mt-5">
+<div class="row">
+            <div
+                class="col-md-12 d-flex flex-column justify-content-xl-center align-items-xl-center align-items-xxl-center">
+                <h1 style="font-weight: bold;">Cvičenia a kvízy</h1>
+                <p style="font-size: 27px; color: #212529">Otestuj svoj skill</p>
+            </div>
+        </div>
+</div>
+
+    <div class="con" style="margin-top: 0px;">
     <div class="ttls"></div>
         <div class="ttls"></div>
         <div class="ttls"></div>

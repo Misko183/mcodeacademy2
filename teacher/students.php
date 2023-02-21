@@ -22,7 +22,11 @@ if(!isset($teacher_id)){
 
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title>Študenti | MCodeAcademy</title>
+=======
+    <title>Profil | MCodeAcademy</title>
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
 
@@ -66,7 +70,11 @@ if(!isset($teacher_id)){
                     </div>
                     <ul class="nav nav-pills nav-stacked">
                         <li style="width: 100%;">
+<<<<<<< HEAD
                             <a href="#">
+=======
+                            <a href="index.php">
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
                                 <i class="fa fa-user"></i>
                                 Profil
                             </a>
@@ -82,6 +90,7 @@ if(!isset($teacher_id)){
                         <li style="width: 100%;">
                             <a href="subject.php"> <i class="fa fa-edit"></i> Triedy</a>
                         </li>
+<<<<<<< HEAD
                         <li class="active"  style="width: 100%;">
                             <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> študenti</a>
                         </li>
@@ -90,6 +99,10 @@ if(!isset($teacher_id)){
                         </li>
                         <li  style="width: 100%;">
                             <a href="subject.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
+=======
+                        <li class="active" style="width: 100%;">
+                            <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> Študenti</a>
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
                         </li>
                     </ul>
                 </div>
@@ -105,6 +118,7 @@ if(!isset($teacher_id)){
                         <div class="row">
                         <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
                             <div class="table-responsive">
+<<<<<<< HEAD
                                 <table class="table" id="table">
                                     <thead style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
                                         <tr>
@@ -112,10 +126,20 @@ if(!isset($teacher_id)){
                                             <th>Predmet</th>
                                             <th>Trieda</th>
                                             <th>Vyučujúci</th>
+=======
+                            <table class="table" id="table">
+                                    <thead
+                                        style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Meno</th>
+                                            <th>Trieda</th>
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
+<<<<<<< HEAD
                                             $qry2 = $conn->query("SELECT id FROM class");
 					                        $qry = $conn->query("SELECT * FROM students where class_id = '$id'");
                                             $i = 1;
@@ -127,6 +151,16 @@ if(!isset($teacher_id)){
                                             <td><?php echo $row['subject_name'] ?></td>
                                             <td><?php echo $row['class'] ?></td>
                                             <td><?php echo $row['full_name']; ?></td>
+=======
+					                        $qry = $conn->query("SELECT students.*,users.full_name,class.class FROM `students` LEFT JOIN `users` ON students.user_id = users.id LEFT JOIN `class` on students.class_id = class.id");
+                                            if($qry || $qry ->num_rows > 0){
+                                            while($row= $qry->fetch_assoc()){
+						                ?>
+                                        <tr>
+                                            <td><?php echo $row['id']; ?></td>
+                                            <td><?php echo $row['full_name']; ?></td>
+                                            <td><?php echo $row['class']; ?></td>
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
                                         </tr>
                                         <?php
 					                        }
@@ -143,6 +177,67 @@ if(!isset($teacher_id)){
         </div>
         <!-- Trigger the modal with a button -->
 
+<<<<<<< HEAD
+=======
+    <div id="change_subject" class="modal fade" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Upraviť predmet</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="post" action="../scripts/save_subject.php" id="class-frm">
+                            <div class="modal-body d-xxl-flex flex-column justify-content-xxl-center inner-modal">
+                            <label class="form-label">Názov predmetu</label>
+                                <input type="text" style="margin-bottom: 10px;" name="subject_name">
+                                <label class="form-label">trieda</label>
+                                <select style="margin-bottom: 10px;" name="class">
+                                    <optgroup label="Zoznam tried">
+                                        <?php 
+                                        $sql = "SELECT * FROM class";
+                                        $res = mysqli_query($conn, $sql);
+
+                                        while($rows = mysqli_fetch_array($res))
+                                        { ?>
+                                        <option value="<?php echo $rows['id'];?>">
+                                            <?php echo $rows['class'] ?></option>
+                                        <?php
+                                        }
+                                    ?>
+                                    </optgroup>
+                                </select >
+                                <label class="form-label">Vyučujúci</label>
+                                <select style="margin-bottom: 10px;" name="teacher">
+                                    <optgroup label="Zoznam učiteľov">
+                                        <?php 
+                                        $sql = "SELECT * FROM users WHERE user_type = 'teacher'";
+                                        $res = mysqli_query($conn, $sql);
+
+                                        while($rows = mysqli_fetch_array($res))
+                                        { ?>
+                                        <option value="<?php echo $rows['id'];?>">
+                                            <?php echo $rows['full_name'] ?></option>
+                                        <?php
+                                        }
+                                    ?>
+                                    </optgroup>
+                                </select >
+                                    <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit" name="submit">Save</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id">
+                            </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    
+    
+
+
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
     <?php include 'template/footer/footer.php' ?>
     
     <script>
@@ -173,7 +268,48 @@ if(!isset($teacher_id)){
                 }
             }
         });
+<<<<<<< HEAD
         
+=======
+        $('.edit_subject').click(function() {
+            var id = $(this).attr('data-id')
+            $.ajax({
+            url: '../scripts/get_subject.php?id='+id,
+            error: err => console.log(err),
+            success: function(resp) {
+                if (typeof resp != undefined) {
+                    resp = JSON.parse(resp)
+                    $('[name="id"]').val(resp.id)
+                    $('[name="subject_name"]').val(resp.subject_name)
+                    $('[name="class"]').val(resp.class_id)
+                    $('[name="teacher"]').val(resp.teacher_id)
+                    $('#change_subject').modal('show')
+                 }
+                }
+            })
+        })
+        $('#class-frm').submit(function(e){
+			e.preventDefault();
+			$('#class-frm [name="submit"]').attr('disabled',true)
+			$('#class-frm [name="submit"]').html('Ukladá sa...')
+			$.ajax({
+				url:'../scripts/update_subject.php?id=',
+				method:'POST',
+				data:$(this).serialize(),
+				error:err=>{
+					console.log(err)
+					alert('An error occured')
+					$('#class-frm [name="submit"]').removeAttr('disabled')
+					$('#class-frm [name="submit"]').html('Save')
+				},
+				success:function(resp){
+					alert('Údaje boli úspešne uložené');
+					location.reload()					
+				}
+			})
+		})
+
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
     });
     </script>
     <script type="text/javascript"></script>

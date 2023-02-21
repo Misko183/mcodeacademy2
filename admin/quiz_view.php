@@ -18,8 +18,8 @@ if(!isset($admin_id)){
  $qry = $conn->query("SELECT * FROM quiz_list where id = ".$_GET['id'])->fetch_array();
 
     // include '../scripts/save_question.php';
-    include '../scripts/del_question.php';
-    include '../scripts/del_question_student.php';
+    //include '../scripts/del_question.php';
+    //include '../scripts/del_question_student.php';
     // include '../scripts/quiz_student.php';
 
 ?>
@@ -93,7 +93,7 @@ if(!isset($admin_id)){
                                 <i class="fas fa-cog"></i>
                             </button>
                             <a 
-                                href="../scripts/del_question.php?id=<?php echo $row['id']?>" 
+                                href="../scripts/del_question.php?id=<?php echo $row['id'];?>&quiz_id=<?php echo $_GET['id']?>"
                                 class="btn btn-primary" 
                                 type="button" 
                                 style="background: var(--bs-danger);">
@@ -126,7 +126,7 @@ if(!isset($admin_id)){
                         <td><?php echo $row['full_name'] ?></td>
                         <td>
                             <a
-                                href="../scripts/del_question_student.php?id=<?php echo $row['id']?>"
+                                href="../scripts/del_question_student.php?id=<?php echo $row['id'];?>&quiz_id=<?php echo $_GET['id']?>"
                                 data-id="<?php echo $row['id']?>" 
                                 class="btn btn-primary" 
                                 type="button" 

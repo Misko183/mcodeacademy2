@@ -30,6 +30,13 @@
                 }
                 ?>
                 <?php 
+                if(isset($_SESSION['user_type']) && $_SESSION['user_type']  == 'teacher') {
+                ?>
+                <li class="nav-item"><a class="nav-link" href="../teacher/" style="font-weight: bold;">Profil</a></li>
+                <?php
+                }
+                ?>
+                <?php 
                 if($loggeding = false) { return 0
                 ?>
                 

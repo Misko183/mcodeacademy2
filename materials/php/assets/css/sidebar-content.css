@@ -1,0 +1,20 @@
+.sidebarr {
+    height: 91.2vh;
+    overflow-y: scroll;
+    position: fixed;
+}
+
+.content {
+    margin-left: 250px;
+}
+
+@media only screen and (max-width: 767px) {
+    .sidebarr {
+        height: auto;
+        width: 100% !important;
+        position: relative;
+    }
+    .content {
+        margin-left: 0;
+    }
+}

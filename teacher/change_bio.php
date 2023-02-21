@@ -99,6 +99,7 @@ if (isset($_POST['submit'])) {
                             <a href="subject.php"> <i class="fa fa-edit"></i> Triedy</a>
                         </li>
                         <li  style="width: 100%;">
+<<<<<<< HEAD
                             <a href="subject.php"> <i class="fa fa-users" aria-hidden="true"></i> študenti</a>
                         </li>
                         <li  style="width: 100%;">
@@ -106,6 +107,9 @@ if (isset($_POST['submit'])) {
                         </li>
                         <li  style="width: 100%;">
                             <a href="subject.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
+=======
+                            <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> Študenti</a>
+>>>>>>> 5076fd177fc699d8b475d2b678eac3bca7e8f7d1
                         </li>
                     </ul>
                 </div>

@@ -20,7 +20,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
-    <title>Document</title>
+    <title>Materiály | McodeAcademy</title>
 
     <!-- link css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -62,40 +62,52 @@ session_start();
 <body>
     <?php include 'template/nav.php'; ?>
 
-    <div class="con">
-        <div class="box">
-            <span></span>
-            <div class="content">
-                <h2>HTML</h2>
-                <p>je štandartný
-                    značkovací jazyk pre webové stránky. Pomocou HTML si môžete vytvoriť svoj vlastný web.
-                    HTML sa dá ľahko naučiť - bude sa vám to pačiť!</p>
-                <a href="html/index.php">Skúsiť HTML</a>
-                <a href="#">HTML Referencie</a>
+    <div class="container mt-5">
+    <div class="row">
+            <div
+                class="col-12 d-flex flex-column justify-content-xl-center align-items-xl-center align-items-xxl-center">
+                <h1 style="font-weight: bold;">Materiály</h1>
+                <p style="font-size: 27px; color: #212529">Vyber si jazyk a pozri si všetko čo potrebuješ</p>
             </div>
         </div>
-        <div class="box">
-            <span></span>
-            <div class="content">
-                <h2>CSS</h2>
-                <p>CSS je jazyk,
-                    ktorý používaame na úpvau štýlu HTML dokumentu HTML. Tento tutoriál vás naučí CSS
-                    od základných až po pokročilé.</p>
-                <a href="#">Skúsiť CSS</a>
-                <a href="#">CSS Referencie</a>
+    </div>
+    <div class="con" style="margin-top: 0px;">
+        <div class="row">
+            <div class="box">
+                <span></span>
+                <div class="content">
+                    <h2>HTML</h2>
+                    <p>je štandartný
+                        značkovací jazyk pre webové stránky. Pomocou HTML si môžete vytvoriť svoj vlastný web.
+                        HTML sa dá ľahko naučiť - bude sa vám to pačiť!</p>
+                    <a href="html/">Skúsiť HTML</a>
+                    <a href="#">HTML Referencie</a>
+                </div>
+            </div>
+            <div class="box">
+                <span></span>
+                <div class="content">
+                    <h2>CSS</h2>
+                    <p>CSS je jazyk,
+                        ktorý používaame na úpvau štýlu HTML dokumentu HTML. Tento tutoriál vás naučí CSS
+                        od základných až po pokročilé.</p>
+                    <a href="css/">Skúsiť CSS</a>
+                    <a href="#">CSS Referencie</a>
+                </div>
+            </div>
+            <div class="box">
+                <span></span>
+                <div class="content">
+                    <h2>PHP</h2>
+                    <p>PHP je
+                        serverový skriptovací jazyk a výkonný nástroj na vytváranie dynamických a interaktívnych
+                        webových stránok. PHP je široko používaný jazyk.</p>
+                    <a href="php/">Skúsiť PHP</a>
+                    <a href="#">PHP Referencie</a>
+                </div>
             </div>
         </div>
-        <div class="box">
-            <span></span>
-            <div class="content">
-                <h2>PHP</h2>
-                <p>PHP je
-                    serverový skriptovací jazyk a výkonný nástroj na vytváranie dynamických a interaktívnych
-                    webových stránok. PHP je široko používaný jazyk.</p>
-                <a href="php/">Skúsiť PHP</a>
-                <a href="#">PHP Referencie</a>
-            </div>
-        </div>
+
     </div>
 
     <?php include 'template/footer.php'; ?>
