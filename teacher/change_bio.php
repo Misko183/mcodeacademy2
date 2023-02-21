@@ -88,18 +88,22 @@ if (isset($_POST['submit'])) {
                             </a>
                         </li>
                         <li style="width: 100%;">
-                            <a href="change_password.php">
-                                <i class="fa fa-calendar"></i> Zmena hesla
-                            </a>
+                            <a href="change_password.php"> <i class="fa fa-lock"></i> Zmeniť heslo</a>
                         </li>
                         <li class="active" style="width: 100%;">
-                            <a href="#"> <i class="fa fa-edit"></i> Upraviť profil</a>
+                            <a href="change_bio.php"> <i class="fa fa-edit"></i> Upraviť profil</a>
                         </li>
                         <li  style="width: 100%;">
-                            <a href="subject.php"> <i class="fa fa-edit"></i> Triedy</a>
+                            <a href="subject.php"> <i class="fa fa-graduation-cap" aria-hidden="true"></i> Triedy</a>
                         </li>
                         <li  style="width: 100%;">
                             <a href="students.php"> <i class="fa fa-users" aria-hidden="true"></i> Študenti</a>
+                        </li>
+                        <li  style="width: 100%;">
+                            <a href="quiz_list.php"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Kvízy</a>
+                        </li>
+                        <li  style="width: 100%;">
+                            <a href="history.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
                         </li>
                     </ul>
                 </div>

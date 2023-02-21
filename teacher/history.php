@@ -22,7 +22,7 @@ if(!isset($teacher_id)){
 
 <head>
     <meta charset="UTF-8">
-    <title>Profil | MCodeAcademy</title>
+    <title>História kvízov | MCodeAcademy</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
 
@@ -125,61 +125,78 @@ if(!isset($teacher_id)){
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
-                                <div class="table-responsive">
-                                    <table class="table" id="table">
-                                        <thead
-                                            style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Názov</th>
-                                                <th>Počet otázok</th>
-                                                <th>Body za otázku</th>
-                                                <th>trieda</th>
-                                                <th>Akcia</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-					                        $qry = $conn->query("SELECT quiz_list.*,subject.subject_name,class.class FROM `quiz_list` LEFT JOIN `class` ON quiz_list.class_id = class.id LEFT JOIN `subject` ON  quiz_list.class_id = subject.class_id WHERE subject.teacher_id = $teacher_id"); 
-					                        if($qry || $qry ->num_rows > 0){
-						                    while($row= $qry->fetch_assoc()){
-                                            $items = $conn->query("SELECT count(id) as item_count from questions where qid = '".$row['id']."' ")->fetch_array()['item_count'];
-						                ?>
-                                            <tr>
-                                                <td><?php echo $row['id'] ?></td>
-                                                <td><?php echo $row['quiz_name'] ?></td>
-                                                <td><?php echo $items ?></td>
-                                                <td><?php echo $row['qpoints'] ?></td>
-                                                <td><?php echo $row['class'] ?></td>
-                                                <td>
-                                                    <a data-id="<?php echo $row['id']?>"
-                                                        href="./quiz_view.php?id=<?php echo $row['id'] ?>"
-                                                        class="btn btn-primary" type="button"
-                                                        style="margin-right: 10px;background: var(--bs-info);">
-                                                        <i class="fa fa-cog"></i>
-                                                    </a>
-                                                    <button class="btn btn-primary remove_quiz" type="button"
-                                                        data-id="<?php echo $row['id']?>"
-                                                        style="background: var(--bs-danger);">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <button class="btn btn-primary edit_quiz" type="button"
-                                                        data-id="<?php echo $row['id']?>"
-                                                        style="background: var(--bs-warning);">
-                                                        <i class="fa fa-pencil"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <?php
-					                        }
-					                        }
-					                    ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="col-md-12 alert alert-primary">Quiz Records</div>
+                        <br>
+                        <div class="col-md-4 offset-md-4 mb-4">
+                            <select class="form-control select2"
+                                onchange="location.replace('history.php?quiz_id='+this.value)">
+                                <option value="all"
+                                    <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == 'all' ? 'selected' : '' ?>>
+                                    All
+                                </option>
+                                <?php 
+				$where =''; 
+				if($_SESSION['login_user_type'] == 'teacher'){
+				$where = ' where user_id = '.$_SESSION['teacher_id'].' '; 
+				 }
+				$quiz = $conn->query("SELECT * FROM quiz_list order by quiz_name asc");
+				while($row = $quiz->fetch_assoc()){
+				?>
+                                <option value="<?php echo $row['id'] ?>"
+                                    <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == $row['id']  ? 'selected' : '' ?>>
+                                    <?php echo $row['quiz_name'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 mb-4" style="width: 60%;margin: auto;">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead
+                                        style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Student Name</th>
+                                            <th>Quiz</th>
+                                            <th>Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+					                    $where = '';
+					                    if($_SESSION['user_id'] == 'teacher'){
+					                    	$where = ' where q.user_id = '.$_SESSION['teacher_id'].' ';
+					                    }
+					                    if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
+					                    	if(empty($where)){
+					                    	$where = ' where q.id = '.$_GET['quiz_id'].' ';
+                                            
+					                    	}else{
+					                    	$where = ' and q.id = '.$_GET['quiz_id'].' ';
+                                            
+					                    	}
+					                    }
+					                    $qry = $conn->query("SELECT h.*,u.full_name as students,q.quiz_name FROM history h INNER JOIN users u on h.user_id = u.id INNER JOIN quiz_list q on h.quiz_id = q.id order by u.name asc; ");
+					                    $i = 1;
+					                    if($qry->num_rows > 0){
+					                    	while($row= $qry->fetch_assoc()){
+							
+						            ?>
+                                        <tr>
+                                            <td><?php echo $i++ ?></td>
+                                            <td><?php echo ucwords($row['students']) ?></td>
+                                            <td><?php echo $row['quiz_name'] ?></td>
+                                            <td class="text-center"><?php echo $row['score'].'/'.$row['total_score']  ?>
+                                            </td>
+                                        </tr>
+                                        <?php
+					                    }
+					                    }
+					                ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

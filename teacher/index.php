@@ -82,7 +82,7 @@ if(!isset($teacher_id)){
                             <a href="quiz_list.php"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Kvízy</a>
                         </li>
                         <li  style="width: 100%;">
-                            <a href="subject.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
+                            <a href="history.php"> <i class="fa fa-file-text" aria-hidden="true"></i> História kvízov</a>
                         </li>
                     </ul>
                 </div>
