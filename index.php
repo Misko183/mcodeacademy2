@@ -123,7 +123,7 @@
                 <p>CSS je jazyk,
                     ktorý používaame na úpvau štýlu HTML dokumentu HTML. Tento tutoriál vás naučí CSS
                     od základných až po pokročilé.</p>
-                <a href="#">Skúsiť CSS</a>
+                <a href="materials/css/">Skúsiť CSS</a>
                 <a href="#">CSS Referencie</a>
             </div>
         </div>
@@ -134,7 +134,7 @@
                 <p>PHP je
                     serverový skriptovací jazyk a výkonný nástroj na vytváranie dynamických a interaktívnych
                     webových stránok. PHP je široko používaný jazyk.</p>
-                <a href="#">Skúsiť PHP</a>
+                <a href="materials/php/">Skúsiť PHP</a>
                 <a href="#">PHP Referencie</a>
             </div>
         </div>
@@ -201,8 +201,7 @@
             <div class="content">
                 <h2>cvičenia</h2>
                 <p>Môžeš si preskúšať svoj skill ktorý si sa naučil.</p>
-                <a href="#">Cvičiť</a>
-                <p>Comming soon..</p>
+                <a href="exercises/exercises/">Cvičiť</a>
             </div>
         </div>
         <div class="box">
