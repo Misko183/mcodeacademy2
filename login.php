@@ -86,10 +86,10 @@ if(isset($_POST['submit'])){
     <title>MCodeAcademy • Login</title>
 
     <link rel="stylesheet" type="text/css" href="./assets/css/login2.css">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 
-   <link rel="stylesheet" href="assets/css/particles.css">
+    <link rel="stylesheet" href="assets/css/particles.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <link rel="stylesheet" href="template/nav/nav.css">
@@ -100,17 +100,25 @@ if(isset($_POST['submit'])){
     <script src="assets/js/bs-init.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 
+    <style>
+    input:focus-visible {
+    outline: none;
+    background: transparent;
+    border-radius: none;
+}
+    </style>
+
 </head>
 
 <body>
 
-<?php include ('template/nav/nav.php') ?>
-   <section>
+    <?php include ('template/nav/nav.php') ?>
+    <section>
 
-                                                       
-<div class="login-box">
-  <h2>Prihlásiť sa</h2>
-  <?php
+
+        <div class="login-box">
+            <h2>Prihlásiť sa</h2>
+            <?php
                     if(isset($message)){
                     foreach($message as $message){
                        echo '
@@ -122,30 +130,30 @@ if(isset($_POST['submit'])){
                         }
                     }
                 ?>
-  <form  action="" method="post" enctype="multipart/form-data">
-    <div class="user-box">
-    <input name="email" type="text" class="input" required></input>
-      <label>Email</label>
-    </div>
-    <div class="user-box">
-    <input name="pass" type="password" class="input" required></input>
-      <label>Heslo</label>
-    </div>
-    <a href="lost_password.php">Zabudnuté heslo</a>
-    <button name="submit" type="submit">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Prihlásiť
-    </button>
-    <p>Ešte nemáš účet?<span><a href="register.php"> Zaregistruj sa</a></span></p>
-    
-  </form>
-  
-</div>
-<div style="z-index: -1;height: 93% !important;" id="particles-js"></div>
-</section>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="user-box">
+                    <input name="email" type="text" class="input" required></input>
+                    <label>Email</label>
+                </div>
+                <div class="user-box">
+                    <input name="pass" type="password" class="input" required></input>
+                    <label>Heslo</label>
+                </div>
+                <a href="lost_password.php">Zabudnuté heslo</a>
+                <button name="submit" type="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Prihlásiť
+                </button>
+                <p>Ešte nemáš účet?<span><a href="register.php"> Zaregistruj sa</a></span></p>
+
+            </form>
+
+        </div>
+        <div style="z-index: -1;height: 93% !important;" id="particles-js"></div>
+    </section>
 
     <script>
     particlesJS("particles-js", {

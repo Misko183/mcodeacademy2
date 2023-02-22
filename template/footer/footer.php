@@ -2,15 +2,15 @@
         <div class="container text-muted py-4 py-lg-5">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-secondary text-white" href="materials/">Materiály</a></li>
-                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="#">Cvičenia</a></li>
+                <li class="list-inline-item me-4"><a class="link-secondary text-white" href="exercises/">Cvičenia</a></li>
                 <li class="list-inline-item me-4">
                 <?php
-                if (isset($_SESSION['user_type']) && $_SESSION['user_type']  == 'user') {
+                if (isset($_SESSION['user_type']) && $_SESSION['user_type']  == 'user/') {
                     ?> 
                     <a class="link-secondary text-white" href="profile.php">Profil</a></li>
                     <?php 
                     
-                } elseif(isset($_SESSION['user_type']) && $_SESSION['user_type']  == 'student') {
+                } elseif(isset($_SESSION['user_type']) && $_SESSION['user_type']  == 'student/') {
                  ?>
                  <a class="link-secondary text-white" href="student/">Profil</a></li>
                  <?php   
