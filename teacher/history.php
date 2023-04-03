@@ -149,21 +149,21 @@ if(!isset($teacher_id)){
                             </div>
                             <div class="col-lg-6 mb-4" style="width: 100%;margin: auto;">
                                 <div class="table-responsive">
-                                    <table class="table" id="table">
-                                        <thead
-                                            style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Meno študenta</th>
-                                                <th>Trieda</th>
-                                                <th>Kvíz</th>
-                                                <th>Skóre</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
+                                <table class="table" id="table">
+                                    <thead
+                                        style="border-style: solid;border-bottom-width: 5px;border-bottom-color: rgb(69,69,69);">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Meno študenta</th>
+                                            <th>Trieda</th>
+                                            <th>Kvíz</th>
+                                            <th>Skóre</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
 					$where = '';
-					if($_SESSION['user_type'] == "admin"){
+					if($_SESSION['user_type'] == "teacher"){
 						
 					}
 					if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
@@ -175,28 +175,26 @@ if(!isset($teacher_id)){
 
 						}
 					}
-					$qry = $conn->query("SELECT h.*,class,u.full_name as student,q.quiz_name from history h inner join class on class.class inner join students on class_id inner join users u on h.user_id = u.id inner join quiz_list q on h.quiz_id = q.id ".$where." order by u.name asc;
-                    ");
+					$qry = $conn->query("SELECT h.*,u.full_name as student,q.quiz_name from history h inner join users u on h.user_id = u.id inner join quiz_list q on h.quiz_id = q.id ".$where." order by u.name asc ");
 					$i = 1;
 					if($qry->num_rows > 0){
 						while($row= $qry->fetch_assoc()){
 							
 						?>
-                                            <tr>
-                                                <td><?php echo $i++ ?></td>
-                                                <td><?php echo ucwords($row['student']) ?></td>
-                                                <td><?php echo ucwords($row['class']) ?></td>
-                                                <td><?php echo $row['quiz_name'] ?></td>
-                                                <td class="text-center">
-                                                    <?php echo $row['score'].'/'.$row['total_score']  ?>
-                                                </td>
-                                            </tr>
-                                            <?php
+                                        <tr>
+                                            <td><?php echo $i++ ?></td>
+                                            <td><?php echo ucwords($row['student']) ?></td>
+                                            <td>trieda</td>
+                                            <td><?php echo $row['quiz_name'] ?></td>
+                                            <td class="text-center"><?php echo $row['score'].'/'.$row['total_score']  ?>
+                                            </td>
+                                        </tr>
+                                        <?php
 					                    }
 					                    }
 					                ?>
-                                        </tbody>
-                                    </table>
+                                    </tbody>
+                                </table>
                                 </div>
                             </div>
                         </div>
